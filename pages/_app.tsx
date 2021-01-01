@@ -10,6 +10,7 @@ import { UserInfoContextProvider } from "components/organisms/UserInfoModal/cont
 import UserInfoModal from "components/organisms/UserInfoModal/UserInfoModal";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
+import Layout from "components/Layouts/Layout";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -29,7 +30,9 @@ export default function MyApp(props: MyAppProps) {
         <UserInfoContextProvider>
           <UserInfoModal />
 
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </UserInfoContextProvider>
       </ThemeProvider>
     </CacheProvider>

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import MetabolicMasteryContext from "../context";
 import MacroPieChart from "./MacroPieChart";
 import Grid from "@mui/material/Grid";
@@ -8,37 +8,22 @@ import styles from "./styles/MetabolicMasteryResults.module.scss";
 import addCommasToNumber from "utils/addCommasToNumber";
 import DownloadResultsButton from "./DownloadResultsButton";
 import CaloriesPerDayRange from "components/atoms/CaloriesPerDayRange";
-import Scroll from "react-scroll";
-const Element = Scroll.Element;
+import DownloadResultsButton from "components/molecules/DownloadResultsButton/DownloadResultsButton";
+import ResultsWrapper from "components/molecules/ResultsWrapper/ResultsWrapper";
 
 interface MetabolicMasteryResultsProps {
   scrollToResults: () => void;
   wrapperId: string;
 }
-const WRAPPER_ID = "metabolic-results";
 
 const MetabolicMasteryResults = ({
   scrollToResults,
   wrapperId,
 }: MetabolicMasteryResultsProps) => {
-  const { results } = useContext(MetabolicMasteryContext);
-  const [didScroll, setDidScroll] = useState(false);
-
-  useEffect(() => {
-    if (results) {
-      if (!didScroll) {
-        scrollToResults();
-        setDidScroll(true);
-      }
-    } else {
-      if (didScroll) {
-        setDidScroll(false);
-      }
-    }
-  }, [results, didScroll, setDidScroll]);
+  const { downloadResults, results } = useContext(MetabolicMasteryContext);
 
   return results ? (
-    <Element name={wrapperId}>
+    <ResultsWrapper scrollToResults={scrollToResults} wrapperId={wrapperId}>
       <div className={styles.resultsWrapper}>
         <div className={styles.headerWrapper}>
           <Typography variant="h2" component="p" align="center">
@@ -92,13 +77,11 @@ const MetabolicMasteryResults = ({
             />
           </Grid>
           <Grid item xs={12}>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <DownloadResultsButton />
-            </div>
+            <DownloadResultsButton onClick={downloadResults} />
           </Grid>
         </Grid>
       </div>
-    </Element>
+    </ResultsWrapper>
   ) : null;
 };
 

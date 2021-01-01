@@ -5,7 +5,7 @@ import styles from "../styles/MetabolicMastery.module.css";
 
 const MetabolicMastery: NextPage = () => {
   return (
-    <div className={styles.container} style={{ color: "black" }}>
+    <div>
       <Head>
         <title>Eureka Nutrition Calculator</title>
         <meta name="description" content="A health calculator" />
