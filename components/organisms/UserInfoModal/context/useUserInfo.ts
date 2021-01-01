@@ -9,11 +9,12 @@ export interface UseUserInfo {
 
 const useUserInfo = (): UseUserInfo => {
   const [values, _setValues] = useState<UserFormState>({
-    email: "",
-    first: "",
-    last: "",
+    email: "test@place.com",
+    first: "test",
+    last: "test",
   });
-  const [didSubmit, setDidSubmit] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(true);
+  // const [didSubmit, setDidSubmit] = useState(false);
 
   const setValues = useCallback(
     (vals: UserFormState) => {

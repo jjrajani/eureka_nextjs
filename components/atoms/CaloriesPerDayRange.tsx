@@ -1,13 +1,14 @@
 import addCommasToNumber from "utils/addCommasToNumber";
+import { CalorieIntake } from "types/types";
 
 interface CaloriesPerDayRangeProps {
-  calories: number;
+  calories: CalorieIntake;
 }
 
 const CaloriesPerDayRange = ({ calories }: CaloriesPerDayRangeProps) => {
   return (
     <span>
-      {addCommasToNumber(calories - 100)} - {addCommasToNumber(calories + 100)}
+      {addCommasToNumber(calories?.low)} - {addCommasToNumber(calories?.high)}
     </span>
   );
 };

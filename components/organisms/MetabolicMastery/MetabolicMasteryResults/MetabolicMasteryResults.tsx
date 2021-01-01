@@ -5,8 +5,6 @@ import Grid from "@mui/material/Grid";
 import ResultCard from "./ResultCard";
 import Typography from "@mui/material/Typography";
 import styles from "./styles/MetabolicMasteryResults.module.scss";
-import addCommasToNumber from "utils/addCommasToNumber";
-import DownloadResultsButton from "./DownloadResultsButton";
 import CaloriesPerDayRange from "components/atoms/CaloriesPerDayRange";
 import DownloadResultsButton from "components/molecules/DownloadResultsButton/DownloadResultsButton";
 import ResultsWrapper from "components/molecules/ResultsWrapper/ResultsWrapper";
@@ -32,8 +30,8 @@ const MetabolicMasteryResults = ({
         </div>
 
         <p className={styles.calories}>
-          <CaloriesPerDayRange calories={parseInt(results.calorieIntake, 10)} />{" "}
-          Calories per day
+          <CaloriesPerDayRange calories={results.calorieIntake} /> Calories per
+          day
         </p>
         <Grid
           container

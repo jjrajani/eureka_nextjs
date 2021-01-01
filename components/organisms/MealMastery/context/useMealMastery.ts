@@ -1,6 +1,11 @@
 import { useCallback, useState } from "react";
 import { MealMasteryFormState } from "types/types";
-import { Activity, Gender, Goal, CalculatorResult } from "types/types";
+import {
+  Activity,
+  Gender,
+  Goal,
+  MealMasteryCalculatorResult,
+} from "types/types";
 import {
   BMICalculator,
   BMRCalculator,
@@ -13,13 +18,13 @@ import modifyAndOpenPDF from "utils/modifyAndOpenPDF";
 export interface UseMealMastery {
   calculateResults: (vals: MealMasteryFormState) => void;
   loading: boolean;
-  results?: CalculatorResult;
+  results?: MealMasteryCalculatorResult;
   downloadResults: () => void;
 }
 
 const useMealMastery = (): UseMealMastery => {
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState<CalculatorResult>();
+  const [results, setResults] = useState<MealMasteryCalculatorResult>();
   const [formVals, setFormVals] = useState<MealMasteryFormState>();
 
   const calculateResults = useCallback(
@@ -54,7 +59,7 @@ const useMealMastery = (): UseMealMastery => {
       let macro = MacroRatioCalculator(vals.goal as Goal);
 
       let handSizes = HandServingSizeCalculator({
-        calorieIntake: parseInt(calorieIntake, 10),
+        calorieIntake: calorieIntake,
         macro,
         weight: parseInt(vals.weight, 10),
       });

@@ -1,4 +1,4 @@
-import { Macro, HandServing, ServingSizes } from "types/types";
+import { Macro, HandServing, ServingSizes, CalorieIntake } from "types/types";
 // (Portion Amounts: 4 calories per gram of protein and carb. /  9 calories per gram of fat)
 // Grams per day = serving sizes (would like to include both the gram numbers and portion equivalents)
 //
@@ -17,10 +17,10 @@ import { Macro, HandServing, ServingSizes } from "types/types";
 // Then show 6 palm servings of protein required.
 
 const ProteinServingSizeCalculator = (
-  calorieIntake: number,
+  calorieIntake: CalorieIntake,
   proteinPercent: number
 ): HandServing => {
-  let proteinCalories = calorieIntake * proteinPercent;
+  let proteinCalories = calorieIntake.median * proteinPercent;
   let caloriesPerGram = proteinCalories / 4;
   let palmCount = caloriesPerGram / 28.35;
 
@@ -28,10 +28,10 @@ const ProteinServingSizeCalculator = (
 };
 
 const CarbServingsSizeCalculator = (
-  calorieIntake: number,
+  calorieIntake: CalorieIntake,
   carbsPercent: number
 ): HandServing => {
-  let carbCalories = calorieIntake * carbsPercent;
+  let carbCalories = calorieIntake.median * carbsPercent;
   let caloriesPerGram = carbCalories / 4;
   let palmCount = caloriesPerGram / 22.5;
 
@@ -39,10 +39,10 @@ const CarbServingsSizeCalculator = (
 };
 
 const FatServingsSizeCalculator = (
-  calorieIntake: number,
+  calorieIntake: CalorieIntake,
   fatsPercent: number
 ): HandServing => {
-  let fatCalories = calorieIntake * fatsPercent;
+  let fatCalories = calorieIntake.median * fatsPercent;
   let caloriesPerGram = fatCalories / 9;
   let palmCount = caloriesPerGram / 12.78;
 
@@ -65,7 +65,7 @@ const WaterServingCalculator = (weight: number): number => {
 };
 
 interface HandServingSizeCalculatorArgs {
-  calorieIntake: number;
+  calorieIntake: CalorieIntake;
   macro: Macro;
   weight: number;
 }

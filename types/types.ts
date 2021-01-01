@@ -47,26 +47,19 @@ export enum ExerciseFITT {
   ADVANCED = "Advanced”",
 }
 
-export enum ReastingHeartRate {
-  FIFTY = "50",
-  FIFTY_FIVE = "55",
-  SIXTEY = "60",
-  SIXTEY_FIVE = "65",
-  SEVENTY = "70",
-  SEVENTY_FIVE = "75",
-  EIGHTY = "80",
-  EIGHTY_FIVE = "85",
-  NINETY = "90",
-  NINETY_FIVE = "95",
-  HUNDRED = "100",
-  HUNDRED_FIVE = "105",
-  HUNDRED_TEN = "110",
-}
-
 export enum StressStage {
   ACUTE = "Acute",
   COMPENSATORY = "Compensatory",
   EXHAUSTION = "Exhaustion",
+}
+
+export interface Range {
+  low: number;
+  high: number;
+}
+
+export interface CalorieIntake extends Range {
+  median: number;
 }
 
 export interface Macro {
@@ -87,10 +80,25 @@ export interface ServingSizes {
   waterServing: number;
 }
 
-export interface CalculatorResult {
+export interface MealMasteryCalculatorResult {
   bmi: string;
   bmr: string;
-  calorieIntake: string;
+  calorieIntake: CalorieIntake;
+  macro: Macro;
+  handSizes: ServingSizes;
+}
+
+export interface ExerciseFITTCalcRes {
+  frequency: Range;
+  intensity: number; // target heart rate
+  time: Range;
+}
+
+export interface MetabolicMasteryCalculatorResult {
+  bmi: string;
+  bmr: string;
+  calorieIntake: CalorieIntake;
+  exerciseFitt: ExerciseFITTCalcRes;
   macro: Macro;
   handSizes: ServingSizes;
 }
@@ -126,6 +134,6 @@ export interface MetabolicMasteryFormState extends UserFormState {
   dietPreference: "null" | DietPreference;
   restRx: "null" | RestRx;
   exerciseFitt: "null" | ExerciseFITT;
-  rhr: "null" | ReastingHeartRate;
+  rhr: string;
   stress: "null" | StressStage;
 }

@@ -1,10 +1,17 @@
 import { useCallback, useState } from "react";
 import { MetabolicMasteryFormState } from "types/types";
-import { Activity, Gender, Goal, CalculatorResult } from "types/types";
+import {
+  Activity,
+  ExerciseFITT,
+  Gender,
+  Goal,
+  MetabolicMasteryCalculatorResult,
+} from "types/types";
 import {
   BMICalculator,
   BMRCalculator,
   CalorieIntakeCalculator,
+  ExerciseFITTCalculator,
   HandServingSizeCalculator,
   MacroRatioCalculator,
 } from "utils/calculators";
@@ -13,13 +20,13 @@ import modifyAndOpenPDF from "utils/modifyAndOpenPDF";
 export interface UseMetabolicMastery {
   calculateResults: (vals: MetabolicMasteryFormState) => void;
   loading: boolean;
-  results?: CalculatorResult;
+  results?: MetabolicMasteryCalculatorResult;
   downloadResults: () => void;
 }
 
 const useMetabolicMastery = (): UseMetabolicMastery => {
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState<CalculatorResult>();
+  const [results, setResults] = useState<MetabolicMasteryCalculatorResult>();
   const [formVals, setFormVals] = useState<MetabolicMasteryFormState>();
 
   const calculateResults = useCallback(
@@ -54,9 +61,16 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
       let macro = MacroRatioCalculator(vals.goal as Goal);
 
       let handSizes = HandServingSizeCalculator({
-        calorieIntake: parseInt(calorieIntake, 10),
+        calorieIntake: calorieIntake,
         macro,
         weight: parseInt(vals.weight, 10),
+      });
+
+      let exerciseFitt = ExerciseFITTCalculator({
+        age: parseInt(vals.age, 10),
+        exercise: vals.exerciseFitt as ExerciseFITT,
+        gender: vals.gender as Gender,
+        rhr: parseInt(vals.rhr, 10),
       });
 
       setLoading(false);
@@ -64,6 +78,7 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
         bmi,
         bmr,
         calorieIntake,
+        exerciseFitt,
         macro,
         handSizes,
       });
@@ -76,6 +91,8 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
       const thing = await modifyAndOpenPDF(results, formVals);
     }
   }, [formVals, results]);
+
+  console.log("results", results);
 
   return {
     calculateResults,

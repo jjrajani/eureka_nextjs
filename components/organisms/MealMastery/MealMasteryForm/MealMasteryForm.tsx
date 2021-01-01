@@ -20,6 +20,7 @@ import { MealMasteryFormState } from "types/types";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
 import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
+import tempInitialData from "./temp";
 
 interface MealMasteryFormProps {}
 
@@ -30,11 +31,12 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
   );
 
   const initialValues: Partial<MealMasteryFormState> = {
-    gender: "null",
-    activity: "null",
-    goal: "null",
-    dietPreference: "null",
-    supplementType: "null",
+    // gender: "null",
+    // activity: "null",
+    // goal: "null",
+    // dietPreference: "null",
+    // supplementType: "null",
+    ...tempInitialData,
     ...userValues,
   };
 

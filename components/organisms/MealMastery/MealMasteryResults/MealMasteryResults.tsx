@@ -8,6 +8,7 @@ import styles from "./styles/MealMasteryResults.module.scss";
 import addCommasToNumber from "utils/addCommasToNumber";
 import DownloadResultsButton from "components/molecules/DownloadResultsButton/DownloadResultsButton";
 import ResultsWrapper from "components/molecules/ResultsWrapper/ResultsWrapper";
+import CaloriesPerDayRange from "components/atoms/CaloriesPerDayRange";
 
 interface MealMasteryResultsProps {
   scrollToResults: () => void;
@@ -29,7 +30,7 @@ const MealMasteryResults = ({
           </Typography>
         </div>
         <p className={styles.calories}>
-          {addCommasToNumber(parseInt(results.calorieIntake, 10))} Calories per
+          <CaloriesPerDayRange calories={results.calorieIntake} /> Calories per
           day
         </p>
         <Grid

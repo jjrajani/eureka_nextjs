@@ -22,6 +22,7 @@ import StressStageField from "components/molecules/fields/StressStage";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
 import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
+import tempInitialData from "./temp";
 
 import { MetabolicMasteryFormState } from "types/types";
 
@@ -34,19 +35,20 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
   );
 
   const initialValues: Partial<MetabolicMasteryFormState> = {
-    age: undefined,
-    gender: "null",
-    weight: undefined,
-    heightFt: undefined,
-    heightIn: undefined,
-    water: undefined,
-    activity: "null",
-    goal: "null",
-    dietPreference: "null",
-    restRx: "null",
-    exerciseFitt: "null",
-    rhr: "null",
-    stress: "null",
+    // age: undefined,
+    // gender: "null",
+    // weight: undefined,
+    // heightFt: undefined,
+    // heightIn: undefined,
+    // water: undefined,
+    // activity: "null",
+    // goal: "null",
+    // dietPreference: "null",
+    // restRx: "null",
+    // exerciseFitt: "null",
+    // rhr: "null",
+    // stress: "null",
+    ...tempInitialData,
     ...userValues,
   };
 

@@ -1,5 +1,5 @@
 import { BMRCalculator } from "./";
-import { Activity, Gender, Goal } from "types/types";
+import { Activity, Gender, Goal, CalorieIntake } from "types/types";
 
 interface CalorieIntakeCalculatorArgs {
   activity: Activity;
@@ -19,7 +19,7 @@ const CalorieIntakeCalculator = ({
   feet,
   inches,
   weight,
-}: CalorieIntakeCalculatorArgs): string => {
+}: CalorieIntakeCalculatorArgs): CalorieIntake => {
   let BMR = BMRCalculator({ age, gender, feet, inches, weight });
 
   let bmr = parseInt(BMR);
@@ -56,7 +56,21 @@ const CalorieIntakeCalculator = ({
     }
   }
 
-  return calorieIntake.toFixed(0);
+  calorieIntake = parseInt(calorieIntake.toFixed(0), 10);
+
+  if (goal === Goal.WEIGHT_SUSTAIN) {
+    return {
+      low: calorieIntake - 200,
+      median: calorieIntake,
+      high: calorieIntake + 200,
+    };
+  }
+
+  return {
+    low: calorieIntake - 100,
+    median: calorieIntake,
+    high: calorieIntake + 100,
+  };
 };
 
 export default CalorieIntakeCalculator;
