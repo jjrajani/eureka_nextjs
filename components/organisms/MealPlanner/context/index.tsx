@@ -1,16 +1,9 @@
 import { createContext, ReactNode } from "react";
-import { FormState } from "../types";
-import { CalculatorResult } from "types";
-import useMealPlanner from "./useMealPlanner";
+import useMealPlanner, { UseMealPlanner } from "./useMealPlanner";
 
-interface IMealPlannerContext {
-  calculateResults: (vals: FormState) => void;
-  loading: boolean;
-  results?: CalculatorResult;
-}
-
-const defaultValue: IMealPlannerContext = {
+const defaultValue: UseMealPlanner = {
   calculateResults: () => {},
+  downloadResults: () => {},
   loading: false,
 };
 

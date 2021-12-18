@@ -1,11 +1,11 @@
-import { FormState } from "../types";
+import { MealPlannerFormState } from "types/types";
 
 const isValidNumber = (val: number = -1) => val >= 0;
 const isValidSelect = (val: string = "") =>
   val !== "none" && val?.trim().length > 0;
 
-const validate = (vals: FormState) => {
-  const errors: { [key in keyof FormState]?: string } = {};
+const validate = (vals: MealPlannerFormState) => {
+  const errors: { [key in keyof MealPlannerFormState]?: string } = {};
   if (!isValidNumber(vals?.age)) {
     errors.age = "Required";
   }

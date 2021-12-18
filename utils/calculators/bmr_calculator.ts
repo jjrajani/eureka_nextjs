@@ -1,4 +1,4 @@
-import { Gender } from "types";
+import { Gender } from "types/types";
 const lbsToKg = (lbs: number): number => lbs / 2.2046;
 const inToCm = (inches: number): number => inches * 2.54;
 

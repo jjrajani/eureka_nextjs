@@ -6,6 +6,7 @@ import ResultCard from "./ResultCard";
 import Typography from "@mui/material/Typography";
 import styles from "./styles.mealPlannerResults.module.scss";
 import addCommasToNumber from "utils/addCommasToNumber";
+import DownloadResultsButton from "./DownloadResultsButton";
 
 interface MealPlannerResultsProps {}
 
@@ -65,6 +66,7 @@ const MealPlannerResults = ({}: MealPlannerResultsProps) => {
           />
         </Grid>
       </Grid>
+      <DownloadResultsButton />
     </div>
   ) : null;
 };

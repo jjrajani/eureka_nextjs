@@ -1,5 +1,5 @@
 import { BMRCalculator } from "./";
-import { Activity, Gender, Goal } from "types";
+import { Activity, Gender, Goal } from "types/types";
 
 interface CalorieIntakeCalculatorArgs {
   activity: Activity;
@@ -26,17 +26,17 @@ const CalorieIntakeCalculator = ({
 
   let calorieIntake = bmr;
 
-  if (activity === "low") {
+  if (activity === Activity.LOW) {
     calorieIntake *= 1.375;
-  } else if (activity === "moderate") {
+  } else if (activity === Activity.MODERATE) {
     calorieIntake *= 1.55;
-  } else if (activity === "high") {
+  } else if (activity === Activity.HIGH) {
     calorieIntake *= 1.725;
   }
 
-  if (goal === "weightLoss") {
+  if (goal === Goal.WEIGHT_LOSS) {
     calorieIntake -= 500;
-  } else if (goal === "bodyRecomp") {
+  } else if (goal === Goal.BODY_RECOMP) {
     calorieIntake -= 250;
   }
 

@@ -8,26 +8,32 @@ import Hidden from "@mui/material/Hidden";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import { FormState } from "../types";
 import validate from "./validate";
+import {
+  Activity,
+  DietPreference,
+  Gender,
+  Goal,
+  MealPlannerFormState,
+} from "types/types";
 
 interface MealPlannerFormProps {}
 
 const MealPlannerForm = ({}: MealPlannerFormProps) => {
   const { calculateResults, results } = useContext(MealPlannerContext);
-  const initialValues: Partial<FormState> = {
-    age: 25,
-    gender: "female",
-    weight: 120,
-    heightFt: 5,
-    heightIn: 5,
-    water: 5,
-    activity: "moderate",
-    goal: "bodyRecomp",
-    dietPreference: "vegan",
+  const initialValues: Partial<MealPlannerFormState> = {
+    age: undefined,
+    gender: "none",
+    weight: undefined,
+    heightFt: undefined,
+    heightIn: undefined,
+    water: undefined,
+    activity: "none",
+    goal: "none",
+    dietPreference: "none",
   };
 
-  const onSubmit = (vals: FormState) => {
+  const onSubmit = (vals: MealPlannerFormState) => {
     console.log("vals", vals);
     calculateResults(vals);
   };
@@ -36,7 +42,7 @@ const MealPlannerForm = ({}: MealPlannerFormProps) => {
 
   return (
     <Box mt={3} mb={8}>
-      <Form<FormState>
+      <Form<MealPlannerFormState>
         onSubmit={onSubmit}
         validate={validate}
         initialValues={initialValues}
@@ -77,8 +83,8 @@ const MealPlannerForm = ({}: MealPlannerFormProps) => {
                             <MenuItem value="none" disabled>
                               Gender
                             </MenuItem>
-                            <MenuItem value="female">Female</MenuItem>
-                            <MenuItem value="male">Male</MenuItem>
+                            <MenuItem value={Gender.FEMALE}>Female</MenuItem>
+                            <MenuItem value={Gender.MALE}>Male</MenuItem>
                           </Select>
                         </>
                       );
@@ -199,9 +205,11 @@ const MealPlannerForm = ({}: MealPlannerFormProps) => {
                           <InputLabel>Activity Level</InputLabel>
                           <Select variant="filled" name={field.input.name}>
                             <MenuItem value="none">Activity Level</MenuItem>
-                            <MenuItem value="low">Low</MenuItem>
-                            <MenuItem value="moderate">Moderate</MenuItem>
-                            <MenuItem value="high">High</MenuItem>
+                            <MenuItem value={Activity.LOW}>Low</MenuItem>
+                            <MenuItem value={Activity.MODERATE}>
+                              Moderate
+                            </MenuItem>
+                            <MenuItem value={Activity.HIGH}>High</MenuItem>
                           </Select>
                         </>
                       );
@@ -216,11 +224,13 @@ const MealPlannerForm = ({}: MealPlannerFormProps) => {
                           <InputLabel>Goal</InputLabel>
                           <Select variant="filled" name={field.input.name}>
                             <MenuItem value="none">Goal</MenuItem>
-                            <MenuItem value="weightLoss">Weight Loss</MenuItem>
-                            <MenuItem value="improveHealth">
+                            <MenuItem value={Goal.WEIGHT_LOSS}>
+                              Weight Loss
+                            </MenuItem>
+                            <MenuItem value={Goal.IMPROVE_HEALTH}>
                               Improve Health
                             </MenuItem>
-                            <MenuItem value="bodyRecomp">
+                            <MenuItem value={Goal.BODY_RECOMP}>
                               Body Recomposition
                             </MenuItem>
                           </Select>
@@ -237,16 +247,30 @@ const MealPlannerForm = ({}: MealPlannerFormProps) => {
                           <InputLabel>Diet Preference</InputLabel>
                           <Select variant="filled" name={field.input.name}>
                             <MenuItem value="none">Diet Preference</MenuItem>
-                            <MenuItem value="anything">Anything</MenuItem>
-                            <MenuItem value="ethnicSpecific">
+                            <MenuItem value={DietPreference.ANYTHING}>
+                              Anything
+                            </MenuItem>
+                            <MenuItem value={DietPreference.ETHNIC_SPECIFIC}>
                               Ethnic Specific
                             </MenuItem>
-                            <MenuItem value="glutenFree">Gluten Free</MenuItem>
-                            <MenuItem value="keto">Keto - High Fat</MenuItem>
-                            <MenuItem value="lowCard">Low Carb</MenuItem>
-                            <MenuItem value="pescatarian">Pescatarian</MenuItem>
-                            <MenuItem value="vegan">Vegan</MenuItem>
-                            <MenuItem value="vegetarian">Vegetarian</MenuItem>
+                            <MenuItem value={DietPreference.GLUTEN_FREE}>
+                              Gluten Free
+                            </MenuItem>
+                            <MenuItem value={DietPreference.KETO}>
+                              Keto - High Fat
+                            </MenuItem>
+                            <MenuItem value={DietPreference.LOW_CARB}>
+                              Low Carb
+                            </MenuItem>
+                            <MenuItem value={DietPreference.PESCATARIAN}>
+                              Pescatarian
+                            </MenuItem>
+                            <MenuItem value={DietPreference.VEGAN}>
+                              Vegan
+                            </MenuItem>
+                            <MenuItem value={DietPreference.VEGETARIAN}>
+                              Vegetarian
+                            </MenuItem>
                           </Select>
                         </>
                       );

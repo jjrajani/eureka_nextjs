@@ -1,4 +1,4 @@
-import { Macro, HandServing, ServingSizes } from "types";
+import { Macro, HandServing, ServingSizes } from "types/types";
 // (Portion Amounts: 4 calories per gram of protein and carb. /  9 calories per gram of fat)
 // Grams per day = serving sizes (would like to include both the gram numbers and portion equivalents)
 //
