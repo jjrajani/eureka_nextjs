@@ -101,7 +101,11 @@ const texts = (info: MealPlannerFormState) => [
   },
 ];
 
-const modifyMyInfo = (page: PDFPage, info: Info, font: { bold: PDFFont }) => {
+const modifyMyInfo = (
+  page: PDFPage,
+  info: MealPlannerFormState,
+  font: { bold: PDFFont }
+) => {
   texts(info).forEach((text) => {
     page.drawText(`${text.text}`, {
       x: typeof text.x === "function" ? text.x() : text.x,
