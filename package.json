@@ -7,6 +7,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "dependencies": {
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
