@@ -1,0 +1,36 @@
+{
+  "name": "eureka",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/material": "latest",
+    "@mui/styles": "^5.2.3",
+    "@types/react-sizes": "^2.0.0",
+    "clsx": "latest",
+    "final-form": "^4.20.6",
+    "mui-rff": "^5.0.0",
+    "next": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-final-form": "^6.5.7",
+    "react-minimal-pie-chart": "^8.2.0",
+    "sass": "^1.45.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.0",
+    "@types/react": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest"
+  }
+}
