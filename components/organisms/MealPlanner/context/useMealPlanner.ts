@@ -64,7 +64,7 @@ const useMealPlanner = (): UseMealPlanner => {
         handSizes,
       });
     },
-    [results]
+    [setLoading, setResults]
   );
 
   return {

@@ -48,7 +48,7 @@ const MacroPieChart = ({}: MacroPieChartProps) => {
         return (
           <>
             <text
-              dominant-baseline="central"
+              dominantBaseline="central"
               x={renderProps.x}
               y={renderProps.y - 6}
               dx={renderProps.dx}
@@ -59,7 +59,7 @@ const MacroPieChart = ({}: MacroPieChartProps) => {
               {renderProps.dataEntry.title}
             </text>
             <text
-              dominant-baseline="central"
+              dominantBaseline="central"
               x={renderProps.x}
               y={renderProps.y + (isLV ? 6 : 5)}
               dx={renderProps.dx}
