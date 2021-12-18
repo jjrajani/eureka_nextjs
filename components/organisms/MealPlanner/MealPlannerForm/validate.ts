@@ -1,6 +1,6 @@
 import { MealPlannerFormState } from "types/types";
 
-const isValidNumber = (val: number = -1) => val >= 0;
+const isValidNumber = (val: string) => (parseInt(val, 10) || -1) >= 0;
 const isValidSelect = (val: string = "") =>
   val !== "none" && val?.trim().length > 0;
 
