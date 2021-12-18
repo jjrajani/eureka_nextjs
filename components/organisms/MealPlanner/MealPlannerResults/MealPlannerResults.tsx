@@ -20,7 +20,8 @@ const MealPlannerResults = ({}: MealPlannerResultsProps) => {
         </Typography>
       </div>
       <p className={styles.calories}>
-        {addCommasToNumber(results.calorieIntake)} Calories per day
+        {addCommasToNumber(parseInt(results.calorieIntake, 10))} Calories per
+        day
       </p>
       <Grid
         container

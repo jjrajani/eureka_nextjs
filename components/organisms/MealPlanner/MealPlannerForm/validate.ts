@@ -1,4 +1,4 @@
-import { FormState } from "./types";
+import { FormState } from "../types";
 
 const isValidNumber = (val: number = -1) => val >= 0;
 const isValidSelect = (val: string = "") =>
