@@ -1,0 +1,24 @@
+.resultsWrapper {
+  max-width: 730px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+.resultsList {
+  padding: 1.25rem;
+}
+.headerWrapper {
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calories {
+  text-align: center;
+  color: #8bbd44;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}

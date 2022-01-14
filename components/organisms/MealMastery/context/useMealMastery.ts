@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { MealPlannerFormState } from "types/types";
+import { MealMasteryFormState } from "types/types";
 import { Activity, Gender, Goal, CalculatorResult } from "types/types";
 import {
   BMICalculator,
@@ -10,20 +10,20 @@ import {
 } from "utils/calculators";
 import modifyAndOpenPDF from "utils/modifyAndOpenPDF";
 
-export interface UseMealPlanner {
-  calculateResults: (vals: MealPlannerFormState) => void;
+export interface UseMealMastery {
+  calculateResults: (vals: MealMasteryFormState) => void;
   loading: boolean;
   results?: CalculatorResult;
   downloadResults: () => void;
 }
 
-const useMealPlanner = (): UseMealPlanner => {
+const useMealMastery = (): UseMealMastery => {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<CalculatorResult>();
-  const [formVals, setFormVals] = useState<MealPlannerFormState>();
+  const [formVals, setFormVals] = useState<MealMasteryFormState>();
 
   const calculateResults = useCallback(
-    (vals: MealPlannerFormState) => {
+    (vals: MealMasteryFormState) => {
       setFormVals(vals);
       setLoading(true);
       setResults(undefined);
@@ -85,4 +85,4 @@ const useMealPlanner = (): UseMealPlanner => {
   };
 };
 
-export default useMealPlanner;
+export default useMealMastery;

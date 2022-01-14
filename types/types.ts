@@ -4,6 +4,7 @@ export enum Gender {
 }
 
 export enum Activity {
+  NONE = "none",
   LOW = "low",
   MODERATE = "moderate",
   HIGH = "high",
@@ -11,6 +12,8 @@ export enum Activity {
 
 export enum Goal {
   WEIGHT_LOSS = "weightLoss",
+  WEIGHT_GAIN = "weightGain",
+  WEIGHT_SUSTAIN = "weightSustain",
   IMPROVE_HEALTH = "improveHealth",
   BODY_RECOMP = "bodyRecomp",
 }
@@ -24,6 +27,46 @@ export enum DietPreference {
   PESCATARIAN = "pescatarian",
   VEGAN = "vegan",
   VEGETARIAN = "vegetarian",
+}
+
+export enum Supplement {
+  ENERGY = "energy",
+  GI = "gi",
+  HORMONE = "hormone",
+}
+
+export enum RestRx {
+  POOR = "poor",
+  FAIR = "fair",
+  GOOD = "good",
+}
+
+export enum ExerciseFITT {
+  BEGINNER = "Beginner",
+  INTERMEDIATE = "Intermediate",
+  ADVANCED = "Advanced”",
+}
+
+export enum ReastingHeartRate {
+  FIFTY = "50",
+  FIFTY_FIVE = "55",
+  SIXTEY = "60",
+  SIXTEY_FIVE = "65",
+  SEVENTY = "70",
+  SEVENTY_FIVE = "75",
+  EIGHTY = "80",
+  EIGHTY_FIVE = "85",
+  NINETY = "90",
+  NINETY_FIVE = "95",
+  HUNDRED = "100",
+  HUNDRED_FIVE = "105",
+  HUNDRED_TEN = "110",
+}
+
+export enum StressStage {
+  ACUTE = "Acute",
+  COMPENSATORY = "Compensatory",
+  EXHAUSTION = "Exhaustion",
 }
 
 export interface Macro {
@@ -52,14 +95,31 @@ export interface CalculatorResult {
   handSizes: ServingSizes;
 }
 
-export interface MealPlannerFormState {
+export interface MealMasteryFormState {
   age: string;
-  gender: "none" | Gender;
+  gender: "null" | Gender;
   weight: string;
   heightFt: string;
   heightIn: string;
   water: string;
-  activity: "none" | Activity;
-  goal: "none" | Goal;
-  dietPreference: "none" | DietPreference;
+  activity: "null" | Activity;
+  goal: "null" | Goal;
+  dietPreference: "null" | DietPreference;
+  supplementType: "null" | Supplement;
+}
+
+export interface MetabolicMasteryFormState {
+  age: string;
+  gender: "null" | Gender;
+  weight: string;
+  heightFt: string;
+  heightIn: string;
+  water: string;
+  activity: "null" | Activity;
+  goal: "null" | Goal;
+  dietPreference: "null" | DietPreference;
+  restRx: "null" | RestRx;
+  exerciseFitt: "null" | ExerciseFITT;
+  rhr: "null" | ReastingHeartRate;
+  stress: "null" | StressStage;
 }

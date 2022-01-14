@@ -38,6 +38,22 @@ const CalorieIntakeCalculator = ({
     calorieIntake -= 500;
   } else if (goal === Goal.BODY_RECOMP) {
     calorieIntake -= 250;
+  } else if (goal === Goal.WEIGHT_GAIN) {
+    calorieIntake += 500;
+  }
+
+  if (activity === Activity.MODERATE) {
+    if (gender === Gender.FEMALE) {
+      calorieIntake += 200;
+    } else if (gender === Gender.MALE) {
+      calorieIntake += 300;
+    }
+  } else if (activity === Activity.HIGH) {
+    if (gender === Gender.FEMALE) {
+      calorieIntake += 400;
+    } else if (gender === Gender.MALE) {
+      calorieIntake += 500;
+    }
   }
 
   return calorieIntake.toFixed(0);

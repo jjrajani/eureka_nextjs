@@ -8,9 +8,9 @@ import styles from "./styles.mealPlannerResults.module.scss";
 import addCommasToNumber from "utils/addCommasToNumber";
 import DownloadResultsButton from "./DownloadResultsButton";
 
-interface MealPlannerResultsProps {}
+interface MealMasteryResultsProps {}
 
-const MealPlannerResults = ({}: MealPlannerResultsProps) => {
+const MealMasteryResults = ({}: MealMasteryResultsProps) => {
   const { results } = useContext(MealPlannerContext);
 
   return results ? (
@@ -71,4 +71,4 @@ const MealPlannerResults = ({}: MealPlannerResultsProps) => {
   ) : null;
 };
 
-export default MealPlannerResults;
+export default MealMasteryResults;

@@ -1,0 +1,37 @@
+.result {
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  padding: 0.5rem;
+}
+
+.imgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  max-width: 195px;
+  max-height: 175px;
+  margin: 0 auto;
+}
+
+.resultValue {
+  color: #c81246;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0px
+}
+
+.resultDescription {
+  color: #846f64;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+.note {
+  font-weight: 300;
+  font-size: 16px;
+  color: #6c757d;
+}
