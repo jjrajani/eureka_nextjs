@@ -66,7 +66,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
 
   return (
     <Box mt={3} mb={8}>
-      <Form<MetabolicMasteryFormState>
+      <Form<FormVals>
         onSubmit={onSubmit}
         validate={validate}
         initialValues={initialValues}
