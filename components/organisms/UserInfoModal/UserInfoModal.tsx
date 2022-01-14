@@ -1,11 +1,9 @@
 import { useContext } from "react";
-import { UserInfoContextProvider } from "./context";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Modal from "@mui/material/Modal";
 import UserInfoForm from "./UserInfoForm";
 import UserInfoContext from "./context";
-import { UseUserInfo } from "./context/useUserInfo";
 
 interface UserInfoModalProps {}
 

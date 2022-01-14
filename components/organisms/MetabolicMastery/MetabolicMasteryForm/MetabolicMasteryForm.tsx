@@ -25,8 +25,6 @@ import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 
 import { MetabolicMasteryFormState } from "types/types";
 
-type FormVals = MetabolicMasteryFormState & UseUserInfo["values"];
-
 interface MetabolicMasteryFormProps {}
 
 const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
@@ -35,7 +33,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
     UserInfoContext
   );
 
-  const initialValues: Partial<FormVals> = {
+  const initialValues: Partial<MetabolicMasteryFormState> = {
     age: undefined,
     gender: "null",
     weight: undefined,
@@ -52,7 +50,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
     ...userValues,
   };
 
-  const onSubmit = (vals: FormVals) => {
+  const onSubmit = (vals: MetabolicMasteryFormState) => {
     console.log("vals", vals);
     calculateResults(vals);
     setUserValues({
@@ -66,7 +64,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
 
   return (
     <Box mt={3} mb={8}>
-      <Form<FormVals>
+      <Form<MetabolicMasteryFormState>
         onSubmit={onSubmit}
         validate={validate}
         initialValues={initialValues}

@@ -23,15 +23,13 @@ import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 
 interface MealMasteryFormProps {}
 
-type FormVals = MealMasteryFormState & UseUserInfo["values"];
-
 const MealMasteryForm = ({}: MealMasteryFormProps) => {
   const { calculateResults, results } = useContext(MealPlannerContext);
   const { values: userValues, setValues: setUserValues } = useContext(
     UserInfoContext
   );
 
-  const initialValues: Partial<FormVals> = {
+  const initialValues: Partial<MealMasteryFormState> = {
     gender: "null",
     activity: "null",
     goal: "null",
@@ -40,7 +38,7 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
     ...userValues,
   };
 
-  const onSubmit = (vals: FormVals) => {
+  const onSubmit = (vals: MealMasteryFormState) => {
     console.log("vals", vals);
     calculateResults(vals);
     setUserValues({
@@ -54,7 +52,7 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
 
   return (
     <Box mt={3} mb={8}>
-      <Form<FormVals>
+      <Form<MealMasteryFormState>
         onSubmit={onSubmit}
         validate={validate}
         initialValues={initialValues}

@@ -11,11 +11,17 @@ import modifyMyInfo from "./modifyMyInfo";
 import modifyMyNumbers from "./modifyMyNumbers";
 import modifyMyMealPlan from "./modifyMyMealPlan";
 import downloadPDF from "./downloadPDF";
-import { CalculatorResult, MealPlannerFormState } from "types/types";
+import {
+  CalculatorResult,
+  MealMasteryFormState,
+  MetabolicMasteryFormState,
+} from "types/types";
+
+type FormState = MealMasteryFormState | MetabolicMasteryFormState;
 
 const modifyAndOpenPDF = async (
   results: CalculatorResult,
-  userInput: MealPlannerFormState
+  userInput: FormState
 ) => {
   const asapBoldFontBytes = await fetch("/fonts/Asap-Bold.ttf").then((res) =>
     res.arrayBuffer()

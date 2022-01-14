@@ -6,7 +6,9 @@ const isValidSelect = (val: string = "") =>
   val !== "none" && val?.trim().length > 0;
 
 const validate = (vals: MetabolicMasteryFormState) => {
-  const errors: { [key in keyof MetabolicMasteryFormState]?: string } = {};
+  const errors: {
+    [key in keyof MetabolicMasteryFormState]?: string;
+  } = {};
   if (!isValidNumber(vals?.age)) {
     errors.age = "Required";
   }

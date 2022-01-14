@@ -1,19 +1,14 @@
 import { useCallback, useState } from "react";
-
-interface FormVals {
-  email: string;
-  first: string;
-  last: string;
-}
+import { UserFormState } from "types/types";
 
 export interface UseUserInfo {
   didSubmit: boolean;
-  setValues: (vals: FormVals) => void;
-  values: FormVals;
+  setValues: (vals: UserFormState) => void;
+  values: UserFormState;
 }
 
 const useUserInfo = (): UseUserInfo => {
-  const [values, _setValues] = useState<FormVals>({
+  const [values, _setValues] = useState<UserFormState>({
     email: "",
     first: "",
     last: "",
@@ -21,7 +16,7 @@ const useUserInfo = (): UseUserInfo => {
   const [didSubmit, setDidSubmit] = useState(false);
 
   const setValues = useCallback(
-    (vals: FormVals) => {
+    (vals: UserFormState) => {
       _setValues(vals);
       setDidSubmit(true);
     },

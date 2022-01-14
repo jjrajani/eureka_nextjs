@@ -1,8 +1,8 @@
-import UserInfoContext, { UseUserInfo } from "../context";
-import { isEmail } from "validator";
+import { UserFormState } from "types/types";
+import isEmail from "validator/lib/isEmail";
 
-const validate = (vals: UseUserInfo["values"]) => {
-  const errors: UseUserInfo["values"] = {};
+const validate = (vals: UserFormState) => {
+  const errors: Partial<UserFormState> = {};
   if (!vals?.first || vals?.first?.trim()?.length === 0) {
     errors.first = "Required";
   }

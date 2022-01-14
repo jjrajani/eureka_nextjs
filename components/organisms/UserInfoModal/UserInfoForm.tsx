@@ -10,13 +10,14 @@ import InputLabel from "@mui/material/InputLabel";
 import Typography from "@mui/material/Typography";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 import validateForm from "./utils/validateForm";
+import { UserFormState } from "types/types";
 
 interface UserInfoFormProps {}
 
 const UserInfoForm = ({}: UserInfoFormProps) => {
   const { values, setValues } = useContext(UserInfoContext);
 
-  const onSubmit = (vals: UseUserInfo["values"]) => {
+  const onSubmit = (vals: UserFormState) => {
     setValues(vals);
   };
 
@@ -31,7 +32,7 @@ const UserInfoForm = ({}: UserInfoFormProps) => {
           results with your account.
         </Typography>
       </Box>
-      <Form<UseUserInfo["values"]>
+      <Form<UserFormState>
         onSubmit={onSubmit}
         initialValues={values}
         validate={validateForm}

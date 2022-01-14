@@ -95,7 +95,13 @@ export interface CalculatorResult {
   handSizes: ServingSizes;
 }
 
-export interface MealMasteryFormState {
+export interface UserFormState {
+  email: string;
+  first: string;
+  last: string;
+}
+
+export interface MealMasteryFormState extends UserFormState {
   age: string;
   gender: "null" | Gender;
   weight: string;
@@ -108,7 +114,7 @@ export interface MealMasteryFormState {
   supplementType: "null" | Supplement;
 }
 
-export interface MetabolicMasteryFormState {
+export interface MetabolicMasteryFormState extends UserFormState {
   age: string;
   gender: "null" | Gender;
   weight: string;

@@ -1,5 +1,5 @@
-import { MealMasteryFormState } from "types/types";
 import validateUserInfo from "components/organisms/UserInfoModal/utils/validateForm";
+import { MealMasteryFormState } from "types/types";
 
 const isValidNumber = (val: string) => (parseInt(val, 10) || -1) >= 0;
 const isValidSelect = (val: string = "") =>

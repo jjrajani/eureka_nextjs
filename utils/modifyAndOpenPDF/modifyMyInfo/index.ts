@@ -6,9 +6,12 @@ import {
   DietPreference,
   Gender,
   Goal,
-  MealPlannerFormState,
+  MealMasteryFormState,
+  MetabolicMasteryFormState,
 } from "types/types";
 import { PDFFont, PDFPage } from "pdf-lib";
+
+type FormState = MealMasteryFormState | MetabolicMasteryFormState;
 
 const firstRowY = 394,
   secondRowY = 361.5,
@@ -16,7 +19,7 @@ const firstRowY = 394,
   fourthRowY = 295.5,
   color = red;
 
-const texts = (info: MealPlannerFormState) => [
+const texts = (info: FormState) => [
   // Age
   {
     text: info.age,
@@ -103,7 +106,7 @@ const texts = (info: MealPlannerFormState) => [
 
 const modifyMyInfo = (
   page: PDFPage,
-  info: MealPlannerFormState,
+  info: FormState,
   font: { bold: PDFFont }
 ) => {
   texts(info).forEach((text) => {
