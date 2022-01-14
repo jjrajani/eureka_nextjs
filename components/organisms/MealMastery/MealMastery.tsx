@@ -8,7 +8,7 @@ interface MealMasteryPlannerProps {}
 const MealMasteryPlanner = ({}: MealMasteryPlannerProps) => {
   return (
     <Box mt={8} mb={8}>
-      MEAL
+      ~~ Meal Mastery ~~
       <MealMasteryContextProvider>
         <MealMasteryForm />
         <MealMasteryResults />

@@ -8,7 +8,7 @@ interface MetabolicMasteryPlannerProps {}
 const MetabolicMasteryPlanner = ({}: MetabolicMasteryPlannerProps) => {
   return (
     <Box mt={8} mb={8}>
-      METABOLIC
+      ~~ Metabolic Mastery ~~
       <MetabolicMasteryContextProvider>
         <MetabolicMasteryForm />
         <MetabolicMasteryResults />
