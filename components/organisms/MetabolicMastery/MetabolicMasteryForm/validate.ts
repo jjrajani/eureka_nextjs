@@ -1,12 +1,12 @@
-import { MealPlannerFormState } from "types/types";
+import { MetabolicMasteryFormState } from "types/types";
 import validateUserInfo from "components/organisms/UserInfoModal/utils/validateForm";
 
 const isValidNumber = (val: string) => (parseInt(val, 10) || -1) >= 0;
 const isValidSelect = (val: string = "") =>
   val !== "none" && val?.trim().length > 0;
 
-const validate = (vals: MealPlannerFormState) => {
-  const errors: { [key in keyof MealPlannerFormState]?: string } = {};
+const validate = (vals: MetabolicMasteryFormState) => {
+  const errors: { [key in keyof MetabolicMasteryFormState]?: string } = {};
   if (!isValidNumber(vals?.age)) {
     errors.age = "Required";
   }
@@ -33,6 +33,18 @@ const validate = (vals: MealPlannerFormState) => {
   }
   if (!isValidSelect(vals?.dietPreference)) {
     errors.dietPreference = "Required";
+  }
+  if (!isValidSelect(vals?.restRx)) {
+    errors.restRx = "Required";
+  }
+  if (!isValidSelect(vals?.exerciseFitt)) {
+    errors.exerciseFitt = "Required";
+  }
+  if (!isValidSelect(vals?.rhr)) {
+    errors.rhr = "Required";
+  }
+  if (!isValidSelect(vals?.stress)) {
+    errors.stress = "Required";
   }
 
   return { ...errors, ...validateUserInfo(vals) };
