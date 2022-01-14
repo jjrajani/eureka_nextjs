@@ -31,13 +31,8 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
     UserInfoContext
   );
 
-  const initialValues: FormVals = {
-    age: undefined,
+  const initialValues: Partial<FormVals> = {
     gender: "null",
-    weight: undefined,
-    heightFt: undefined,
-    heightIn: undefined,
-    water: undefined,
     activity: "null",
     goal: "null",
     dietPreference: "null",
