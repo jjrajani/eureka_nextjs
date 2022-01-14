@@ -30,7 +30,8 @@
     "react-dom": "latest",
     "react-final-form": "^6.5.7",
     "react-minimal-pie-chart": "^8.2.0",
-    "sass": "^1.45.0"
+    "sass": "^1.45.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/node": "17.0.0",

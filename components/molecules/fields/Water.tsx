@@ -1,7 +1,6 @@
 import { Field } from "react-final-form";
 import { TextField } from "mui-rff";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 
 interface WeightFieldProps {}
 

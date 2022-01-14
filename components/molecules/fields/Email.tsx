@@ -2,24 +2,19 @@ import { Field } from "react-final-form";
 import { TextField } from "mui-rff";
 import InputLabel from "@mui/material/InputLabel";
 
-interface HeightFtFieldProps {}
+interface EmailFieldProps {}
 
-const HeightFtField = ({}: HeightFtFieldProps) => {
+const EmailField = ({}: EmailFieldProps) => {
   return (
-    <Field name="heightFt">
+    <Field name="email" type="email">
       {(field) => {
         return (
           <>
-            <InputLabel>Height (ft)</InputLabel>
+            <InputLabel>Email</InputLabel>
             <TextField
               variant="filled"
-              placeholder="Height (ft)"
+              placeholder="Email"
               name={field.input.name}
-              inputProps={{
-                min: 0,
-                max: 7,
-                type: "number",
-              }}
             />
           </>
         );
@@ -28,4 +23,4 @@ const HeightFtField = ({}: HeightFtFieldProps) => {
   );
 };
 
-export default HeightFtField;
+export default EmailField;

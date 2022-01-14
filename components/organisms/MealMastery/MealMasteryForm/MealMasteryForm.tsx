@@ -17,12 +17,21 @@ import GoalField from "components/molecules/fields/Goal";
 import DietPreferenceField from "components/molecules/fields/DietType";
 import SupplementTypeField from "components/molecules/fields/SupplementType";
 import { MealMasteryFormState } from "types/types";
+import UserInfoContext from "components/organisms/UserInfoModal/context";
+import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
+import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 
 interface MealMasteryFormProps {}
 
+type FormVals = MealMasteryFormState & UseUserInfo["values"];
+
 const MealMasteryForm = ({}: MealMasteryFormProps) => {
   const { calculateResults, results } = useContext(MealPlannerContext);
-  const initialValues: Partial<MealMasteryFormState> = {
+  const { values: userValues, setValues: setUserValues } = useContext(
+    UserInfoContext
+  );
+
+  const initialValues: FormVals = {
     age: undefined,
     gender: "null",
     weight: undefined,
@@ -33,18 +42,24 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
     goal: "null",
     dietPreference: "null",
     supplementType: "null",
+    ...userValues,
   };
 
-  const onSubmit = (vals: MealMasteryFormState) => {
+  const onSubmit = (vals: FormVals) => {
     console.log("vals", vals);
     calculateResults(vals);
+    setUserValues({
+      first: vals.first,
+      last: vals.last,
+      email: vals.email,
+    });
   };
 
   console.log("results", results);
 
   return (
     <Box mt={3} mb={8}>
-      <Form<MealMasteryFormState>
+      <Form<FormVals>
         onSubmit={onSubmit}
         validate={validate}
         initialValues={initialValues}
@@ -53,6 +68,7 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
           return (
             <form onSubmit={formRenderProps.handleSubmit}>
               <Grid container spacing={4}>
+                <UserInfoFields />
                 <Grid item xs={12} md={4}>
                   <AgeField />
                 </Grid>

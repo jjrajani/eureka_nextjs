@@ -19,6 +19,9 @@ import RestRxField from "components/molecules/fields/RestRx";
 import ExerciseFITTField from "components/molecules/fields/ExerciseFITT";
 import ReastingHeartRateField from "components/molecules/fields/ReastingHeartRate";
 import StressStageField from "components/molecules/fields/StressStage";
+import UserInfoContext from "components/organisms/UserInfoModal/context";
+import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
+import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 
 import { MetabolicMasteryFormState } from "types/types";
 
@@ -26,7 +29,12 @@ interface MetabolicMasteryFormProps {}
 
 const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
   const { calculateResults, results } = useContext(MealPlannerContext);
-  const initialValues: Partial<MetabolicMasteryFormState> = {
+  const { values: userValues, setValues: setUserValues } = useContext(
+    UserInfoContext
+  );
+
+  const initialValues: Partial<MetabolicMasteryFormState> &
+    UseUserInfo["values"] = {
     age: undefined,
     gender: "null",
     weight: undefined,
@@ -40,11 +48,17 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
     exerciseFitt: "null",
     rhr: "null",
     stress: "null",
+    ...userValues,
   };
 
   const onSubmit = (vals: MetabolicMasteryFormState) => {
     console.log("vals", vals);
     calculateResults(vals);
+    setUserValues({
+      first: vals.first,
+      last: vals.last,
+      email: vals.email,
+    });
   };
 
   console.log("results", results);
@@ -60,6 +74,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
           return (
             <form onSubmit={formRenderProps.handleSubmit}>
               <Grid container spacing={4}>
+                <UserInfoFields />
                 <Grid item xs={12} md={4}>
                   <AgeField />
                 </Grid>

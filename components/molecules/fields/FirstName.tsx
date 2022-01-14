@@ -2,24 +2,19 @@ import { Field } from "react-final-form";
 import { TextField } from "mui-rff";
 import InputLabel from "@mui/material/InputLabel";
 
-interface HeightFtFieldProps {}
+interface FirstNameFieldProps {}
 
-const HeightFtField = ({}: HeightFtFieldProps) => {
+const FirstNameField = ({}: FirstNameFieldProps) => {
   return (
-    <Field name="heightFt">
+    <Field name="first">
       {(field) => {
         return (
           <>
-            <InputLabel>Height (ft)</InputLabel>
+            <InputLabel>First Name</InputLabel>
             <TextField
               variant="filled"
-              placeholder="Height (ft)"
+              placeholder="First Name"
               name={field.input.name}
-              inputProps={{
-                min: 0,
-                max: 7,
-                type: "number",
-              }}
             />
           </>
         );
@@ -28,4 +23,4 @@ const HeightFtField = ({}: HeightFtFieldProps) => {
   );
 };
 
-export default HeightFtField;
+export default FirstNameField;

@@ -38,6 +38,11 @@ const theme = createTheme({
             backgroundColor: colors.red,
             color: "white",
           },
+
+          "&.Mui-disabled": {
+            color: "rgba(255,255,255,0.5)",
+            opacity: 0.6,
+          },
         },
       },
     },
