@@ -46,16 +46,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          color: colors.brown,
-          marginBottom: "0.25rem",
-          fontSize: 16,
-          fontWeight: 500,
-        },
-      },
-    },
     MuiFilledInput: {
       styleOverrides: {
         root: {
@@ -75,6 +65,23 @@ const theme = createTheme({
             color: colors.brown,
             opacity: 0.8,
           },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: colors.brown,
+          marginBottom: "0.25rem",
+          fontSize: 16,
+          fontWeight: 500,
+        },
+      },
+    },
+    MuiModal: {
+      styleOverrides: {
+        root: {
+          outline: 0,
         },
       },
     },
