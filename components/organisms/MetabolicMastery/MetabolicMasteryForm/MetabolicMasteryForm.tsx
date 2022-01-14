@@ -41,7 +41,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
     heightFt: undefined,
     heightIn: undefined,
     water: undefined,
-    activity: "low", //"null",
+    activity: "null",
     goal: "null",
     dietPreference: "null",
     restRx: "null",
