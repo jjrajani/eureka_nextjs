@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import UserInfoContext, { UseUserInfo } from "./context";
+import UserInfoContext from "./context";
+import { UseUserInfo } from "./context/useUserInfo";
 import { Form, Field } from "react-final-form";
 import { TextField } from "mui-rff";
 import Box from "@mui/material/Box";
