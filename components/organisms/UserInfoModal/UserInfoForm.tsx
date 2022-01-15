@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 import validateForm from "./utils/validateForm";
 import { UserFormState } from "types/types";
+import styles from "./styles/UserInfoForm.module.scss";
 
 interface UserInfoFormProps {}
 
@@ -43,7 +44,7 @@ const UserInfoForm = ({}: UserInfoFormProps) => {
               <Grid container spacing={4}>
                 <UserInfoFields fullWidth />
                 <Grid item xs={12}>
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <div className={styles.submitWrapper}>
                     <Button type="submit" disabled={formRenderProps.invalid}>
                       SUBMIT
                     </Button>

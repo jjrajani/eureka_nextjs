@@ -4,7 +4,7 @@ import MacroPieChart from "./MacroPieChart";
 import Grid from "@mui/material/Grid";
 import ResultCard from "./ResultCard";
 import Typography from "@mui/material/Typography";
-import styles from "./styles.mealPlannerResults.module.scss";
+import styles from "./styles/MealMasteryResults.module.scss";
 import addCommasToNumber from "utils/addCommasToNumber";
 import DownloadResultsButton from "./DownloadResultsButton";
 

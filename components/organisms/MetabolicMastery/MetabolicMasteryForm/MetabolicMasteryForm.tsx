@@ -51,7 +51,6 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
   };
 
   const onSubmit = (vals: MetabolicMasteryFormState) => {
-    console.log("vals", vals);
     calculateResults(vals);
     setUserValues({
       first: vals.first,
@@ -59,8 +58,6 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
       email: vals.email,
     });
   };
-
-  console.log("results", results);
 
   return (
     <Box mt={3} mb={8}>

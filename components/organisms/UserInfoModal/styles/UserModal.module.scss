@@ -1,0 +1,13 @@
+.userModal {
+  outline: 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.userModalContent {
+  width: 80vw;
+  max-width: 548px;
+  padding: 24px;
+}

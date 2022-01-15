@@ -78,13 +78,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiModal: {
-      styleOverrides: {
-        root: {
-          outline: 0,
-        },
-      },
-    },
     MuiSelect: {
       styleOverrides: {
         filled: {

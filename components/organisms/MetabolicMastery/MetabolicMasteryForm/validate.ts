@@ -3,7 +3,7 @@ import validateUserInfo from "components/organisms/UserInfoModal/utils/validateF
 
 const isValidNumber = (val: string) => (parseInt(val, 10) || -1) >= 0;
 const isValidSelect = (val: string = "") =>
-  val !== "none" && val?.trim().length > 0;
+  val !== "null" && val?.trim().length > 0;
 
 const validate = (vals: MetabolicMasteryFormState) => {
   const errors: {

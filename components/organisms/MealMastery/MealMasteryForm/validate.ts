@@ -2,8 +2,10 @@ import validateUserInfo from "components/organisms/UserInfoModal/utils/validateF
 import { MealMasteryFormState } from "types/types";
 
 const isValidNumber = (val: string) => (parseInt(val, 10) || -1) >= 0;
-const isValidSelect = (val: string = "") =>
-  val !== "none" && val?.trim().length > 0;
+const isValidSelect = (val: string = "") => {
+  console.log("val", val);
+  return val !== "null" && val?.trim().length > 0;
+};
 
 const validate = (vals: MealMasteryFormState) => {
   const errors: { [key in keyof MealMasteryFormState]?: string } = {};
