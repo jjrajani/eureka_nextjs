@@ -8,7 +8,13 @@ const PageHeader = ({}: PageHeaderProps) => {
 
   const title = isMealMastery ? "Meal Mastery" : "Metabolic Mastery";
 
-  return <header>Header {title}</header>;
+  return (
+    <header>
+      <div>Logo Image</div>
+      <h1>{title}</h1>
+      <div>Link to eureka (open new tab)</div>
+    </header>
+  );
 };
 
 export default PageHeader;

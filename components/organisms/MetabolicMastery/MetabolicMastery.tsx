@@ -21,7 +21,6 @@ const MetabolicMasteryPlanner = ({}: MetabolicMasteryPlannerProps) => {
 
   return (
     <Box mt={8} mb={8}>
-      ~~ Metabolic Mastery ~~
       <MetabolicMasteryContextProvider>
         <MetabolicMasteryForm />
         <MetabolicMasteryResults

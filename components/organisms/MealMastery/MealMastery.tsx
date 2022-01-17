@@ -21,7 +21,6 @@ const MealMasteryPlanner = ({}: MealMasteryPlannerProps) => {
 
   return (
     <Box mt={8} mb={8}>
-      ~~ Meal Mastery ~~
       <MealMasteryContextProvider>
         <MealMasteryForm />
         <MealMasteryResults
