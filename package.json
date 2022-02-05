@@ -24,6 +24,7 @@
     "bowser": "^2.11.0",
     "clsx": "latest",
     "final-form": "^4.20.6",
+    "moment": "^2.29.1",
     "mui-rff": "^5.0.0",
     "next": "latest",
     "pdf-lib": "^1.17.1",

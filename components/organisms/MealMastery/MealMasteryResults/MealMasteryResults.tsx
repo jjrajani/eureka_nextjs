@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MealPlannerContext from "../context";
 import MacroPieChart from "./MacroPieChart";
 import Grid from "@mui/material/Grid";
 import ResultCard from "./ResultCard";
 import Typography from "@mui/material/Typography";
 import styles from "./styles/MealMasteryResults.module.scss";
-import addCommasToNumber from "utils/addCommasToNumber";
 import DownloadResultsButton from "components/molecules/DownloadResultsButton/DownloadResultsButton";
 import ResultsWrapper from "components/molecules/ResultsWrapper/ResultsWrapper";
 import CaloriesPerDayRange from "components/atoms/CaloriesPerDayRange";
@@ -20,6 +19,12 @@ const MealMasteryResults = ({
   wrapperId,
 }: MealMasteryResultsProps) => {
   const { downloadResults, results } = useContext(MealPlannerContext);
+
+  useEffect(() => {
+    setTimeout(() => {
+      downloadResults();
+    }, 300);
+  }, []);
 
   return results ? (
     <ResultsWrapper scrollToResults={scrollToResults} wrapperId={wrapperId}>

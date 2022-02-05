@@ -9,14 +9,21 @@ import {
   MealMasteryFormState,
   MetabolicMasteryFormState,
 } from "types/types";
-import { PDFFont, PDFPage } from "pdf-lib";
+import { FontType } from "utils/modifyAndOpenPDF/types";
+import { PDFPage } from "pdf-lib";
+import {
+  genderText,
+  activityLevelText,
+  goalText,
+  dietPrefText,
+} from "cms/strings";
 
 type FormState = MealMasteryFormState | MetabolicMasteryFormState;
 
-const firstRowY = 394,
-  secondRowY = 361.5,
-  thirdRowY = 328.5,
-  fourthRowY = 295.5,
+const firstRowY = 288.5,
+  secondRowY = 260,
+  thirdRowY = 231.5,
+  fourthRowY = 203,
   color = red;
 
 const texts = (info: FormState) => [
@@ -28,8 +35,8 @@ const texts = (info: FormState) => [
   },
   // Gender
   {
-    text: info.gender,
-    x: () => (info.gender === Gender.FEMALE ? 151.5 : 160.5),
+    text: genderText[info.gender as Gender],
+    x: () => (info.gender === Gender.FEMALE ? 151 : 160),
     y: secondRowY,
   },
   // Height
@@ -46,52 +53,58 @@ const texts = (info: FormState) => [
   },
   // Activity Level
   {
-    text: info.activity,
+    text: activityLevelText[info.activity as Activity],
     x: () => {
-      if (info.activity === Activity.MODERATE) {
-        return 566.25;
-      } else if (info.activity === Activity.LOW) {
-        return 592;
+      if (info.activity === Activity.LOW) {
+        return 538;
+      } else if (info.activity === Activity.MODERATE) {
+        return 518;
       } else if (info.activity === Activity.HIGH) {
-        return 588;
+        return 532;
+      } else if (info.activity === Activity.NONE) {
+        return 532;
       }
     },
     y: firstRowY,
   },
   // Goal
   {
-    text: info.goal,
+    text: goalText[info.goal as Goal],
     x: () => {
       if (info.goal === Goal.BODY_RECOMP) {
-        return 523.5;
+        return 475;
       } else if (info.goal === Goal.WEIGHT_LOSS) {
-        return 561;
+        return 507;
+      } else if (info.goal === Goal.WEIGHT_SUSTAIN) {
+        return 495;
+      } else if (info.goal === Goal.WEIGHT_GAIN) {
+        return 506;
       } else if (info.goal === Goal.IMPROVE_HEALTH) {
-        return 548;
+        return 495;
       }
     },
     y: secondRowY,
   },
   // Diet Preference
   {
-    text: info.dietPreference,
+    text: dietPrefText[info.dietPreference as DietPreference],
     x: () => {
       if (info.dietPreference === DietPreference.KETO) {
-        return 548;
+        return 495;
       } else if (info.dietPreference === DietPreference.VEGETARIAN) {
-        return 566;
+        return 510;
       } else if (info.dietPreference === DietPreference.VEGAN) {
-        return 579;
+        return 530;
       } else if (info.dietPreference === DietPreference.ANYTHING) {
-        return 572;
+        return 520;
       } else if (info.dietPreference === DietPreference.PESCATARIAN) {
-        return 562;
+        return 510;
       } else if (info.dietPreference === DietPreference.LOW_CARB) {
-        return 570;
+        return 516;
       } else if (info.dietPreference === DietPreference.GLUTEN_FREE) {
-        return 561;
+        return 508;
       } else if (info.dietPreference === DietPreference.ETHNIC_SPECIFIC) {
-        return 549;
+        return 496.5;
       }
     },
     y: thirdRowY,
@@ -104,11 +117,7 @@ const texts = (info: FormState) => [
   },
 ];
 
-const modifyMyInfo = (
-  page: PDFPage,
-  info: FormState,
-  font: { bold: PDFFont }
-) => {
+const modifyMyInfo = (page: PDFPage, info: FormState, font: FontType) => {
   texts(info).forEach((text) => {
     page.drawText(`${text.text}`, {
       x: typeof text.x === "function" ? text.x() : text.x,

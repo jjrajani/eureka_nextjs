@@ -1,12 +1,12 @@
 import { RGB } from "pdf-lib";
 
-const servingTrackerSectionHeight = 23.3152,
-  servingTrackerSectionWidth = 164, // 156
+const servingTrackerSectionHeight = 28,
+  servingTrackerSectionWidth = 150, // 156
   boxHeight = 10,
   boxWidth = 10,
   boxSpacing = 6,
   boxBorderWidth = 1,
-  tableBoderWidth = 1.5;
+  tableBoderWidth = 0.25;
 
 const generateSingleLineCheckBoxes = (
   startX: number,
@@ -19,27 +19,20 @@ const generateSingleLineCheckBoxes = (
   offsetCount = offsetCount === undefined ? boxCount : offsetCount;
   let boxesWidth = (boxWidth + boxSpacing) * offsetCount;
   let sideMargin = servingTrackerSectionWidth - boxesWidth;
-  sideMargin = sideMargin / 2;
-  // x - left right, y up down
   let x = startX; // + sideMargin;
-  let y = (-1 * (servingTrackerSectionHeight + boxHeight)) / 2 + startY;
+  let y = (-1 * (servingTrackerSectionHeight - boxHeight)) / 2 + startY;
+  sideMargin = sideMargin / 2;
 
   for (let day = 0; day < 7; day++) {
     if (day !== 0) {
-      y -=
-        boxBorderWidth +
-        boxBorderWidth +
-        tableBoderWidth +
-        tableBoderWidth +
-        servingTrackerSectionHeight +
-        boxHeight;
+      y -= servingTrackerSectionHeight + tableBoderWidth;
     }
 
     for (let box = 0; box < boxCount; box++) {
       if (box !== 0) {
         x += boxSpacing + boxWidth;
       } else {
-        x = startX + sideMargin; // + sideMargin;
+        x = startX + sideMargin;
       }
 
       page.drawRectangle({
@@ -63,8 +56,8 @@ const generateMultilineCheckBoxes = (
 ) => {
   let secondGroupCount = boxCount - 8;
   let firstGroupCount = boxCount - secondGroupCount;
-  let firstStartY = servingTrackerSectionHeight / 2 - 3 + startY;
-  let secondStartY = -servingTrackerSectionHeight / 2 + 3 + startY;
+  let firstStartY = servingTrackerSectionHeight / 2 - 7.75 + startY;
+  let secondStartY = -servingTrackerSectionHeight / 2 + 7.75 + startY;
   generateSingleLineCheckBoxes(
     startX,
     firstStartY,

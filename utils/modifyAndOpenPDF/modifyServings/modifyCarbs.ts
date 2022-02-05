@@ -1,17 +1,14 @@
 import generateCheckBoxes from "../generateCheckBoxes";
 import modifyServings from "./";
 import { green } from "../colors";
-import { PDFFont, PDFPage } from "pdf-lib";
+import { PDFPage } from "pdf-lib";
+import { FontType } from "utils/modifyAndOpenPDF/types";
 
-const carbsTrackerCountPos = { x: 360, y: 304 };
-const carbsFoodListCountPos = { x: 73, y: 65 };
-const listPage = 2;
+const carbsTrackerCountPos = { x: 493, y: 60 };
+const carbsFoodListCountPos = { x: 326, y: 222 };
+const listPage = 4;
 
-const modifyCarbs = (
-  pages: PDFPage[],
-  servingSize: number,
-  font: { bold: PDFFont }
-) => {
+const modifyCarbs = (pages: PDFPage[], servingSize: number, font: FontType) => {
   modifyServings(
     pages,
     listPage,
@@ -21,7 +18,17 @@ const modifyCarbs = (
     carbsFoodListCountPos,
     green
   );
-  generateCheckBoxes(284.5, 284, green, servingSize, pages[1]);
+
+  // pages[2].drawRectangle({
+  //   borderColor: green,
+  //   borderWidth: 1,
+  //   height: 28,
+  //   width: 82,
+  //   x: 455,
+  //   y: 50,
+  // });
+
+  generateCheckBoxes(257, 203, green, servingSize, pages[4]);
 };
 
 export default modifyCarbs;

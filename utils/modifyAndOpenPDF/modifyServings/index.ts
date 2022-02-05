@@ -3,29 +3,29 @@ import modifyCarbs from "./modifyCarbs";
 import modifyFats from "./modifyFats";
 import modifyProtein from "./modifyProtein";
 import modifyWater from "./modifyWater";
-import { PDFFont, PDFPage } from "pdf-lib";
+import { PDFPage } from "pdf-lib";
+import { red } from "../colors";
+import { FontType } from "utils/modifyAndOpenPDF/types";
 
 const modifyServings = (
   pages: PDFPage[],
   listPage: number,
   servingSize: number,
-  font: {
-    bold: PDFFont;
-  },
+  font: FontType,
   trackerPos: { x: number; y: number },
   listPos: { x: number; y: number },
   color: RGB
 ) => {
-  pages[1].drawText("" + servingSize, {
-    ...trackerPos,
-    size: 11,
-    font: font.bold,
-    color,
-  });
+  // pages[2].drawText("" + servingSize, {
+  //   ...trackerPos,
+  //   size: 14,
+  //   font: font.bold,
+  //   color: red,
+  // });
 
   pages[listPage].drawText("" + servingSize, {
     ...listPos,
-    size: 28,
+    size: 11,
     font: font.bold,
     color,
   });

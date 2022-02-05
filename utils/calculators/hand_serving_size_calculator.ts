@@ -1,4 +1,10 @@
-import { Macro, HandServing, ServingSizes, CalorieIntake } from "types/types";
+import {
+  Macro,
+  HandServing,
+  ServingSizes,
+  CalorieIntake,
+  CalorieHandServing,
+} from "types/types";
 // (Portion Amounts: 4 calories per gram of protein and carb. /  9 calories per gram of fat)
 // Grams per day = serving sizes (would like to include both the gram numbers and portion equivalents)
 //
@@ -20,6 +26,8 @@ const ProteinServingSizeCalculator = (
   calorieIntake: CalorieIntake,
   proteinPercent: number
 ): HandServing => {
+  console.log("calorieIntake", calorieIntake);
+  console.log("proteinPercent", proteinPercent);
   let proteinCalories = calorieIntake.median * proteinPercent;
   let caloriesPerGram = proteinCalories / 4;
   let palmCount = caloriesPerGram / 28.35;
@@ -30,12 +38,31 @@ const ProteinServingSizeCalculator = (
 const CarbServingsSizeCalculator = (
   calorieIntake: CalorieIntake,
   carbsPercent: number
-): HandServing => {
-  let carbCalories = calorieIntake.median * carbsPercent;
-  let caloriesPerGram = carbCalories / 4;
-  let palmCount = caloriesPerGram / 22.5;
+): CalorieHandServing => {
+  let lowCarbCalories = calorieIntake.low * carbsPercent;
+  let medianCarbCalories = calorieIntake.median * carbsPercent;
+  let highCarbCalories = calorieIntake.high * carbsPercent;
 
-  return { palms: Math.round(palmCount), grams: Math.round(caloriesPerGram) };
+  let lowCaloriesPerGram = lowCarbCalories / 4;
+  let medianCaloriesPerGram = medianCarbCalories / 4;
+  let highCaloriesPerGram = highCarbCalories / 4;
+
+  let lowPalmCount = lowCaloriesPerGram / 22.5;
+  let medianPalmCount = medianCaloriesPerGram / 22.5;
+  let highPalmCount = highCaloriesPerGram / 22.5;
+
+  return {
+    palms: {
+      low: Math.round(lowPalmCount),
+      median: Math.round(medianPalmCount),
+      high: Math.round(highPalmCount),
+    },
+    grams: {
+      low: Math.round(lowCaloriesPerGram),
+      median: Math.round(medianCaloriesPerGram),
+      high: Math.round(highCaloriesPerGram),
+    },
+  };
 };
 
 const FatServingsSizeCalculator = (
@@ -76,7 +103,7 @@ const HandServingSizeCalculator = ({
   weight,
 }: HandServingSizeCalculatorArgs): ServingSizes => {
   const { protein, carbs, fats } = macro;
-
+  console.log("macro", macro);
   let proteinServing = ProteinServingSizeCalculator(calorieIntake, protein),
     carbsServing = CarbServingsSizeCalculator(calorieIntake, carbs),
     fatServing = FatServingsSizeCalculator(calorieIntake, fats),

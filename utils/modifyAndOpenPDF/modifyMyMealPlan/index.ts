@@ -1,82 +1,127 @@
 import { red } from "utils/modifyAndOpenPDF/colors";
-import { CalculatorResult } from "types/types";
-import { PDFFont, PDFPage } from "pdf-lib";
+import {
+  MealMasteryCalculatorResult,
+  MetabolicMasteryCalculatorResult,
+} from "types/types";
+import { FontType } from "utils/modifyAndOpenPDF/types";
+import { PDFPage } from "pdf-lib";
+import { Text } from "utils/modifyAndOpenPDF/types";
 
 const color = red,
-  y = 89.25,
-  macroY = 56.5;
+  y = 59,
+  macroY = 30.5;
 
-const texts = (results: CalculatorResult) => [
+const baseText = {
+  color,
+  y,
+  size: 13,
+};
+
+const carbServingSize = (
+  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
+): Text => {
+  const text = `${results.handSizes.carbsServing.palms.low}-${results.handSizes.carbsServing.palms.high}`;
+  let x = 381;
+  if (text.length === 4) {
+    x = 377;
+  }
+  if (text.length === 5) {
+    x = 373;
+  }
+  return {
+    ...baseText,
+    x,
+    text: `${text} servings`,
+  };
+};
+
+const carbGramSize = (
+  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
+): Text => {
+  const text = `${results.handSizes.carbsServing.grams.low}-${results.handSizes.carbsServing.grams.high}`;
+  let x = 469;
+  if (text.length === 8) {
+    x = 466;
+  }
+  if (text.length === 9) {
+    x = 463;
+  }
+  return {
+    // Carbs - grams
+    ...baseText,
+    x,
+    text: `${text}g`,
+  };
+};
+
+const texts = (
+  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
+): Text[] => [
   {
     // Proteins - serving size
-    x: `${results.handSizes.proteinServing.palms}`.length === 1 ? 41.5 : 35.5,
-    value: results.handSizes.proteinServing.palms,
+    ...baseText,
+    x: `${results.handSizes.proteinServing.palms}`.length === 1 ? 38 : 34,
+    text: `${results.handSizes.proteinServing.palms} servings`,
   },
   {
     // Proteins - grams
-    x: `${results.handSizes.proteinServing.grams}`.length === 1 ? 138 : 130,
-    value: `${results.handSizes.proteinServing.grams}g`,
+    ...baseText,
+    x: `${results.handSizes.proteinServing.grams}`.length === 2 ? 141 : 138,
+    text: `${results.handSizes.proteinServing.grams}g`,
   },
   {
     // Proteins - macro
-    x: 67.5,
-    value: `${results.macro.protein * 100}%`,
+    ...baseText,
+    x: 59,
+    text: `${results.macro.protein * 100}% daily intake`,
     y: macroY,
-    size: 14,
   },
   {
     // Fats - serving size
-    x: `${results.handSizes.fatServing.palms}`.length === 1 ? 227.75 : 220,
-    value: results.handSizes.fatServing.palms,
+    ...baseText,
+    x: `${results.handSizes.fatServing.palms}`.length === 1 ? 210.75 : 208,
+    text: `${results.handSizes.fatServing.palms} servings`,
   },
   {
     // Fats - grams
-    x: `${results.handSizes.fatServing.grams}`.length === 3 ? 324 : 329,
-    value: `${results.handSizes.fatServing.grams}g`,
+    ...baseText,
+    x: `${results.handSizes.fatServing.grams}`.length === 2 ? 314 : 310,
+    text: `${results.handSizes.fatServing.grams}g`,
   },
   {
     // Fats - macro
-    x: 253.5,
-    value: `${results.macro.fats * 100}%`,
+    ...baseText,
+    x: 233,
+    text: `${results.macro.fats * 100}% daily intake`,
     y: macroY,
-    size: 14,
   },
-  {
-    // Carbs - serving size
-    x: `${results.handSizes.carbsServing.palms}`.length === 1 ? 414 : 406,
-    value: results.handSizes.carbsServing.palms,
-  },
-  {
-    // Carbs - grams
-    x: 510,
-    value: `${results.handSizes.carbsServing.grams}g`,
-  },
+  carbServingSize(results),
+  carbGramSize(results),
   {
     // Carbs - macro
-    x: 439.5,
-    value: `${results.macro.carbs * 100}%`,
+    ...baseText,
+    x: 407,
+    text: `${results.macro.carbs * 100}% daily intake`,
     y: macroY,
-    size: 14,
   },
   {
     // Water
-    x: `${results.handSizes.waterServing}`.length === 2 ? 645 : 667,
-    value: results.handSizes.waterServing,
+    ...baseText,
+    x: `${results.handSizes.waterServing}`.length === 1 ? 592 : 405,
+    text: `${results.handSizes.waterServing} servings`,
   },
 ];
 
 const modifyMyMealPlan = (
-  page: PDFPage,
-  results: CalculatorResult,
-  font: { bold: PDFFont }
+  pages: PDFPage[],
+  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult,
+  font: FontType
 ) => {
-  console.log("results", results);
-  console.log("texts", texts(results));
-  texts(results).forEach((text) => {
-    page.drawText(`${text.value}`, {
-      x: text.x,
-      y: text.y || y,
-      size: text.size || 18,
+  texts(results).forEach((text: Text) => {
+    pages[2].drawText(`${text.text}`, {
+      x: text.x as number,
+      y: text?.y || y,
+      size: text?.size || 13,
       font: font.bold,
       color,
     });

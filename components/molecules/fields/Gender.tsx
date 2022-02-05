@@ -2,8 +2,8 @@ import { Field } from "react-final-form";
 import { Select } from "mui-rff";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-
 import { Gender } from "types/types";
+import { genderText } from "cms/strings";
 
 interface GenderFieldProps {}
 
@@ -18,8 +18,10 @@ const GenderField = ({}: GenderFieldProps) => {
               <MenuItem value="null" disabled>
                 Gender
               </MenuItem>
-              <MenuItem value={Gender.FEMALE}>Female</MenuItem>
-              <MenuItem value={Gender.MALE}>Male</MenuItem>
+              <MenuItem value={Gender.FEMALE}>
+                {genderText[Gender.FEMALE]}
+              </MenuItem>
+              <MenuItem value={Gender.MALE}>{genderText[Gender.MALE]}</MenuItem>
             </Select>
           </>
         );

@@ -44,7 +44,7 @@ const MacroPieChart = ({}: MacroPieChartProps) => {
       radius={radius}
       lineWidth={lineWidth}
       label={(renderProps) => {
-        console.log("renderProps", renderProps);
+        // console.log("renderProps", renderProps);
         return (
           <>
             <text

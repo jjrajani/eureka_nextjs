@@ -1,16 +1,20 @@
 import generateCheckBoxes from "../generateCheckBoxes";
 import modifyServings from "./";
 import { red } from "../colors";
-import { PDFFont, PDFPage } from "pdf-lib";
+import { PDFPage } from "pdf-lib";
+import { FontType } from "utils/modifyAndOpenPDF/types";
 
-const protienTrackerCountPos = { x: 195, y: 304 },
-  protienFoodListCountPos = { x: 73, y: 330 },
-  listPage = 2;
+// col width = 150
+// small row height = 22
+// tall row height = 28
+const protienTrackerCountPos = { x: 146, y: 60 },
+  protienFoodListCountPos = { x: 176, y: 222 },
+  listPage = 4;
 
 const modifyProtein = (
   pages: PDFPage[],
   servingSize: number,
-  font: { bold: PDFFont }
+  font: FontType
 ) => {
   modifyServings(
     pages,
@@ -21,7 +25,15 @@ const modifyProtein = (
     protienFoodListCountPos,
     red
   );
-  generateCheckBoxes(120, 284, red, servingSize, pages[1]);
+  // pages[2].drawRectangle({
+  //   borderColor: red,
+  //   borderWidth: 1,
+  //   height: 28,
+  //   width: 76,
+  //   x: 112,
+  //   y: 50,
+  // });
+  generateCheckBoxes(105, 203, red, servingSize, pages[4]);
 };
 
 export default modifyProtein;

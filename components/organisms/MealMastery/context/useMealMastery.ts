@@ -13,7 +13,7 @@ import {
   HandServingSizeCalculator,
   MacroRatioCalculator,
 } from "utils/calculators";
-import modifyAndOpenPDF from "utils/modifyAndOpenPDF";
+import modifyAndOpenMealMasteryPDF from "utils/modifyAndOpenPDF/mealMastery/modifyAndOpenMealMasteryPDF";
 
 export interface UseMealMastery {
   calculateResults: (vals: MealMasteryFormState) => void;
@@ -78,7 +78,7 @@ const useMealMastery = (): UseMealMastery => {
 
   const downloadResults = useCallback(async () => {
     if (formVals && results) {
-      const thing = await modifyAndOpenPDF(results, formVals);
+      await modifyAndOpenMealMasteryPDF(results, formVals);
     }
   }, [formVals, results]);
 

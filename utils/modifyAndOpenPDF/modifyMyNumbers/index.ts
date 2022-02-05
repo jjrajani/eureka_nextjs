@@ -1,34 +1,43 @@
 import { red } from "utils/modifyAndOpenPDF/colors";
 import addCommasToNumber from "../../addCommasToNumber";
-import { CalculatorResult } from "types/types";
-import { PDFFont, PDFPage } from "pdf-lib";
+import {
+  MealMasteryCalculatorResult,
+  MetabolicMasteryCalculatorResult,
+} from "types/types";
+import { FontType } from "utils/modifyAndOpenPDF/types";
+import { PDFPage } from "pdf-lib";
 
 const color = red;
-const y = 204;
+const y = 138;
 
-const texts = (results: CalculatorResult) => [
+const texts = (
+  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
+) => [
   // Calories
   {
-    text: `${addCommasToNumber(parseInt(results.calorieIntake, 10))}`,
-    x: 153,
+    text: `${addCommasToNumber(results.calorieIntake.low)}-${addCommasToNumber(
+      results.calorieIntake.high
+    )}`,
+    x: 577,
   },
   // BMI
   {
     text: `${results.bmi}`,
-    x: 406.5,
+    x: 136,
   },
   // BMR
   {
     text: `${results.bmr}`,
-    x: 658,
+    x: 340.5,
   },
 ];
 
 const modifyMyNumbers = (
   page: PDFPage,
-  results: CalculatorResult,
-  font: { bold: PDFFont }
+  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult,
+  font: FontType
 ) => {
+  console.log("results.calorieIntake", results.calorieIntake);
   texts(results).forEach((text) => {
     page.drawText(text.text, {
       x: text.x,

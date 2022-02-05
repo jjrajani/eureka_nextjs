@@ -9,9 +9,9 @@ export interface UseUserInfo {
 
 const useUserInfo = (): UseUserInfo => {
   const [values, _setValues] = useState<UserFormState>({
-    email: "test@place.com",
-    first: "test",
-    last: "test",
+    email: "jjrajani@gmail.com",
+    first: "Jenna",
+    last: "Rajani",
   });
   const [didSubmit, setDidSubmit] = useState(true);
   // const [didSubmit, setDidSubmit] = useState(false);

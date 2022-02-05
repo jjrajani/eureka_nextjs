@@ -73,9 +73,14 @@ export interface HandServing {
   grams: number;
 }
 
+export interface CalorieHandServing {
+  palms: CalorieIntake;
+  grams: CalorieIntake;
+}
+
 export interface ServingSizes {
   proteinServing: HandServing;
-  carbsServing: HandServing;
+  carbsServing: CalorieHandServing;
   fatServing: HandServing;
   waterServing: number;
 }

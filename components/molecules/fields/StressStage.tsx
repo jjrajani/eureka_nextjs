@@ -2,8 +2,8 @@ import { Field } from "react-final-form";
 import { Select } from "mui-rff";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-
 import { StressStage } from "types/types";
+import { stressStageText } from "cms/strings";
 
 interface StressStageFieldProps {}
 
@@ -16,9 +16,15 @@ const StressStageField = ({}: StressStageFieldProps) => {
             <InputLabel>Stress Stage</InputLabel>
             <Select variant="filled" name={field.input.name}>
               <MenuItem value="null">Stress Stage</MenuItem>
-              <MenuItem value={StressStage.ACUTE}>Acute</MenuItem>
-              <MenuItem value={StressStage.COMPENSATORY}>Compensatory</MenuItem>
-              <MenuItem value={StressStage.EXHAUSTION}>Exhaustion</MenuItem>
+              <MenuItem value={StressStage.ACUTE}>
+                {stressStageText[StressStage.ACUTE]}
+              </MenuItem>
+              <MenuItem value={StressStage.COMPENSATORY}>
+                {stressStageText[StressStage.COMPENSATORY]}
+              </MenuItem>
+              <MenuItem value={StressStage.EXHAUSTION}>
+                {stressStageText[StressStage.EXHAUSTION]}
+              </MenuItem>
             </Select>
           </>
         );
