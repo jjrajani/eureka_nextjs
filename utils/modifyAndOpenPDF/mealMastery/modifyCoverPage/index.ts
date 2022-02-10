@@ -3,7 +3,7 @@ import { MealMasteryFormState } from "types/types";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import { red, white } from "../../colors";
 import moment from "moment";
-import { Text } from "./types";
+import { Text } from "../../types";
 import positionUserNameX from "./utils/positionUserNameX";
 import positionCreatedOnX from "./utils/positionCreatedOnX";
 import positionDateX from "./utils/positionDateX";
