@@ -4,9 +4,10 @@ import {
   Goal,
   DietPreference,
   Supplement,
+  MealMasteryFormState,
 } from "types/types";
 
-const tempInitialData = {
+const tempInitialData: MealMasteryFormState = {
   age: "25",
   weight: "125",
   heightFt: "5",
@@ -15,7 +16,7 @@ const tempInitialData = {
   gender: Gender.FEMALE,
   activity: Activity.LOW,
   goal: Goal.WEIGHT_SUSTAIN,
-  dietPreference: DietPreference.KETO,
+  dietPreference: DietPreference.PROTIEN,
   supplementType: Supplement.GI,
 };
 

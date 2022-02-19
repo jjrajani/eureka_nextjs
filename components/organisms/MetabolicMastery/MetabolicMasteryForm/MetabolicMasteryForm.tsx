@@ -19,6 +19,7 @@ import RestRxField from "components/molecules/fields/RestRx";
 import ExerciseFITTField from "components/molecules/fields/ExerciseFITT";
 import ReastingHeartRateField from "components/molecules/fields/ReastingHeartRate";
 import StressStageField from "components/molecules/fields/StressStage";
+import SupplementTypeField from "components/molecules/fields/SupplementType";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
 import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
@@ -107,17 +108,20 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
                 <Grid item xs={12} md={4}>
                   <DietPreferenceField />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} md={4}>
                   <RestRxField />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} md={4}>
                   <ExerciseFITTField />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} md={4}>
                   <ReastingHeartRateField />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} md={4}>
                   <StressStageField />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <SupplementTypeField />
                 </Grid>
 
                 <Grid item xs={12}>

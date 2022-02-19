@@ -89,23 +89,25 @@ const texts = (info: FormState) => [
   {
     text: dietPrefText[info.dietPreference as DietPreference],
     x: () => {
-      if (info.dietPreference === DietPreference.KETO) {
-        return 495;
-      } else if (info.dietPreference === DietPreference.VEGETARIAN) {
-        return 510;
-      } else if (info.dietPreference === DietPreference.VEGAN) {
-        return 530;
-      } else if (info.dietPreference === DietPreference.ANYTHING) {
-        return 520;
-      } else if (info.dietPreference === DietPreference.PESCATARIAN) {
-        return 510;
-      } else if (info.dietPreference === DietPreference.LOW_CARB) {
-        return 516;
-      } else if (info.dietPreference === DietPreference.GLUTEN_FREE) {
-        return 508;
-      } else if (info.dietPreference === DietPreference.ETHNIC_SPECIFIC) {
-        return 496.5;
-      }
+      console.log("FIX ME");
+      return 12;
+      // if (info.dietPreference === DietPreference.KETO) {
+      //   return 495;
+      // } else if (info.dietPreference === DietPreference.VEGETARIAN) {
+      //   return 510;
+      // } else if (info.dietPreference === DietPreference.VEGAN) {
+      //   return 530;
+      // } else if (info.dietPreference === DietPreference.ANYTHING) {
+      //   return 520;
+      // } else if (info.dietPreference === DietPreference.PESCATARIAN) {
+      //   return 510;
+      // } else if (info.dietPreference === DietPreference.LOW_CARB) {
+      //   return 516;
+      // } else if (info.dietPreference === DietPreference.GLUTEN_FREE) {
+      //   return 508;
+      // } else if (info.dietPreference === DietPreference.ETHNIC_SPECIFIC) {
+      //   return 496.5;
+      // }
     },
     y: thirdRowY,
   },

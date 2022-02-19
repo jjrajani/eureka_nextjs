@@ -19,14 +19,9 @@ export enum Goal {
 }
 
 export enum DietPreference {
-  ANYTHING = "anything",
-  ETHNIC_SPECIFIC = "ethnicSpecific",
-  GLUTEN_FREE = "glutenFree",
-  KETO = "keto",
-  LOW_CARB = "lowCarb",
-  PESCATARIAN = "pescatarian",
-  VEGAN = "vegan",
-  VEGETARIAN = "vegetarian",
+  PROTIEN = "PROTIEN",
+  CARB = "CARB",
+  MIXED = "MIXED",
 }
 
 export enum Supplement {
@@ -141,4 +136,5 @@ export interface MetabolicMasteryFormState extends UserFormState {
   exerciseFitt: "null" | ExerciseFITT;
   rhr: string;
   stress: "null" | StressStage;
+  supplementType: "null" | Supplement;
 }

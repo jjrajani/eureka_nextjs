@@ -15,7 +15,7 @@ import {
   HandServingSizeCalculator,
   MacroRatioCalculator,
 } from "utils/calculators";
-import modifyAndOpenPDF from "utils/modifyAndOpenPDF";
+import modifyAndOpenPDF from "utils/modifyAndOpenPDF/metabolicMastery/modifyAndOpenMetabolicMasteryPDF";
 
 export interface UseMetabolicMastery {
   calculateResults: (vals: MetabolicMasteryFormState) => void;

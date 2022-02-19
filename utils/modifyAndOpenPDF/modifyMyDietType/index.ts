@@ -22,23 +22,24 @@ const baseText = {
 };
 
 const dietPrefTitleXPos = (dietPref: DietPreference): number => {
-  if (dietPref === DietPreference.KETO) {
-    return 296;
-  } else if (dietPref === DietPreference.ANYTHING) {
-    return 320;
-  } else if (dietPref === DietPreference.ETHNIC_SPECIFIC) {
-    return 298;
-  } else if (dietPref === DietPreference.GLUTEN_FREE) {
-    return 309;
-  } else if (dietPref === DietPreference.LOW_CARB) {
-    return 318.5;
-  } else if (dietPref === DietPreference.PESCATARIAN) {
-    return 309;
-  } else if (dietPref === DietPreference.VEGETARIAN) {
-    return 309;
-  } else if (dietPref === DietPreference.VEGAN) {
-    return 322;
-  }
+  console.log("FIX ME");
+  // if (dietPref === DietPreference.KETO) {
+  //   return 296;
+  // } else if (dietPref === DietPreference.ANYTHING) {
+  //   return 320;
+  // } else if (dietPref === DietPreference.ETHNIC_SPECIFIC) {
+  //   return 298;
+  // } else if (dietPref === DietPreference.GLUTEN_FREE) {
+  //   return 309;
+  // } else if (dietPref === DietPreference.LOW_CARB) {
+  //   return 318.5;
+  // } else if (dietPref === DietPreference.PESCATARIAN) {
+  //   return 309;
+  // } else if (dietPref === DietPreference.VEGETARIAN) {
+  //   return 309;
+  // } else if (dietPref === DietPreference.VEGAN) {
+  //   return 322;
+  // }
 
   return 296;
 };

@@ -98,7 +98,7 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
                 <Grid item xs={12} md={4}>
                   <DietPreferenceField />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} md={4}>
                   <SupplementTypeField />
                 </Grid>
                 <Grid item xs={12}>

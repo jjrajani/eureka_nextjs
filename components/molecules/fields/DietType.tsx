@@ -16,29 +16,14 @@ const DietPreferenceField = ({}: DietPreferenceFieldProps) => {
             <InputLabel>Diet Type</InputLabel>
             <Select variant="filled" name={field.input.name}>
               <MenuItem value="null">Diet Type</MenuItem>
-              <MenuItem value={DietPreference.ANYTHING}>
-                {dietPrefText[DietPreference.ANYTHING]}
+              <MenuItem value={DietPreference.PROTIEN}>
+                {dietPrefText[DietPreference.PROTIEN]}
               </MenuItem>
-              <MenuItem value={DietPreference.ETHNIC_SPECIFIC}>
-                {dietPrefText[DietPreference.ETHNIC_SPECIFIC]}
+              <MenuItem value={DietPreference.CARB}>
+                {dietPrefText[DietPreference.CARB]}
               </MenuItem>
-              <MenuItem value={DietPreference.GLUTEN_FREE}>
-                {dietPrefText[DietPreference.GLUTEN_FREE]}
-              </MenuItem>
-              <MenuItem value={DietPreference.KETO}>
-                {dietPrefText[DietPreference.KETO]}
-              </MenuItem>
-              <MenuItem value={DietPreference.LOW_CARB}>
-                {dietPrefText[DietPreference.LOW_CARB]}
-              </MenuItem>
-              <MenuItem value={DietPreference.PESCATARIAN}>
-                {dietPrefText[DietPreference.PESCATARIAN]}
-              </MenuItem>
-              <MenuItem value={DietPreference.VEGAN}>
-                {dietPrefText[DietPreference.VEGAN]}
-              </MenuItem>
-              <MenuItem value={DietPreference.VEGETARIAN}>
-                {dietPrefText[DietPreference.VEGETARIAN]}
+              <MenuItem value={DietPreference.MIXED}>
+                {dietPrefText[DietPreference.MIXED]}
               </MenuItem>
             </Select>
           </>

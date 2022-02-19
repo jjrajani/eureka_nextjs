@@ -30,14 +30,9 @@ export const goalText = {
 };
 
 export const dietPrefText = {
-  [DietPreference.ANYTHING]: "Anything",
-  [DietPreference.ETHNIC_SPECIFIC]: "Ethnic Specific",
-  [DietPreference.GLUTEN_FREE]: "Gluten Free",
-  [DietPreference.KETO]: "Keto - High Fat",
-  [DietPreference.LOW_CARB]: "Low Carb",
-  [DietPreference.PESCATARIAN]: "Pescatarian",
-  [DietPreference.VEGAN]: "Vegan",
-  [DietPreference.VEGETARIAN]: "Vegetarian",
+  [DietPreference.PROTIEN]: "Protien",
+  [DietPreference.CARB]: "Carb",
+  [DietPreference.MIXED]: "Mixed",
 };
 
 export const fittText = {
