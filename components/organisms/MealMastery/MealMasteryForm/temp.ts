@@ -18,6 +18,9 @@ const tempInitialData: MealMasteryFormState = {
   goal: Goal.WEIGHT_SUSTAIN,
   dietPreference: DietPreference.MIXED,
   supplementType: Supplement.HORMONE,
+  email: "jjrajani@gmail.com",
+  first: "Jenna",
+  last: "Rajani",
 };
 
 export default tempInitialData;

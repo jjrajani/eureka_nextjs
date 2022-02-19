@@ -25,6 +25,9 @@ const tempInitialData: MetabolicMasteryFormState = {
   rhr: "150",
   stress: StressStage.ACUTE,
   supplementType: Supplement.GI,
+  email: "jjrajani@gmail.com",
+  first: "Jenna",
+  last: "Rajani",
 };
 
 export default tempInitialData;
