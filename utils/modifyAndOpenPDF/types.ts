@@ -20,4 +20,5 @@ export interface Text {
   y: number;
   color: RGB;
   size: number;
+  font?: PDFFont;
 }

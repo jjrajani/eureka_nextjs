@@ -1,11 +1,8 @@
 import { red } from "utils/modifyAndOpenPDF/colors";
-import {
-  MealMasteryCalculatorResult,
-  MetabolicMasteryCalculatorResult,
-} from "types/types";
+import { MealMasteryCalculatorResult } from "types/types";
+import { Text } from "utils/modifyAndOpenPDF/types";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import { PDFPage } from "pdf-lib";
-import { Text } from "utils/modifyAndOpenPDF/types";
 
 const color = red,
   y = 59,
@@ -17,46 +14,7 @@ const baseText = {
   size: 13,
 };
 
-const carbServingSize = (
-  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
-): Text => {
-  const text = `${results.handSizes.carbsServing.palms.low}-${results.handSizes.carbsServing.palms.high}`;
-  let x = 381;
-  if (text.length === 4) {
-    x = 377;
-  }
-  if (text.length === 5) {
-    x = 373;
-  }
-  return {
-    ...baseText,
-    x,
-    text: `${text} servings`,
-  };
-};
-
-const carbGramSize = (
-  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
-): Text => {
-  const text = `${results.handSizes.carbsServing.grams.low}-${results.handSizes.carbsServing.grams.high}`;
-  let x = 469;
-  if (text.length === 8) {
-    x = 466;
-  }
-  if (text.length === 9) {
-    x = 463;
-  }
-  return {
-    // Carbs - grams
-    ...baseText,
-    x,
-    text: `${text}g`,
-  };
-};
-
-const texts = (
-  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
-): Text[] => [
+const texts = (results: MealMasteryCalculatorResult) => [
   {
     // Proteins - serving size
     ...baseText,
@@ -95,8 +53,18 @@ const texts = (
     text: `${results.macro.fats * 100}% daily intake`,
     y: macroY,
   },
-  carbServingSize(results),
-  carbGramSize(results),
+  {
+    // Carbs - serving size
+    ...baseText,
+    x: 385,
+    text: `${results.handSizes.carbsServing.palms.median} servings`,
+  },
+  {
+    // Carbs - grams
+    ...baseText,
+    x: 482,
+    text: `${results.handSizes.carbsServing.grams.median}g`,
+  },
   {
     // Carbs - macro
     ...baseText,
@@ -112,13 +80,13 @@ const texts = (
   },
 ];
 
-const modifyMyMealPlan = (
-  pages: PDFPage[],
-  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult,
+const modifyMyPortions = (
+  page: PDFPage,
+  results: MealMasteryCalculatorResult,
   font: FontType
 ) => {
   texts(results).forEach((text: Text) => {
-    pages[2].drawText(`${text.text}`, {
+    page.drawText(`${text.text}`, {
       x: text.x as number,
       y: text?.y || y,
       size: text?.size || 13,
@@ -128,4 +96,4 @@ const modifyMyMealPlan = (
   });
 };
 
-export default modifyMyMealPlan;
+export default modifyMyPortions;

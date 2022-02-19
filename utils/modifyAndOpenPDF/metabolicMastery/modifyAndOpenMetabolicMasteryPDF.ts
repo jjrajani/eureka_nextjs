@@ -16,7 +16,7 @@ import {
   MetabolicMasteryFormState,
 } from "types/types";
 import loadFontsToPDF from "../utils/loadFontsToPDF";
-import getMetabolicMasterySlides from "./getSlides/getMetabolicMasterySlides";
+import getMetabolicMasterySlides from "./getSlides";
 
 const modifyAndOpenMetabolicMasteryPDF = async (
   results: MetabolicMasteryCalculatorResult,

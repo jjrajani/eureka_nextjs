@@ -1,23 +1,15 @@
 import {
-  Gender,
-  Activity,
-  Goal,
-  DietPreference,
-  Supplement,
-} from "types/types";
-import {
   MetabolicMasteryCalculatorResult,
   MetabolicMasteryFormState,
 } from "types/types";
 import { PDFDocument } from "pdf-lib";
 import getDietTypeSlides from "./getDietTypeSlides";
 import getSupplementSlides from "./getSupplementSlides";
-import getMealMasteryProfileSlides from "./getMealMasteryProfileSlides";
 import getRestRxSlides from "./getRestRxSlides";
 import getExerciseFittSlides from "./getExerciseFittSlides";
 import getFittTrackerSlides from "./getFittTrackerSlides";
 import getStressSlides from "./getStressSlides";
-import getDressDashboardSlides from "./getDressDashboardSlides";
+import getDressSlides from "./getDressSlides";
 import attachSlides from "../../utils/attachSlides";
 import getPortionTrackerSlides from "../../utils/getPortionTrackerSlides";
 import getConclusionSlides from "../../utils/getConclusionSlides";
@@ -63,13 +55,8 @@ const getMealMasterySlides = async (
   const supplementSlides = await getSupplementSlides(userInput);
   await attachSlides(supplementSlides, pdfDoc, 12);
 
-  const dressDashboardSlides = await getDressDashboardSlides();
+  const dressDashboardSlides = await getDressSlides();
   await attachSlides(dressDashboardSlides, pdfDoc, 13);
-
-  // Meal Master Profile
-  // const mealMasterySlides = await getMealMasteryProfileSlides(userInput);
-  // await attachSlides(mealMasterySlides, pdfDoc);
-  //
 
   return pdfDoc;
 };

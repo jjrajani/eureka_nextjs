@@ -1,10 +1,3 @@
-import {
-  Gender,
-  Activity,
-  Goal,
-  DietPreference,
-  Supplement,
-} from "types/types";
 import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
 import { PDFDocument } from "pdf-lib";
 import getDietTypeSlides from "./getDietTypeSlides";

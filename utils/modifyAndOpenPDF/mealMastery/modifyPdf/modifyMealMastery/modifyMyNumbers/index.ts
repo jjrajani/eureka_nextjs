@@ -1,5 +1,5 @@
 import { red } from "utils/modifyAndOpenPDF/colors";
-import addCommasToNumber from "../../addCommasToNumber";
+import addCommasToNumber from "utils/addCommasToNumber";
 import {
   MealMasteryCalculatorResult,
   MetabolicMasteryCalculatorResult,
@@ -37,7 +37,6 @@ const modifyMyNumbers = (
   results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult,
   font: FontType
 ) => {
-  console.log("results.calorieIntake", results.calorieIntake);
   texts(results).forEach((text) => {
     page.drawText(text.text, {
       x: text.x,

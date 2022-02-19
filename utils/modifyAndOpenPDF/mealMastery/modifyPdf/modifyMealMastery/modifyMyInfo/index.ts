@@ -1,13 +1,12 @@
 // my info age block start x 104 y 412.75 height 31 width 166.5
 // activity level block start x 453.5 y 412 width 314.25 height 26
-import { red } from "../colors";
+import { red } from "utils/modifyAndOpenPDF/colors";
 import {
   Activity,
   DietPreference,
   Gender,
   Goal,
   MealMasteryFormState,
-  MetabolicMasteryFormState,
 } from "types/types";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import { PDFPage } from "pdf-lib";
@@ -18,15 +17,13 @@ import {
   dietPrefText,
 } from "cms/strings";
 
-type FormState = MealMasteryFormState | MetabolicMasteryFormState;
-
 const firstRowY = 288.5,
   secondRowY = 260,
   thirdRowY = 231.5,
   fourthRowY = 203,
   color = red;
 
-const texts = (info: FormState) => [
+const texts = (info: MealMasteryFormState) => [
   // Age
   {
     text: info.age,
@@ -89,25 +86,13 @@ const texts = (info: FormState) => [
   {
     text: dietPrefText[info.dietPreference as DietPreference],
     x: () => {
-      console.log("FIX ME");
-      return 12;
-      // if (info.dietPreference === DietPreference.KETO) {
-      //   return 495;
-      // } else if (info.dietPreference === DietPreference.VEGETARIAN) {
-      //   return 510;
-      // } else if (info.dietPreference === DietPreference.VEGAN) {
-      //   return 530;
-      // } else if (info.dietPreference === DietPreference.ANYTHING) {
-      //   return 520;
-      // } else if (info.dietPreference === DietPreference.PESCATARIAN) {
-      //   return 510;
-      // } else if (info.dietPreference === DietPreference.LOW_CARB) {
-      //   return 516;
-      // } else if (info.dietPreference === DietPreference.GLUTEN_FREE) {
-      //   return 508;
-      // } else if (info.dietPreference === DietPreference.ETHNIC_SPECIFIC) {
-      //   return 496.5;
-      // }
+      if (info.dietPreference === DietPreference.PROTIEN) {
+        return 525;
+      } else if (info.dietPreference === DietPreference.CARB) {
+        return 535;
+      } else if (info.dietPreference === DietPreference.MIXED) {
+        return 530;
+      }
     },
     y: thirdRowY,
   },
@@ -119,7 +104,11 @@ const texts = (info: FormState) => [
   },
 ];
 
-const modifyMyInfo = (page: PDFPage, info: FormState, font: FontType) => {
+const modifyMyInfo = (
+  page: PDFPage,
+  info: MealMasteryFormState,
+  font: FontType
+) => {
   texts(info).forEach((text) => {
     page.drawText(`${text.text}`, {
       x: typeof text.x === "function" ? text.x() : text.x,

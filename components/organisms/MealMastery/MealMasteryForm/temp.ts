@@ -16,8 +16,8 @@ const tempInitialData: MealMasteryFormState = {
   gender: Gender.FEMALE,
   activity: Activity.LOW,
   goal: Goal.WEIGHT_SUSTAIN,
-  dietPreference: DietPreference.PROTIEN,
-  supplementType: Supplement.GI,
+  dietPreference: DietPreference.MIXED,
+  supplementType: Supplement.HORMONE,
 };
 
 export default tempInitialData;
