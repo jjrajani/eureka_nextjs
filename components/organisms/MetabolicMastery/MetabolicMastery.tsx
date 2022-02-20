@@ -3,7 +3,6 @@ import MetabolicMasteryResults from "./MetabolicMasteryResults/MetabolicMasteryR
 import { MetabolicMasteryContextProvider } from "./context";
 import Box from "@mui/material/Box";
 import Scroll from "react-scroll";
-const Element = Scroll.Element;
 const scroller = Scroll.scroller;
 
 interface MetabolicMasteryPlannerProps {}

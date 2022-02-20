@@ -18,18 +18,21 @@ const PageFooter = ({}: PageFooterProps) => {
           <a
             href="https://eurekaholisticnutrition.com/terms-of-service/"
             target="_blank"
+            rel="noreferrer"
           >
             Site Terms
           </a>
           <a
             href="https://eurekaholisticnutrition.com/privacy-policy/"
             target="_blank"
+            rel="noreferrer"
           >
             Privacy Policy
           </a>
           <a
             href="https://eurekaholisticnutrition.com/scope-of-service-disclaimer/"
             target="_blank"
+            rel="noreferrer"
           >
             Disclaimer
           </a>

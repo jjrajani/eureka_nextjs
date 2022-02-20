@@ -21,7 +21,7 @@ const ResultsWrapper = ({
       scrollToResults();
       setDidScroll(true);
     }
-  }, [didScroll, setDidScroll]);
+  }, [didScroll, setDidScroll, scrollToResults]);
 
   return <Element name={wrapperId}>{children}</Element>;
 };

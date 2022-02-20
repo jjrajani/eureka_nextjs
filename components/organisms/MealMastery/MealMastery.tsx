@@ -3,7 +3,6 @@ import MealMasteryResults from "./MealMasteryResults/MealMasteryResults";
 import { MealMasteryContextProvider } from "./context";
 import Box from "@mui/material/Box";
 import Scroll from "react-scroll";
-const Element = Scroll.Element;
 const scroller = Scroll.scroller;
 
 interface MealMasteryPlannerProps {}
