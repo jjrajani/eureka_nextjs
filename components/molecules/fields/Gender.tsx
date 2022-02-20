@@ -14,8 +14,8 @@ const GenderField = ({}: GenderFieldProps) => {
         return (
           <>
             <InputLabel>Gender</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null" disabled>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="" disabled>
                 Gender
               </MenuItem>
               <MenuItem value={Gender.FEMALE}>

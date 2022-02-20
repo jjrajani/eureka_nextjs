@@ -14,8 +14,8 @@ const RestRxField = ({}: RestRxFieldProps) => {
         return (
           <>
             <InputLabel>Rest Rx</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null">Rest Rx</MenuItem>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="">Rest Rx</MenuItem>
               <MenuItem value={RestRx.POOR}>{restRxText[RestRx.POOR]}</MenuItem>
               <MenuItem value={RestRx.FAIR}>{restRxText[RestRx.FAIR]}</MenuItem>
               <MenuItem value={RestRx.GOOD}>{restRxText[RestRx.GOOD]}</MenuItem>

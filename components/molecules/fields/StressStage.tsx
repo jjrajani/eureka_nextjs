@@ -14,8 +14,8 @@ const StressStageField = ({}: StressStageFieldProps) => {
         return (
           <>
             <InputLabel>Stress Stage</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null">Stress Stage</MenuItem>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="">Stress Stage</MenuItem>
               <MenuItem value={StressStage.ACUTE}>
                 {stressStageText[StressStage.ACUTE]}
               </MenuItem>

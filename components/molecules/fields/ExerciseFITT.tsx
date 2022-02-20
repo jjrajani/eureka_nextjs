@@ -14,8 +14,10 @@ const ExerciseFITTField = ({}: ExerciseFITTFieldProps) => {
         return (
           <>
             <InputLabel>Exercise F.I.T.T.</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null">Exercise F.I.T.T.</MenuItem>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="" disabled>
+                Exercise F.I.T.T.
+              </MenuItem>
               <MenuItem value={ExerciseFITT.BEGINNER}>
                 {fittText[ExerciseFITT.BEGINNER]}
               </MenuItem>

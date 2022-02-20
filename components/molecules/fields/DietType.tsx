@@ -14,8 +14,8 @@ const DietPreferenceField = ({}: DietPreferenceFieldProps) => {
         return (
           <>
             <InputLabel>Diet Type</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null">Diet Type</MenuItem>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="">Diet Type</MenuItem>
               <MenuItem value={DietPreference.PROTIEN}>
                 {dietPrefText[DietPreference.PROTIEN]}
               </MenuItem>

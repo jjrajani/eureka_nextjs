@@ -15,8 +15,10 @@ const ActivityLevelField = ({}: ActivityLevelFieldProps) => {
         return (
           <>
             <InputLabel>Activity Level</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null">Activity Level</MenuItem>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="" disabled>
+                Activity Level
+              </MenuItem>
               <MenuItem value={Activity.NONE}>
                 {activityLevelText[Activity.NONE]}
               </MenuItem>

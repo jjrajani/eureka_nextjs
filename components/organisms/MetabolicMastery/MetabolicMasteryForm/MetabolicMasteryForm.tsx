@@ -95,19 +95,19 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
                   <DietPreferenceField />
                 </Grid>
                 <Grid item xs={12} md={4}>
+                  <SupplementTypeField />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <ReastingHeartRateField />
+                </Grid>
+                <Grid item xs={12} md={4}>
                   <RestRxField />
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <ExerciseFITTField />
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <ReastingHeartRateField />
-                </Grid>
-                <Grid item xs={12} md={4}>
                   <StressStageField />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <SupplementTypeField />
                 </Grid>
 
                 <Grid item xs={12}>

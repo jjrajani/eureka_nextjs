@@ -14,8 +14,10 @@ const GoalField = ({}: GoalFieldProps) => {
         return (
           <>
             <InputLabel>Goal</InputLabel>
-            <Select variant="filled" name={field.input.name}>
-              <MenuItem value="null">Goal</MenuItem>
+            <Select variant="filled" name={field.input.name} displayEmpty>
+              <MenuItem value="" disabled>
+                Goal
+              </MenuItem>
               <MenuItem value={Goal.WEIGHT_LOSS}>
                 {goalText[Goal.WEIGHT_LOSS]}
               </MenuItem>
