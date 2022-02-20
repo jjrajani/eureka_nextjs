@@ -38,7 +38,7 @@ const date = ({
 }: {
   font: { size: number; weight: PDFFont };
   page: PDFPage;
-  headerPad: HeaderPad;
+  headerPad?: HeaderPad;
 }) => {
   const width = page.getWidth();
   const height = page.getHeight();
@@ -66,7 +66,7 @@ const getHeaderTexts = ({
   font: Font;
   page: PDFPage;
   userInput: MealMasteryFormState | MetabolicMasteryFormState;
-  headerPad: HeaderPad;
+  headerPad?: HeaderPad;
 }) => {
   return [userName({ font, page, userInput }), date({ font, page, headerPad })];
 };

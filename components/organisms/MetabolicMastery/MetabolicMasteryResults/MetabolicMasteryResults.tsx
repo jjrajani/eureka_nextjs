@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import MetabolicMasteryContext from "../context";
 import MacroPieChart from "./MacroPieChart";
 import Grid from "@mui/material/Grid";
@@ -19,12 +19,6 @@ const MetabolicMasteryResults = ({
   wrapperId,
 }: MetabolicMasteryResultsProps) => {
   const { downloadResults, results } = useContext(MetabolicMasteryContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      downloadResults();
-    }, 300);
-  }, []);
 
   return results ? (
     <ResultsWrapper scrollToResults={scrollToResults} wrapperId={wrapperId}>
