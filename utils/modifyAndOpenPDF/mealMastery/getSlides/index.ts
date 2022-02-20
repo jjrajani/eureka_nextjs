@@ -11,9 +11,6 @@ const getMealMasterySlides = async (
   results: MealMasteryCalculatorResult,
   userInput: MealMasteryFormState
 ) => {
-  console.log("results", results);
-  console.log("userInput", userInput);
-
   const introSlides = await fetch(
     "/pdfs/Meal_Mastery_Intro_Slides.pdf"
   ).then((res) => res.arrayBuffer());

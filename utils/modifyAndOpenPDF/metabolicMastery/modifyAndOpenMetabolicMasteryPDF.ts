@@ -15,8 +15,6 @@ const modifyAndOpenMetabolicMasteryPDF = async (
   results: MetabolicMasteryCalculatorResult,
   userInput: MetabolicMasteryFormState
 ) => {
-  console.log("results", results);
-
   const pdfDoc = await getMetabolicMasterySlides(results, userInput);
 
   // Doc Metadata

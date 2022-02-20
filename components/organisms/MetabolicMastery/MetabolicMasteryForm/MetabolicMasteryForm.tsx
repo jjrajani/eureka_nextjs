@@ -1,5 +1,4 @@
-import { ExerciseFITT, DietPreference } from "types/types";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import MealPlannerContext from "../context";
 import { Form } from "react-final-form";
 import Box from "@mui/material/Box";
@@ -23,20 +22,20 @@ import StressStageField from "components/molecules/fields/StressStage";
 import SupplementTypeField from "components/molecules/fields/SupplementType";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
-import tempInitialData from "./temp";
+// import tempInitialData from "./temp";
 
 import { MetabolicMasteryFormState } from "types/types";
 
 interface MetabolicMasteryFormProps {}
 
 const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
-  const { calculateResults, results } = useContext(MealPlannerContext);
+  const { calculateResults } = useContext(MealPlannerContext);
   const { values: userValues, setValues: setUserValues } = useContext(
     UserInfoContext
   );
 
   const initialValues: Partial<MetabolicMasteryFormState> = {
-    ...tempInitialData,
+    // ...tempInitialData,
     ...userValues,
   };
 

@@ -21,9 +21,6 @@ const modifyMealMastery = ({
   results,
   userInput,
 }: ModifyMealMasteryArgs) => {
-  console.log("userInput", userInput);
-  console.log("results", results);
-
   modifyMyInfo(pages[2], userInput, font);
   modifyMyNumbers(pages[2], results, font);
   modifyMyPortions(pages[2], results, font);

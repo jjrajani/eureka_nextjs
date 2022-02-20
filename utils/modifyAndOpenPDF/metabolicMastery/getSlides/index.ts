@@ -18,9 +18,6 @@ const getMealMasterySlides = async (
   results: MetabolicMasteryCalculatorResult,
   userInput: MetabolicMasteryFormState
 ) => {
-  console.log("results", results);
-  console.log("userInput", userInput);
-
   const introSlides = await fetch(
     "/pdfs/Metabolic_Mastery_Intro_Slides.pdf"
   ).then((res) => res.arrayBuffer());

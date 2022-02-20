@@ -4,7 +4,6 @@ const MacroRatioCalculator = (goal: Goal): Macro => {
   let protein = 0,
     carbs = 0,
     fats = 0;
-  console.log("goal", goal);
 
   if (goal === Goal.WEIGHT_LOSS) {
     protein = 0.3;

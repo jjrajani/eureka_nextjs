@@ -1,10 +1,11 @@
 .footer {
   font-size: 14px;
   font-family: 'PT Sans',Helvetica,Arial,Lucida,sans-serif;
+  background-color: rgba(139,189,68,0.2)!important;
+
   > div {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: rgba(139,189,68,0.2)!important;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

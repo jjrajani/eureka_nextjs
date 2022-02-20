@@ -100,8 +100,6 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
     }
   }, [formVals, results]);
 
-  console.log("results", results);
-
   return {
     calculateResults,
     downloadResults,
