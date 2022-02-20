@@ -1,6 +1,8 @@
 import moment from "moment";
 import Container from "@mui/material/Container";
 import styles from "./styles/PageFooter.module.scss";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 interface PageFooterProps {}
 
@@ -35,6 +37,22 @@ const PageFooter = ({}: PageFooterProps) => {
             rel="noreferrer"
           >
             Disclaimer
+          </a>
+          <a
+            href="https://www.facebook.com/Eureka-Holistic-Nutrition-113571287044136"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.icon}
+          >
+            <FacebookIcon />
+          </a>
+          <a
+            href="https://www.instagram.com/eurekaholisticnutrition/"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.icon}
+          >
+            <InstagramIcon />
           </a>
         </div>
       </Container>
