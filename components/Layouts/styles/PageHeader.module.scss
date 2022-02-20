@@ -9,6 +9,12 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
   // position: fixed;
   // z-index: 100;
 
@@ -25,6 +31,17 @@
 
     path {
       color: white;
+    }
+
+    img {
+      height: 22px;
+      width: 22px;
+      margin-top: -4px;
+
+    }
+
+    img + p {
+      margin-left: 6px;
     }
   }
 }
@@ -43,9 +60,9 @@
 .headerContent {
   position:relative;
   background: url("/images/apples.jpg") no-repeat center -32px;
-  min-height: 450px;
-  margin-left: -24px;
-  margin-right: -24px;
+  min-height: 490px;
+  // margin-left: -24px;
+  // margin-right: -24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,4 +138,29 @@
      font-size: 20px;
      margin: 0 auto;
    }
+}
+
+.bigLogo {
+  position: absolute;
+  padding: 10px 15px;
+  // background: rgb(255,255,255);
+
+  // background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%),linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 70%);
+  z-index: 200;
+  width: 100%;
+
+  img {
+    height: 75px;
+  }
+}
+
+.cta {
+  width: 100%;
+  text-align: center;
+  padding-top: 30px;
+
+  button {
+    // background-color: #8bbd44;
+  }
 }

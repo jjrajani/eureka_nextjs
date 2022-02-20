@@ -44,7 +44,7 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
   };
 
   return (
-    <Box mt={3} mb={8}>
+    <Box mt={3} mb={8} id="meal-form">
       <Form<MealMasteryFormState>
         onSubmit={onSubmit}
         validate={validate}

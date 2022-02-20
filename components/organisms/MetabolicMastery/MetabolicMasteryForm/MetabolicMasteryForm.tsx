@@ -49,7 +49,7 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
   };
 
   return (
-    <Box mt={3} mb={8}>
+    <Box mt={3} mb={8} id="metabolic-form">
       <Form<MetabolicMasteryFormState>
         onSubmit={onSubmit}
         validate={validate}
