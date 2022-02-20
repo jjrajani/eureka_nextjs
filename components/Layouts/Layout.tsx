@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import PageHeader from "./PageHeader";
+import PageFooter from "./PageFooter";
 import Container from "@mui/material/Container";
 
 interface LayoutProps {
@@ -13,6 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Container>
         <main>{children}</main>
       </Container>
+      <PageFooter />
     </>
   );
 };

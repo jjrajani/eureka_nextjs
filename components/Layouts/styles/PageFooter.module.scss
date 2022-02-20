@@ -1,0 +1,40 @@
+.footer {
+  font-size: 14px;
+  font-family: 'PT Sans',Helvetica,Arial,Lucida,sans-serif;
+  > div {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: rgba(139,189,68,0.2)!important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .secton {
+      display: flex;
+      align-items: center;
+      padding-bottom: 30px;
+
+      > p, > a {
+        margin-left: 8px;
+        padding-right: 8px;
+        border-right: solid #846f64 1px;
+        &:last-child {
+          border-right: none;
+        }
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      p {
+        color: #846f64;
+      }
+
+      a {
+        color: #c81246;
+      }
+    }
+  }
+}
