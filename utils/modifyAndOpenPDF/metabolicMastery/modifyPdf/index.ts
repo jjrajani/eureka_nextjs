@@ -12,6 +12,7 @@ import modifyPortionTracker from "utils/modifyAndOpenPDF/sharedModifiers/modifyP
 import modifyMyRestRx from "utils/modifyAndOpenPDF/metabolicMastery/modifyPdf/modifyMyRestRx";
 import modifyExerciseFITT from "utils/modifyAndOpenPDF/metabolicMastery/modifyPdf/modifyExerciseFITT";
 import modifyStressStage from "utils/modifyAndOpenPDF/metabolicMastery/modifyPdf/modifyStressStage";
+import modifyDressDashboard from "utils/modifyAndOpenPDF/metabolicMastery/modifyPdf/modifyDressDashboard";
 
 interface ModifyMetabolicMasteryArgs {
   font: FontType;
@@ -37,6 +38,7 @@ const modifyMetabolicMastery = ({
   modifyMyRestRx({ page: pages[8], font, userInput });
   modifyExerciseFITT({ page: pages[9], results, font, userInput });
   modifyStressStage({ page: pages[11], font, userInput });
+  modifyDressDashboard({ page: pages[13], font, userInput, results });
   // Slides todo.
   // modifyMyRestRx()
   // modifyFITTracker()
