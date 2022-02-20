@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
           <link
             rel="stylesheet"
             id="et-builder-googlefonts-cached-css"
-            href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600&family=Satisfy&display=swap"
             type="text/css"
             media="all"
           />

@@ -7,7 +7,7 @@ const MetabolicMastery: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Eureka Nutrition Calculator</title>
+        <title>Eureka! - Metabolic Mastery</title>
         <meta name="description" content="A health calculator" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

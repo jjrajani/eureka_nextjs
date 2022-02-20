@@ -15,7 +15,7 @@ const HomePage: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Eureka Nutrition</title>
+        <title>Eureka! - Eureka! Holistic Nutrition</title>
         <meta name="description" content="A health calculator" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

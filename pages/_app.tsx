@@ -11,6 +11,7 @@ import UserInfoModal from "components/organisms/UserInfoModal/UserInfoModal";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 import Layout from "components/Layouts/Layout";
+import "../styles/globals.css";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -21,7 +22,7 @@ export default function MyApp(props: MyAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>Change title in _app.tsx</title>
+        <title>Eureka! - Eureka! Holistic Nutrition</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
