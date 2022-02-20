@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { ExerciseFITT, DietPreference } from "types/types";
+import { useEffect, useContext } from "react";
 import MealPlannerContext from "../context";
 import { Form } from "react-final-form";
 import Box from "@mui/material/Box";
@@ -21,7 +22,6 @@ import ReastingHeartRateField from "components/molecules/fields/ReastingHeartRat
 import StressStageField from "components/molecules/fields/StressStage";
 import SupplementTypeField from "components/molecules/fields/SupplementType";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
-import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 import tempInitialData from "./temp";
 
@@ -36,19 +36,6 @@ const MetabolicMasteryForm = ({}: MetabolicMasteryFormProps) => {
   );
 
   const initialValues: Partial<MetabolicMasteryFormState> = {
-    // age: undefined,
-    // gender: "null",
-    // weight: undefined,
-    // heightFt: undefined,
-    // heightIn: undefined,
-    // water: undefined,
-    // activity: "null",
-    // goal: "null",
-    // dietPreference: "null",
-    // restRx: "null",
-    // exerciseFitt: "null",
-    // rhr: "null",
-    // stress: "null",
     ...tempInitialData,
     ...userValues,
   };

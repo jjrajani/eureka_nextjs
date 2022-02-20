@@ -88,10 +88,15 @@ export interface MealMasteryCalculatorResult {
   handSizes: ServingSizes;
 }
 
+export interface PercentDuration {
+  duration: number;
+  percent: number;
+}
+
 export interface ExerciseFITTCalcRes {
-  frequency: Range;
-  intensity: number; // target heart rate
-  time: Range;
+  strength: PercentDuration; // time to spend on strength exercise
+  endurance: PercentDuration; // time to spend on endurance exercise
+  flexibility: PercentDuration; // time to spend on flexibility exercise
 }
 
 export interface MetabolicMasteryCalculatorResult {
@@ -101,6 +106,7 @@ export interface MetabolicMasteryCalculatorResult {
   exerciseFitt: ExerciseFITTCalcRes;
   macro: Macro;
   handSizes: ServingSizes;
+  targetHeartRate: number;
 }
 
 export interface UserFormState {

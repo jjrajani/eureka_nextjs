@@ -1,11 +1,11 @@
 import { PDFPage } from "pdf-lib";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
-import modifyMyInfo from "./modifyMyInfo";
-import modifyMyNumbers from "./modifyMyNumbers";
-import modifyMyPortions from "./modifyMyPortions";
-import modifyMyDietType from "./modifyMyDietType";
-import modifyPortionTracker from "./modifyPortionTracker";
+import modifyMyInfo from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyInfo";
+import modifyMyNumbers from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyNumbers";
+import modifyMyPortions from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyPortions";
+import modifyMyDietType from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyDietType";
+import modifyPortionTracker from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker";
 import modifyMasteryProfile from "./modifyMasteryProfile";
 
 interface ModifyMealMasteryArgs {

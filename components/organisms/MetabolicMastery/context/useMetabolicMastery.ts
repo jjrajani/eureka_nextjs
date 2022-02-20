@@ -3,6 +3,7 @@ import { MetabolicMasteryFormState } from "types/types";
 import {
   Activity,
   ExerciseFITT,
+  DietPreference,
   Gender,
   Goal,
   MetabolicMasteryCalculatorResult,
@@ -14,6 +15,7 @@ import {
   ExerciseFITTCalculator,
   HandServingSizeCalculator,
   MacroRatioCalculator,
+  TargetHeartRateCalculator,
 } from "utils/calculators";
 import modifyAndOpenPDF from "utils/modifyAndOpenPDF/metabolicMastery/modifyAndOpenMetabolicMasteryPDF";
 
@@ -67,13 +69,18 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
       });
 
       let exerciseFitt = ExerciseFITTCalculator({
-        age: parseInt(vals.age, 10),
         exercise: vals.exerciseFitt as ExerciseFITT,
+        dietPreference: vals.dietPreference as DietPreference,
+      });
+
+      let targetHeartRate = TargetHeartRateCalculator({
+        age: parseInt(vals.age, 10),
         gender: vals.gender as Gender,
         rhr: parseInt(vals.rhr, 10),
       });
 
       setLoading(false);
+
       setResults({
         bmi,
         bmr,
@@ -81,6 +88,7 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
         exerciseFitt,
         macro,
         handSizes,
+        targetHeartRate,
       });
     },
     [setLoading, setResults]
@@ -88,7 +96,7 @@ const useMetabolicMastery = (): UseMetabolicMastery => {
 
   const downloadResults = useCallback(async () => {
     if (formVals && results) {
-      const thing = await modifyAndOpenPDF(results, formVals);
+      await modifyAndOpenPDF(results, formVals);
     }
   }, [formVals, results]);
 

@@ -1,84 +1,159 @@
-import { ExerciseFITT, Gender, Range, ExerciseFITTCalcRes } from "types/types";
+import {
+  ExerciseFITT,
+  DietPreference,
+  ExerciseFITTCalcRes,
+  PercentDuration,
+} from "types/types";
+import getPercentage from "utils/getPercentage";
 
-const TimeInMinsCalculator = ({
-  exercise,
-}: {
-  exercise: ExerciseFITT;
-}): Range => {
-  if (exercise === ExerciseFITT.BEGINNER) {
-    return {
-      low: 30,
-      high: 40,
-    };
-  } else if (exercise === ExerciseFITT.INTERMEDIATE) {
-    return {
-      low: 40,
-      high: 60,
-    };
+const getWorkoutDuration = (exercise: ExerciseFITT) => {
+  // Default assumes ExerciseFITT.BEGINNER;
+  let workoutDuration = 30;
+  switch (exercise) {
+    case ExerciseFITT.BEGINNER: {
+      workoutDuration = 30;
+      break;
+    }
+    case ExerciseFITT.INTERMEDIATE: {
+      workoutDuration = 40;
+      break;
+    }
+    case ExerciseFITT.ADVANCED: {
+      workoutDuration = 60;
+      break;
+    }
   }
+
+  return workoutDuration;
+};
+
+interface InnerCalculatorArgs {
+  completeWorkoutDuration: number;
+  dietPreference: DietPreference;
+}
+
+const EnduranceCalculator = ({
+  completeWorkoutDuration,
+  dietPreference,
+}: InnerCalculatorArgs): PercentDuration => {
+  let endurancePercent = 30;
+  switch (dietPreference) {
+    case DietPreference.PROTIEN: {
+      endurancePercent = 30;
+      break;
+    }
+    case DietPreference.CARB: {
+      endurancePercent = 50;
+      break;
+    }
+    case DietPreference.MIXED: {
+      endurancePercent = 40;
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+
   return {
-    low: 60,
-    high: 90,
+    percent: endurancePercent,
+    duration: Math.round(
+      getPercentage(endurancePercent, completeWorkoutDuration)
+    ),
   };
 };
 
-interface IntensityCalculatorArgs {
-  age: number;
-  gender: Gender;
-  rhr: number;
-}
-const IntensityCalculator = ({ age, gender, rhr }: IntensityCalculatorArgs) => {
-  let constant = gender === Gender.MALE ? 220 : 206;
-  let multiplier = gender === Gender.MALE ? 0.75 : 0.85;
+const FlexibilityCalculator = ({
+  completeWorkoutDuration,
+  dietPreference,
+}: InnerCalculatorArgs): PercentDuration => {
+  let flexibilityPercent = 20;
+  switch (dietPreference) {
+    case DietPreference.PROTIEN: {
+      flexibilityPercent = 20;
+      break;
+    }
+    case DietPreference.CARB: {
+      flexibilityPercent = 20;
+      break;
+    }
+    case DietPreference.MIXED: {
+      flexibilityPercent = 20;
+      break;
+    }
+    default: {
+      break;
+    }
+  }
 
-  let base = constant - age - rhr;
-
-  return Math.round(base * multiplier + rhr);
+  return {
+    percent: flexibilityPercent,
+    duration: Math.round(getPercentage(20, completeWorkoutDuration)),
+  };
 };
 
-const FrequencyCalculator = ({
-  exercise,
-}: {
-  exercise: ExerciseFITT;
-}): Range => {
-  if (exercise === ExerciseFITT.BEGINNER) {
-    return {
-      low: 2,
-      high: 3,
-    };
-  } else if (exercise === ExerciseFITT.INTERMEDIATE) {
-    return {
-      low: 3,
-      high: 4,
-    };
+const StrengthCalculator = ({
+  completeWorkoutDuration,
+  dietPreference,
+}: InnerCalculatorArgs): PercentDuration => {
+  // Default assumes Protien
+  let strengthPercent: number = 50;
+
+  switch (dietPreference) {
+    case DietPreference.PROTIEN: {
+      strengthPercent = 50;
+      break;
+    }
+    case DietPreference.CARB: {
+      strengthPercent = 30;
+
+      break;
+    }
+    case DietPreference.MIXED: {
+      strengthPercent = 40;
+      break;
+    }
+    default: {
+      break;
+    }
   }
+
   return {
-    low: 4,
-    high: 6,
+    percent: strengthPercent,
+    duration: Math.round(
+      getPercentage(strengthPercent, completeWorkoutDuration)
+    ),
   };
 };
 
 interface ExerciseFITTCalculatorArgs {
-  age: number;
   exercise: ExerciseFITT;
-  gender: Gender;
-  rhr: number;
+  dietPreference: DietPreference;
 }
 
 const ExerciseFITTCalculator = ({
-  age,
   exercise,
-  gender,
-  rhr,
+  dietPreference,
 }: ExerciseFITTCalculatorArgs): ExerciseFITTCalcRes => {
-  const frequency = FrequencyCalculator({ exercise });
-  const intensity = IntensityCalculator({ age, gender, rhr });
-  const time = TimeInMinsCalculator({ exercise });
+  let completeWorkoutDuration = getWorkoutDuration(exercise);
+
+  const strength = StrengthCalculator({
+    completeWorkoutDuration,
+    dietPreference,
+  });
+  const endurance = EnduranceCalculator({
+    completeWorkoutDuration,
+    dietPreference,
+  });
+  const flexibility = FlexibilityCalculator({
+    completeWorkoutDuration,
+    dietPreference,
+  });
 
   return {
-    frequency,
-    intensity,
-    time,
+    strength,
+    endurance,
+    flexibility,
   };
 };
 

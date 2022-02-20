@@ -18,9 +18,8 @@ import DietPreferenceField from "components/molecules/fields/DietType";
 import SupplementTypeField from "components/molecules/fields/SupplementType";
 import { MealMasteryFormState } from "types/types";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
-import { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
-import tempInitialData from "./temp";
+// import tempInitialData from "./temp";
 
 interface MealMasteryFormProps {}
 
@@ -31,17 +30,11 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
   );
 
   const initialValues: Partial<MealMasteryFormState> = {
-    // gender: "null",
-    // activity: "null",
-    // goal: "null",
-    // dietPreference: "null",
-    // supplementType: "null",
-    ...tempInitialData,
+    // ...tempInitialData,
     ...userValues,
   };
 
   const onSubmit = (vals: MealMasteryFormState) => {
-    console.log("vals", vals);
     calculateResults(vals);
     setUserValues({
       first: vals.first,
@@ -49,8 +42,6 @@ const MealMasteryForm = ({}: MealMasteryFormProps) => {
       email: vals.email,
     });
   };
-
-  console.log("results", results);
 
   return (
     <Box mt={3} mb={8}>

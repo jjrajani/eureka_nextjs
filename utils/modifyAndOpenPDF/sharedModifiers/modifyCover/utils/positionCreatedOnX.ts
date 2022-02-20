@@ -1,7 +1,8 @@
 import { TextXArgs, TextXFunc } from "utils/modifyAndOpenPDF/types";
 import moment from "moment";
+import { CoverPage } from "utils/modifyAndOpenPDF/types";
 
-const positionCreatedOnX: TextXFunc = ({
+export const positionCreatedOnX: TextXFunc = ({
   text,
   font,
   pageWidth,
@@ -13,4 +14,11 @@ const positionCreatedOnX: TextXFunc = ({
   return pageXCenter - halfTextWidth;
 };
 
-export default positionCreatedOnX;
+export const positionCreatedOnY = (type: CoverPage) => {
+  let y = 120;
+  if (type === CoverPage.METABOLIC) {
+    y = 160;
+  }
+
+  return y;
+};

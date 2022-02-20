@@ -26,8 +26,6 @@ const ProteinServingSizeCalculator = (
   calorieIntake: CalorieIntake,
   proteinPercent: number
 ): HandServing => {
-  console.log("calorieIntake", calorieIntake);
-  console.log("proteinPercent", proteinPercent);
   let proteinCalories = calorieIntake.median * proteinPercent;
   let caloriesPerGram = proteinCalories / 4;
   let palmCount = caloriesPerGram / 28.35;
@@ -103,7 +101,6 @@ const HandServingSizeCalculator = ({
   weight,
 }: HandServingSizeCalculatorArgs): ServingSizes => {
   const { protein, carbs, fats } = macro;
-  console.log("macro", macro);
   let proteinServing = ProteinServingSizeCalculator(calorieIntake, protein),
     carbsServing = CarbServingsSizeCalculator(calorieIntake, carbs),
     fatServing = FatServingsSizeCalculator(calorieIntake, fats),

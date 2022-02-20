@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import MealPlannerContext from "../context";
 import MacroPieChart from "./MacroPieChart";
 import Grid from "@mui/material/Grid";
@@ -19,12 +19,6 @@ const MealMasteryResults = ({
   wrapperId,
 }: MealMasteryResultsProps) => {
   const { downloadResults, results } = useContext(MealPlannerContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      downloadResults();
-    }, 300);
-  }, []);
 
   return results ? (
     <ResultsWrapper scrollToResults={scrollToResults} wrapperId={wrapperId}>

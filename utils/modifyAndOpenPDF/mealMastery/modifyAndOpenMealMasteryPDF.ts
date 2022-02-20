@@ -1,18 +1,17 @@
 import isMobile from "utils/isMobile";
-import modifyCover from "./modifyPdf/modifyCover";
-import modifyMealMastery from "./modifyPdf/modifyMealMastery";
+import modifyCover from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover";
+import modifyMealMastery from "./modifyPdf";
 import downloadPDF from "../downloadPDF";
 import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
 import loadFontsToPDF from "../utils/loadFontsToPDF";
 import getMealMasterySlides from "./getSlides";
 import setPDFMetadata from "utils/modifyAndOpenPDF/utils/setPDFMetadata";
+import { CoverPage } from "utils/modifyAndOpenPDF/types";
 
 const modifyAndOpenMealMasteryPDF = async (
   results: MealMasteryCalculatorResult,
   userInput: MealMasteryFormState
 ) => {
-  console.log("results", results);
-
   const pdfDoc = await getMealMasterySlides(results, userInput);
 
   // Doc Metadata
@@ -24,7 +23,7 @@ const modifyAndOpenMealMasteryPDF = async (
   const pages = pdfDoc.getPages();
 
   // Cover Page
-  modifyCover({ pages, formState: userInput, font });
+  modifyCover({ pages, formState: userInput, font, type: CoverPage.MEAL });
 
   // My Meal Mastery
   modifyMealMastery({ pages, results, userInput, font });

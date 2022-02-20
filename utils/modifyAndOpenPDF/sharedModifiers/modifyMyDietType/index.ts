@@ -1,9 +1,9 @@
 import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
 import { FontType } from "utils/modifyAndOpenPDF/types";
-import { PDFPage, PDFFont } from "pdf-lib";
+import { PDFPage } from "pdf-lib";
 import { Text } from "utils/modifyAndOpenPDF/types";
-import { red, gray } from "utils/modifyAndOpenPDF/colors";
-import moment from "moment";
+import { red } from "utils/modifyAndOpenPDF/colors";
+import getHeaderTexts from "utils/modifyAndOpenPDF/sharedModifiers/utils/getHeaderTexts";
 
 const color = red,
   y = 277;
@@ -13,8 +13,6 @@ const baseText = {
   y,
   size: 18,
 };
-
-const PAGE_PAD = 4;
 
 const percentBreakdown = (
   results: MealMasteryCalculatorResult,
@@ -42,57 +40,6 @@ const percentBreakdown = (
   };
 };
 
-const userName = (
-  font: { size: number; weight: PDFFont },
-  userInput: MealMasteryFormState,
-  page: PDFPage
-) => {
-  const height = page.getHeight();
-  const userNameText = `Member Name: ${userInput.first} ${userInput.last}`;
-  const textHeight = font.weight.heightAtSize(font.size);
-
-  return {
-    ...baseText,
-    size: font.size,
-    color: gray,
-    y: height - textHeight - 1,
-    x: PAGE_PAD,
-    text: userNameText,
-    font: font.weight,
-  };
-};
-
-const date = (font: { size: number; weight: PDFFont }, page: PDFPage) => {
-  const width = page.getWidth();
-  const height = page.getHeight();
-  const textHeight = font.weight.heightAtSize(font.size);
-  const dateText = `Date: ${moment().format("MM/DD/YYYY")}`;
-  const dateTextWidth = font.weight.widthOfTextAtSize(`${dateText}`, font.size);
-
-  return {
-    ...baseText,
-    size: font.size,
-    color: gray,
-    y: height - textHeight - 1,
-    x: width - dateTextWidth - PAGE_PAD,
-    text: dateText,
-    font: font.weight,
-  };
-};
-
-const pageHeaders = (
-  font: FontType,
-  userInput: MealMasteryFormState,
-  page: PDFPage
-) => {
-  const _font = {
-    size: 12,
-    weight: font.regular,
-  };
-
-  return [userName(_font, userInput, page), date(_font, page)];
-};
-
 const texts = (
   results: MealMasteryCalculatorResult,
   userInput: MealMasteryFormState,
@@ -101,7 +48,11 @@ const texts = (
 ): Partial<Text>[] => {
   return [
     percentBreakdown(results, font),
-    ...pageHeaders(font, userInput, page),
+    ...getHeaderTexts({
+      font: { size: 12, weight: font.regular },
+      userInput,
+      page,
+    }),
   ];
 };
 

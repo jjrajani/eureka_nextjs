@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { UserFormState } from "types/types";
+import tempInitialValues from "./temp";
 
 export interface UseUserInfo {
   didSubmit: boolean;
@@ -9,9 +10,10 @@ export interface UseUserInfo {
 
 const useUserInfo = (): UseUserInfo => {
   const [values, _setValues] = useState<UserFormState>({
-    email: "jjrajani@gmail.com",
-    first: "Jenna",
-    last: "Rajani",
+    // email: "",
+    // first: "",
+    // last: "",
+    ...tempInitialValues,
   });
   const [didSubmit, setDidSubmit] = useState(true);
   // const [didSubmit, setDidSubmit] = useState(false);

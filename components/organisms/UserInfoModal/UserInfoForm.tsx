@@ -1,12 +1,9 @@
 import { useContext } from "react";
 import UserInfoContext from "./context";
-import { UseUserInfo } from "./context/useUserInfo";
-import { Form, Field } from "react-final-form";
-import { TextField } from "mui-rff";
+import { Form } from "react-final-form";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import InputLabel from "@mui/material/InputLabel";
 import Typography from "@mui/material/Typography";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
 import validateForm from "./utils/validateForm";

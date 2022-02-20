@@ -21,7 +21,7 @@ const tempInitialData: MetabolicMasteryFormState = {
   goal: Goal.WEIGHT_SUSTAIN,
   dietPreference: DietPreference.PROTIEN,
   restRx: RestRx.FAIR,
-  exerciseFitt: ExerciseFITT.INTERMEDIATE,
+  exerciseFitt: ExerciseFITT.ADVANCED,
   rhr: "150",
   stress: StressStage.ACUTE,
   supplementType: Supplement.GI,
