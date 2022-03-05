@@ -9,7 +9,7 @@ interface PageFooterProps {}
 const PageFooter = ({}: PageFooterProps) => {
   return (
     <footer className={styles.footer}>
-      <Container>
+      <Container className={styles.bottom}>
         <div className={styles.secton}>
           <p>
             Site by <a href="https://jjrajani.github.io/#/home">humdrum</a>
@@ -55,6 +55,17 @@ const PageFooter = ({}: PageFooterProps) => {
             <InstagramIcon />
           </a>
         </div>
+      </Container>
+      <Container className={styles.disclaimer}>
+        <p>
+          The purpose of Eureka! Membership and any nutrition and health
+          coaching is to improve the overall health, vitality and well-being of
+          the body through education, the use of natural foods, non-medicinal
+          nutritional supplements and lifestyle habits. The EHN Coaching Team
+          does not treat or diagnose specific diseases, disorders or conditions.
+          It is always advised to check with your physician before starting any
+          new diet, exercise or health building regime.
+        </p>
       </Container>
     </footer>
   );

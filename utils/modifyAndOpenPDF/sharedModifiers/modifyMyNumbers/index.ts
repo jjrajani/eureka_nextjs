@@ -2,7 +2,7 @@ import { red } from "utils/modifyAndOpenPDF/colors";
 import addCommasToNumber from "utils/addCommasToNumber";
 import {
   MealMasteryCalculatorResult,
-  MetabolicMasteryCalculatorResult,
+  MyDressProfileCalculatorResult,
 } from "types/types";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import { PDFPage } from "pdf-lib";
@@ -11,7 +11,7 @@ const color = red;
 const y = 138;
 
 const texts = (
-  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult
+  results: MealMasteryCalculatorResult | MyDressProfileCalculatorResult
 ) => [
   // Calories
   {
@@ -34,7 +34,7 @@ const texts = (
 
 const modifyMyNumbers = (
   page: PDFPage,
-  results: MealMasteryCalculatorResult | MetabolicMasteryCalculatorResult,
+  results: MealMasteryCalculatorResult | MyDressProfileCalculatorResult,
   font: FontType
 ) => {
   texts(results).forEach((text) => {

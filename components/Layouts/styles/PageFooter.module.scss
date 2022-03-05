@@ -1,10 +1,22 @@
 .footer {
   font-size: 14px;
   font-family: 'PT Sans',Helvetica,Arial,Lucida,sans-serif;
-  background-color: rgba(139,189,68,0.2)!important;
+  background-color: rgba(139,189,68,0.2) !important;
+  margin-top: 160px;
 
-  > div {
-    padding-top: 50px;
+  .disclaimer {
+    padding-bottom: 50px;
+    p {
+      max-width: 90%;
+      color: #846f64;
+      font-family: 'PT Sans',Helvetica,Arial,Lucida,sans-serif;
+      font-size: 14px;
+      margin: 0 auto;
+    }
+  }
+
+  .bottom {
+    padding-top: 30px;
     padding-bottom: 20px;
     display: flex;
     flex-wrap: wrap;

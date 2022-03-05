@@ -11,11 +11,13 @@ interface PageHeaderProps {}
 
 const PageHeader = ({}: PageHeaderProps) => {
   const router = useRouter();
-  const isMealMastery = router.asPath.indexOf("meal") > -1;
+  // const isMealMastery = router.asPath.indexOf("meal") > -1;
 
-  const title = isMealMastery ? "Meal Mastery" : "Metabolic Mastery";
+  // const title = isMealMastery ? "Meal Mastery" : "Metabolic Mastery";
+  const title = "My D.R.E.S.S. Profile";
 
-  const wrapperId = isMealMastery ? "meal-form" : "metabolic-form";
+  // const wrapperId = isMealMastery ? "meal-form" : "metabolic-form";
+  const wrapperId = "dress-form";
 
   const onClick = () => {
     scroller.scrollTo(wrapperId, {
@@ -54,7 +56,7 @@ const PageHeader = ({}: PageHeaderProps) => {
           </a>
         </div>
       </div>
-      <div className={styles.headerContentWrapper}>
+      <div>
         <div className={styles.bigLogo}>
           <img src="/images/eureka_logo.png" />
         </div>
@@ -69,17 +71,13 @@ const PageHeader = ({}: PageHeaderProps) => {
       <div className={styles.subHeader}>
         <Container>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Your wellness lifestyle begins here. Ready to make healthy living a
+            priority? Where do you start? What do you focus on? Discover this
+            and MORE with your D.R.E.S.S. Profile Wellness Plan! Enter your
+            information, goal and scores from each of the D.R.E.S.S.
+            assessments. Then download your personalized My D.R.E.S.S. Profile.
+            Get started today living your life well.
           </p>
-          <div className={styles.cta}>
-            <Button onClick={onClick}>Get Started</Button>
-          </div>
         </Container>
         <div className={styles.subHeaderHeader} />
       </div>

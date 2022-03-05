@@ -99,7 +99,7 @@ export interface ExerciseFITTCalcRes {
   flexibility: PercentDuration; // time to spend on flexibility exercise
 }
 
-export interface MetabolicMasteryCalculatorResult {
+export interface MyDressProfileCalculatorResult {
   bmi: string;
   bmr: string;
   calorieIntake: CalorieIntake;
@@ -128,7 +128,7 @@ export interface MealMasteryFormState extends UserFormState {
   supplementType: "null" | Supplement;
 }
 
-export interface MetabolicMasteryFormState extends UserFormState {
+export interface MyDressProfileFormState extends UserFormState {
   age: string;
   gender: "null" | Gender;
   weight: string;

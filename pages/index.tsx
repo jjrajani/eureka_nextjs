@@ -8,7 +8,7 @@ const HomePage: NextPage = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      router.push("/metabolic-mastery");
+      router.push("/my_dress_profile");
     }
   }, [router]);
 

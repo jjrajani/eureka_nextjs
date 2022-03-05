@@ -1,4 +1,4 @@
-import { MealMasteryFormState, MetabolicMasteryFormState } from "types/types";
+import { MealMasteryFormState, MyDressProfileFormState } from "types/types";
 import { PDFPage, PDFFont } from "pdf-lib";
 import { gray } from "utils/modifyAndOpenPDF/colors";
 import moment from "moment";
@@ -14,7 +14,7 @@ const userName = ({
   userInput,
 }: {
   font: { size: number; weight: PDFFont };
-  userInput: MealMasteryFormState | MetabolicMasteryFormState;
+  userInput: MealMasteryFormState | MyDressProfileFormState;
   page: PDFPage;
 }) => {
   const height = page.getHeight();
@@ -65,7 +65,7 @@ const getHeaderTexts = ({
 }: {
   font: Font;
   page: PDFPage;
-  userInput: MealMasteryFormState | MetabolicMasteryFormState;
+  userInput: MealMasteryFormState | MyDressProfileFormState;
   headerPad?: HeaderPad;
 }) => {
   return [userName({ font, page, userInput }), date({ font, page, headerPad })];
