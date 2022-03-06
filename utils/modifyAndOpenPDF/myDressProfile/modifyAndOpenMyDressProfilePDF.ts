@@ -1,14 +1,14 @@
 import isMobile from "utils/isMobile";
-import downloadPDF from "../downloadPDF";
+import downloadPDF from "utils/modifyAndOpenPDF/downloadPDF";
 import {
   MyDressProfileCalculatorResult,
   MyDressProfileFormState,
 } from "types/types";
-import loadFontsToPDF from "../utils/loadFontsToPDF";
-import getMyDressProfileSlides from "./getSlides";
+import loadFontsToPDF from "utils/modifyAndOpenPDF/utils/loadFontsToPDF";
+import getMyDressProfileSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides";
 import setPDFMetadata from "utils/modifyAndOpenPDF/utils/setPDFMetadata";
 import modifyCover from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover";
-import modifyMyDressProfile from "./modifyPdf";
+import modifyMyDressProfile from "utils/modifyAndOpenPDF/myDressProfile/modifyPdf/index";
 import { CoverPage } from "utils/modifyAndOpenPDF/types";
 
 const modifyAndOpenMyDressProfilePDF = async (
@@ -33,9 +33,11 @@ const modifyAndOpenMyDressProfilePDF = async (
   modifyMyDressProfile({ pages, results, userInput, font });
 
   const pdfBytes = await pdfDoc.save();
-  const file = new Blob([pdfBytes], { type: "application/pdf" });
-  const fileUrl = URL.createObjectURL(file);
-  window.open(fileUrl, "_blank");
+  return pdfBytes;
+
+  // const file = new Blob([pdfBytes], { type: "application/pdf" });
+  // const fileUrl = URL.createObjectURL(file);
+  // window.open(fileUrl, "_blank");
 
   // isMobile() ? window.open(fileUrl, "_blank") : downloadPDF(fileUrl);
 };

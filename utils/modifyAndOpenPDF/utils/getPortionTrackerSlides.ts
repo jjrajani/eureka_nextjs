@@ -1,5 +1,7 @@
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const getPortionTrackerSlides = async (): Promise<ArrayBuffer | undefined> => {
-  return await fetch("/pdfs/Daily_Portion_Tracker.pdf").then((res) =>
+  return await fetch(`${BASE_URL}/pdfs/Daily_Portion_Tracker.pdf`).then((res) =>
     res.arrayBuffer()
   );
 };

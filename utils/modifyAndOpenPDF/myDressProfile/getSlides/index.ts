@@ -3,23 +3,25 @@ import {
   MyDressProfileFormState,
 } from "types/types";
 import { PDFDocument } from "pdf-lib";
-import getDietTypeSlides from "./getDietTypeSlides";
-import getSupplementSlides from "./getSupplementSlides";
-import getRestRxSlides from "./getRestRxSlides";
-import getExerciseFittSlides from "./getExerciseFittSlides";
-import getFittTrackerSlides from "./getFittTrackerSlides";
-import getStressSlides from "./getStressSlides";
-import getDressSlides from "./getDressSlides";
-import attachSlides from "../../utils/attachSlides";
-import getPortionTrackerSlides from "../../utils/getPortionTrackerSlides";
-import getConclusionSlides from "../../utils/getConclusionSlides";
+import getDietTypeSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getDietTypeSlides";
+import getSupplementSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getSupplementSlides";
+import getRestRxSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getRestRxSlides";
+import getExerciseFittSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getExerciseFittSlides";
+import getFittTrackerSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getFittTrackerSlides";
+import getStressSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getStressSlides";
+import getDressSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getDressSlides";
+import attachSlides from "utils/modifyAndOpenPDF/utils/attachSlides";
+import getPortionTrackerSlides from "utils/modifyAndOpenPDF/utils/getPortionTrackerSlides";
+import getConclusionSlides from "utils/modifyAndOpenPDF/utils/getConclusionSlides";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const getMealMasterySlides = async (
   results: MyDressProfileCalculatorResult,
   userInput: MyDressProfileFormState
 ) => {
   const introSlides = await fetch(
-    "/pdfs/Metabolic_Mastery_Intro_Slides.pdf"
+    `${BASE_URL}/pdfs/Metabolic_Mastery_Intro_Slides.pdf`
   ).then((res) => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(introSlides);

@@ -18,7 +18,8 @@ const MyDressProfileResults = ({
   scrollToResults,
   wrapperId,
 }: MyDressProfileResultsProps) => {
-  const { downloadResults, results } = useContext(MyDressProfileContext);
+  // const { downloadResults, results } = useContext(MyDressProfileContext);
+  const { results, userInput } = useContext(MyDressProfileContext);
 
   return results ? (
     <ResultsWrapper scrollToResults={scrollToResults} wrapperId={wrapperId}>
@@ -75,7 +76,11 @@ const MyDressProfileResults = ({
             />
           </Grid>
           <Grid item xs={12}>
-            <DownloadResultsButton onClick={downloadResults} />
+            <DownloadResultsButton
+              // onClick={downloadResults}
+              results={results}
+              userInput={userInput}
+            />
           </Grid>
         </Grid>
       </div>

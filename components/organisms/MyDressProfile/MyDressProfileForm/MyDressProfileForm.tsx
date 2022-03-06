@@ -22,7 +22,7 @@ import StressStageField from "components/molecules/fields/StressStage";
 import SupplementTypeField from "components/molecules/fields/SupplementType";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
-// import tempInitialData from "./temp";
+import tempInitialData from "./temp";
 
 import { MyDressProfileFormState } from "types/types";
 
@@ -35,7 +35,7 @@ const MyDressProfileForm = ({}: MyDressProfileFormProps) => {
   );
 
   const initialValues: Partial<MyDressProfileFormState> = {
-    // ...tempInitialData,
+    ...tempInitialData,
     ...userValues,
   };
 

@@ -1,5 +1,7 @@
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const getDressSlides = async (): Promise<ArrayBuffer | undefined> => {
-  return await fetch("/pdfs/DRESS_Dashboard.pdf").then((res) =>
+  return await fetch(`${BASE_URL}/pdfs/DRESS_Dashboard.pdf`).then((res) =>
     res.arrayBuffer()
   );
 };

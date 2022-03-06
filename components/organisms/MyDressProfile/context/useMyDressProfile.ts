@@ -7,6 +7,7 @@ import {
   Gender,
   Goal,
   MyDressProfileCalculatorResult,
+  MyDressProfileFormState,
 } from "types/types";
 import {
   BMICalculator,
@@ -23,7 +24,8 @@ export interface UseMyDressProfile {
   calculateResults: (vals: MyDressProfileFormState) => void;
   loading: boolean;
   results?: MyDressProfileCalculatorResult;
-  downloadResults: () => void;
+  userInput?: MyDressProfileFormState;
+  // downloadResults: () => void;
 }
 
 const useMyDressProfile = (): UseMyDressProfile => {
@@ -94,17 +96,18 @@ const useMyDressProfile = (): UseMyDressProfile => {
     [setLoading, setResults]
   );
 
-  const downloadResults = useCallback(async () => {
-    if (formVals && results) {
-      await modifyAndOpenPDF(results, formVals);
-    }
-  }, [formVals, results]);
+  // const downloadResults = useCallback(async () => {
+  //   if (formVals && results) {
+  //     await modifyAndOpenPDF(results, formVals);
+  //   }
+  // }, [formVals, results]);
 
   return {
     calculateResults,
-    downloadResults,
+    // downloadResults,
     loading,
     results,
+    userInput: formVals,
   };
 };
 

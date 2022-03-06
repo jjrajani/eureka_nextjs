@@ -7,12 +7,15 @@ import { Text } from "utils/modifyAndOpenPDF/types";
 import {
   positionUserNameX,
   positionUserNameY,
-} from "./utils/positionUserNameX";
+} from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover/utils/positionUserNameX";
 import {
   positionCreatedOnX,
   positionCreatedOnY,
-} from "./utils/positionCreatedOnX";
-import { positionDateX, positionDateY } from "./utils/positionDateX";
+} from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover/utils/positionCreatedOnX";
+import {
+  positionDateX,
+  positionDateY,
+} from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover/utils/positionDateX";
 import { CoverPage } from "utils/modifyAndOpenPDF/types";
 
 interface ModifyCoverPageArgs {

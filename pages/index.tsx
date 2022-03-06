@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 const HomePage: NextPage = () => {
   const router = useRouter();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      router.push("/my_dress_profile");
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     router.push("/my_dress_profile");
+  //   }
+  // }, [router]);
 
   return (
     <div>

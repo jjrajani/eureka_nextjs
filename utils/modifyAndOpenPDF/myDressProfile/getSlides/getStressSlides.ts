@@ -1,27 +1,29 @@
 import { StressStage } from "types/types";
 import { MyDressProfileFormState } from "types/types";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const getExerciesFittSlides = async (
   userInput: MyDressProfileFormState
 ): Promise<ArrayBuffer | undefined> => {
   let slides;
   switch (userInput.stress) {
     case StressStage.COMPENSATORY: {
-      slides = await fetch("/pdfs/Stress_Compensatory.pdf").then((res) =>
-        res.arrayBuffer()
-      );
+      slides = await fetch(
+        `${BASE_URL}/pdfs/Stress_Compensatory.pdf`
+      ).then((res) => res.arrayBuffer());
       break;
     }
     case StressStage.ACUTE: {
-      slides = await fetch("/pdfs/Stress_Acute.pdf").then((res) =>
+      slides = await fetch(`${BASE_URL}/pdfs/Stress_Acute.pdf`).then((res) =>
         res.arrayBuffer()
       );
       break;
     }
     case StressStage.EXHAUSTION: {
-      slides = await fetch("/pdfs/Stress_Exhaustion.pdf").then((res) =>
-        res.arrayBuffer()
-      );
+      slides = await fetch(
+        `${BASE_URL}/pdfs/Stress_Exhaustion.pdf`
+      ).then((res) => res.arrayBuffer());
       break;
     }
     default: {
