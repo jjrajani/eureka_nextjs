@@ -14,8 +14,7 @@ import {
 import getFolder from "api/utils/google/drive/getFolder";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.clear();
-  // handleInputError(req);
+  handleInputError(req);
   let results, userInput;
   try {
     results = JSON.parse(req.query.results);
