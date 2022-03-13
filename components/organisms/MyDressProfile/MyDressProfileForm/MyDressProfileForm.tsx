@@ -29,7 +29,7 @@ import { MyDressProfileFormState } from "types/types";
 interface MyDressProfileFormProps {}
 
 const MyDressProfileForm = ({}: MyDressProfileFormProps) => {
-  const { calculateResults } = useContext(MealPlannerContext);
+  const { calculateResults, loading } = useContext(MealPlannerContext);
   const { values: userValues, setValues: setUserValues } = useContext(
     UserInfoContext
   );
@@ -112,7 +112,9 @@ const MyDressProfileForm = ({}: MyDressProfileFormProps) => {
 
                 <Grid item xs={12}>
                   <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <Button type="submit">SUBMIT</Button>
+                    <Button disabled={loading} type="submit">
+                      SUBMIT
+                    </Button>
                   </div>
                 </Grid>
               </Grid>

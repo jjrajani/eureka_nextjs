@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MyDressProfileFormState } from "types/types";
 import {
   Activity,
@@ -19,10 +19,12 @@ import {
   TargetHeartRateCalculator,
 } from "utils/calculators";
 import modifyAndOpenPDF from "utils/modifyAndOpenPDF/MyDressProfile/modifyAndOpenMyDressProfilePDF";
+import axios from "axios";
 
 export interface UseMyDressProfile {
   calculateResults: (vals: MyDressProfileFormState) => void;
   loading: boolean;
+  pdfFilePath: string;
   results?: MyDressProfileCalculatorResult;
   userInput?: MyDressProfileFormState;
   // downloadResults: () => void;
@@ -32,9 +34,35 @@ const useMyDressProfile = (): UseMyDressProfile => {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<MyDressProfileCalculatorResult>();
   const [formVals, setFormVals] = useState<MyDressProfileFormState>();
+  const [pdfFilePath, setPDFFilePath] = useState<string>();
+
+  const cleanUpOldPDF = useCallback(() => {
+    try {
+      axios.get(`/api/cleanup_temp_file?filePath=${pdfFilePath}`);
+    } catch (e) {
+      console.log("e", e.message);
+    }
+    setPDFFilePath(undefined);
+  }, [pdfFilePath, setPDFFilePath]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const beforeUnload = () => {
+        console.log("beforeUnload");
+      };
+      window.addEventListener("onbeforeunload", cleanUpOldPDF);
+
+      return () => {
+        window.removeEventListener("onbeforeunload", cleanUpOldPDF);
+      };
+    }
+  }, [cleanUpOldPDF]);
 
   const calculateResults = useCallback(
-    (vals: MyDressProfileFormState) => {
+    async (vals: MyDressProfileFormState) => {
+      if (pdfFilePath) {
+        cleanUpOldPDF();
+      }
       setFormVals(vals);
       setLoading(true);
       setResults(undefined);
@@ -81,9 +109,7 @@ const useMyDressProfile = (): UseMyDressProfile => {
         rhr: parseInt(vals.rhr, 10),
       });
 
-      setLoading(false);
-
-      setResults({
+      const _results = {
         bmi,
         bmr,
         calorieIntake,
@@ -91,20 +117,45 @@ const useMyDressProfile = (): UseMyDressProfile => {
         macro,
         handSizes,
         targetHeartRate,
-      });
+      };
+
+      setResults(_results);
+      try {
+        await generatePdf(_results, vals);
+      } catch (err) {
+        console.dir(err);
+        setLoading(false);
+      }
+      setLoading(false);
     },
-    [setLoading, setResults]
+    [setLoading, setResults, pdfFilePath]
   );
 
-  // const downloadResults = useCallback(async () => {
-  //   if (formVals && results) {
-  //     await modifyAndOpenPDF(results, formVals);
-  //   }
-  // }, [formVals, results]);
+  const generatePdf = useCallback(
+    async (
+      _results: MyDressProfileCalculatorResult,
+      userInput: MyDressProfileFormState
+    ) => {
+      const res = await axios.get(
+        `/api/generate_pdf?results=${JSON.stringify(
+          _results
+        )}&userInput=${JSON.stringify(userInput)}`
+      );
+
+      setPDFFilePath(res.data.filePath);
+
+      axios.get(
+        `/api/broadcast_submission?filePath=${
+          res.data.filePath
+        }&userInput=${JSON.stringify(userInput)}`
+      );
+    },
+    [setPDFFilePath]
+  );
 
   return {
     calculateResults,
-    // downloadResults,
+    pdfFilePath,
     loading,
     results,
     userInput: formVals,

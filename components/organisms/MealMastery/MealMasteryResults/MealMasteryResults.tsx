@@ -74,7 +74,7 @@ const MealMasteryResults = ({
             />
           </Grid>
           <Grid item xs={12}>
-            <DownloadResultsButton onClick={downloadResults} />
+            {/*<DownloadResultsButton onClick={downloadResults} />*/}
           </Grid>
         </Grid>
       </div>

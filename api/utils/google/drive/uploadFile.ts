@@ -1,17 +1,15 @@
-import fs from "fs";
 import readline from "readline";
 import { drive } from "api/utils/google/apis";
 import { Duplex } from "stream";
-
-const filePath = "public/pdfs/Conclusion_Slides.pdf";
-const fileSize = fs.statSync(filePath).size;
+import fs from "node:fs";
 
 const uploadFile = async (
   folderId: string,
   googleFileName: string,
-  stream: Duplex
+  filePath: string
 ) => {
   try {
+    const fileSize = fs.statSync(filePath).size;
     const res = await drive.files.create(
       {
         requestBody: {
@@ -21,8 +19,7 @@ const uploadFile = async (
         },
         media: {
           mimeType: "application/pdf",
-          body: stream,
-          // body: fs.createReadStream(filePath),
+          body: fs.createReadStream(filePath),
         },
       },
       {

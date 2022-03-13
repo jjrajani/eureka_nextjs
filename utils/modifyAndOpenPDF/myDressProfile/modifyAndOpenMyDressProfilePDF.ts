@@ -37,6 +37,7 @@ const modifyAndOpenMyDressProfilePDF = async (
 
   // const file = new Blob([pdfBytes], { type: "application/pdf" });
   // const fileUrl = URL.createObjectURL(file);
+  // return file;
   // window.open(fileUrl, "_blank");
 
   // isMobile() ? window.open(fileUrl, "_blank") : downloadPDF(fileUrl);

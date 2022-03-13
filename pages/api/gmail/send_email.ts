@@ -1,4 +1,4 @@
-import sendEmail from "api/utils/google/gmail/sendEmail/sendEmail";
+import sendUserEmail from "api/utils/google/gmail/sendUserEmail/sendUserEmail";
 import validator from "validator";
 
 export default async (req, res) => {
@@ -6,7 +6,7 @@ export default async (req, res) => {
   if (email) {
     const emailValid = validator.isEmail(email);
     if (emailValid) {
-      const emailRes = await sendEmail(email);
+      const emailRes = await sendUserEmail(email);
 
       if (emailRes.id) {
         res.status(200).json({ success: "Yay! Email sent" });

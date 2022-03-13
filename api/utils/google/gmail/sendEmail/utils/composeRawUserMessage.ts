@@ -1,7 +1,7 @@
 import MailComposer from "nodemailer/lib/mail-composer";
 import { DRESS_PDF_FILE_NAME } from "utils/constants";
 
-export interface ComposeRawMessageArgs {
+export interface composeRawUserMessageArgs {
   fileName: string;
   file: Uint8Array;
   to: {
@@ -10,11 +10,11 @@ export interface ComposeRawMessageArgs {
   };
 }
 
-const composeRawMessage = async ({
+const composeRawUserMessage = async ({
   fileName,
   file,
   to,
-}: ComposeRawMessageArgs) => {
+}: composeRawUserMessageArgs) => {
   const mail = new MailComposer({
     from: "Eureka! Holistic Nutrition <eurekanutrition@gmail.com>",
     to: `${to.name} <${to.email}>`,
@@ -50,4 +50,4 @@ const composeRawMessage = async ({
   return message;
 };
 
-export default composeRawMessage;
+export default composeRawUserMessage;

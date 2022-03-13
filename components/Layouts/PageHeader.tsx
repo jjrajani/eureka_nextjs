@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./styles/PageHeader.module.scss";
 import MailIcon from "@mui/icons-material/Mail";
@@ -6,6 +7,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Scroll from "react-scroll";
 const scroller = Scroll.scroller;
+import axios from "axios";
 
 interface PageHeaderProps {}
 
@@ -18,6 +20,11 @@ const PageHeader = ({}: PageHeaderProps) => {
 
   // const wrapperId = isMealMastery ? "meal-form" : "metabolic-form";
   const wrapperId = "dress-form";
+
+  useEffect(async () => {
+    const res = await axios.get("/api/cleanup_temp_folders");
+    console.log("res", res);
+  }, []);
 
   const onClick = () => {
     scroller.scrollTo(wrapperId, {

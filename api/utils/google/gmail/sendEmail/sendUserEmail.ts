@@ -2,16 +2,20 @@ import { gmail } from "../../apis";
 import path from "path";
 import listFiles from "../../drive/listFiles";
 import MailComposer, {
-  ComposeRawMessageArgs,
+  composeRawMessageArgs,
 } from "nodemailer/lib/mail-composer";
-import composeRawMessage from "./utils/composeRawMessage";
+import composeRawUserMessage from "./utils/composeRawUserMessage";
 
-interface SendEmailArgs extends ComposeRawMessageArgs {}
+interface SendUserEmailArgs extends composeRawMessageArgs {
+  file: Uint8Array;
+  fileName: string;
+  to: string;
+}
 
-const sendEmail = async ({ file, fileName, to }: SendEmailArgs) => {
+const sendUserEmail = async ({ file, fileName, to }: SendUserEmailArgs) => {
   let message;
   try {
-    message = await composeRawMessage({ file, fileName, to });
+    message = await composeRawUserMessage({ file, fileName, to });
   } catch (error) {
     console.log(`error composing email: ${error.message}`);
   }
@@ -31,4 +35,4 @@ const sendEmail = async ({ file, fileName, to }: SendEmailArgs) => {
   return res.data;
 };
 
-export default sendEmail;
+export default sendUserEmail;
