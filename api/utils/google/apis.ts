@@ -1,4 +1,4 @@
-import { google, drive_v3, gmail_v1 } from "googleapis";
+import { google } from "googleapis";
 import path from "path";
 import auth from "./auth";
 
@@ -20,12 +20,12 @@ import auth from "./auth";
 //   google.options({ auth: authClient });
 // };
 
-const drive: drive_v3.Drive = google.drive({
+const drive = google.drive({
   version: "v3",
   auth,
 });
 
-const gmail: gmail_v1.Gmail = google.gmail({
+const gmail = google.gmail({
   version: "v1",
   auth,
 });

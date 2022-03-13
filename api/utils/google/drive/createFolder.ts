@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fs from "fs";
 import readline from "readline";
 import { drive } from "api/utils/google/apis";
@@ -26,10 +27,13 @@ const createFolder = async (folderName: string, parentId?: string) => {
         },
       }
     );
-    // console.log("res", res.data);
-    return res.data.id;
+    return res?.data?.id;
   } catch (error) {
-    console.log("error", error.message);
+    if (error?.mesage) {
+      console.log("error", error?.message);
+    } else {
+      console.log("error", error);
+    }
   }
 };
 

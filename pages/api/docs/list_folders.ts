@@ -1,6 +1,7 @@
+import type { NextApiRequest, NextApiResponse } from "next";
 import getFolder from "api/utils/google/drive/getFolder";
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const dressFolder = await getFolder("DRESS RESULTS");
   const userFolder = await getFolder("Jenna Rajani");
 

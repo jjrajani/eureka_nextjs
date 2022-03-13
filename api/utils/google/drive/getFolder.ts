@@ -12,17 +12,20 @@ const getFolder = async (folderName: string, parentId?: string) => {
       q = `${q} and '${parentId}' in parents`;
     }
     const res = await drive.files.list({ q });
-    if (res.data.files.length === 0) {
+    if (res?.data?.files?.length === 0) {
       return false;
-    } else if (res.data.files.length === 1) {
-      return res.data.files[0];
+    } else if (res?.data?.files?.length === 1) {
+      return res?.data?.files[0];
     } else {
       console.log("more than 1 folder with that name");
       return false;
     }
-    return res.data.id;
   } catch (error) {
-    console.log("error", error.message);
+    if (error?.mesage) {
+      console.log("error", error?.message);
+    } else {
+      console.log("error", error);
+    }
   }
 };
 

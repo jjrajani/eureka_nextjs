@@ -6,7 +6,11 @@ const listFiles = async () => {
     console.log("files", res.data.files);
     return res.data.files;
   } catch (error) {
-    console.log("error", error.message);
+    if (error?.mesage) {
+      console.log("error", error?.message);
+    } else {
+      console.log("error", error);
+    }
   }
 };
 

@@ -3,7 +3,6 @@ import useMealMastery, { UseMyDressProfile } from "./useMyDressProfile";
 
 const defaultValue: UseMyDressProfile = {
   calculateResults: () => {},
-  downloadResults: () => {},
   loading: false,
 };
 

@@ -10,7 +10,7 @@ const uploadFile = async (
 ) => {
   try {
     const fileSize = fs.statSync(filePath).size;
-    const res = await drive.files.create(
+    const res = await drive?.files?.create(
       {
         requestBody: {
           name: googleFileName,
@@ -33,10 +33,14 @@ const uploadFile = async (
         },
       }
     );
-    console.log("res", res.data);
-    return res.data.id;
+    // console.log("res", res?.data);
+    return res?.data?.id;
   } catch (error) {
-    console.log("error", error.message);
+    if (error?.mesage) {
+      console.log("error", error?.message);
+    } else {
+      console.log("error", error);
+    }
   }
 };
 

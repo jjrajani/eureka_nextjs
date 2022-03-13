@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { drive } from "api/utils/google/apis";
 
 const generateUserUrl = async (userEmail: string, fileId: string) => {
@@ -10,13 +11,11 @@ const generateUserUrl = async (userEmail: string, fileId: string) => {
     },
   });
 
-  // @ts-ignore
   const res = await drive.files.get({
     fileId,
     fields: ["webViewLink", "webContentLink"],
   });
 
-  // @ts-ignore
   return res.data;
 };
 

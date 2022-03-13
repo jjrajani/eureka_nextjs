@@ -1,6 +1,11 @@
+import type { NextApiResponse } from "next";
 import validator from "validator";
+import { MyDressProfileFormState } from "types/types";
 
-const handleMissingFieldsError = (userInput) => {
+const handleMissingFieldsError = (
+  userInput: MyDressProfileFormState,
+  res: NextApiResponse
+) => {
   if (!userInput.first && !userInput.last) {
     res.status(422).json(`Error generating PDF: Missing first and last name`);
   }

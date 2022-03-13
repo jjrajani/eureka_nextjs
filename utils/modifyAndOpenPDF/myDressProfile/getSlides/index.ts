@@ -3,13 +3,13 @@ import {
   MyDressProfileFormState,
 } from "types/types";
 import { PDFDocument } from "pdf-lib";
-import getDietTypeSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getDietTypeSlides";
-import getSupplementSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getSupplementSlides";
-import getRestRxSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getRestRxSlides";
-import getExerciseFittSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getExerciseFittSlides";
-import getFittTrackerSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getFittTrackerSlides";
-import getStressSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getStressSlides";
-import getDressSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides/getDressSlides";
+import getDietTypeSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getDietTypeSlides";
+import getSupplementSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getSupplementSlides";
+import getRestRxSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getRestRxSlides";
+import getExerciseFittSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getExerciseFittSlides";
+import getFittTrackerSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getFittTrackerSlides";
+import getStressSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getStressSlides";
+import getDressSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getDressSlides";
 import attachSlides from "utils/modifyAndOpenPDF/utils/attachSlides";
 import getPortionTrackerSlides from "utils/modifyAndOpenPDF/utils/getPortionTrackerSlides";
 import getConclusionSlides from "utils/modifyAndOpenPDF/utils/getConclusionSlides";

@@ -5,10 +5,10 @@ import {
   MyDressProfileFormState,
 } from "types/types";
 import loadFontsToPDF from "utils/modifyAndOpenPDF/utils/loadFontsToPDF";
-import getMyDressProfileSlides from "utils/modifyAndOpenPDF/myDressProfile/getSlides";
+import getMyDressProfileSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides";
 import setPDFMetadata from "utils/modifyAndOpenPDF/utils/setPDFMetadata";
 import modifyCover from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover";
-import modifyMyDressProfile from "utils/modifyAndOpenPDF/myDressProfile/modifyPdf/index";
+import modifyMyDressProfile from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/index";
 import { CoverPage } from "utils/modifyAndOpenPDF/types";
 
 const modifyAndOpenMyDressProfilePDF = async (

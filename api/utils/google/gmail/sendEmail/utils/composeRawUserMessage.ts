@@ -3,7 +3,7 @@ import { DRESS_PDF_FILE_NAME } from "utils/constants";
 
 export interface composeRawUserMessageArgs {
   fileName: string;
-  file: Uint8Array;
+  file: Buffer;
   to: {
     name: string;
     email: string;
@@ -32,9 +32,13 @@ const composeRawUserMessage = async ({
   });
 
   const message = await new Promise((resolve, reject) => {
-    return mail.compile().build(async (error, msg) => {
+    return mail.compile().build(async (error: any, msg: any) => {
       if (error) {
-        console.log("error", error.message);
+        if (error?.mesage) {
+          console.log("error", error?.message);
+        } else {
+          console.log("error", error);
+        }
         reject(error);
       } else {
         const encodedMessage = Buffer.from(msg)

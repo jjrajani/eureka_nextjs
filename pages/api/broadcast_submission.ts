@@ -4,8 +4,8 @@ import axios from "axios";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const filePath = req.query.filePath;
-  const userInput = JSON.parse(req.query.userInput);
+  const filePath = req?.query?.filePath as string;
+  const userInput = JSON.parse(req.query.userInput as string);
   const name = `${userInput.first} ${userInput.last}`.trim();
 
   if (!filePath) {
@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     );
     res.status(200).json({ filePath });
   } catch (error) {
-    res.status(500).json(`Error generating pdf: ${error.message}`);
+    res.status(500).json(`Error generating pdf: ${error?.message}`);
   }
 };
 

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import modifyAndOpenMyDressProfilePDF from "utils/modifyAndOpenPDF/myDressProfile/modifyAndOpenMyDressProfilePDF";
+import modifyAndOpenMyDressProfilePDF from "utils/modifyAndOpenPDF/MyDressProfile/modifyAndOpenMyDressProfilePDF";
 import {
   handleInputError,
   handleMissingFieldsError,
@@ -9,16 +9,16 @@ import { createTempFile } from "api/routes/generate_pdf/utils";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  handleInputError(req);
+  handleInputError(req, res);
   let results, userInput;
   try {
-    results = JSON.parse(req.query.results);
-    userInput = JSON.parse(req.query.userInput);
+    results = JSON.parse(req.query.results as string);
+    userInput = JSON.parse(req.query.userInput as string);
   } catch (error) {
-    res.status(422).json(`Error parsing query params: ${error.message}`);
+    res.status(422).json(`Error parsing query params: ${error?.message}`);
   }
 
-  handleMissingFieldsError(userInput);
+  handleMissingFieldsError(userInput, res);
   const name = `${userInput.first} ${userInput.last}`.trim();
 
   let file: Uint8Array;
@@ -30,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (filePath) {
       res.status(200).json({ filePath });
     } else {
-      res.status(500).json(`Error generating file: ${error.message}`);
+      res.status(500).json(`Error generating file`);
     }
 
     // If we don't need the file anymore we could manually call the cleanupCallback
@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // will clean after itself.
     // cleanupCallback();
   } catch (error) {
-    res.status(500).json(`Error generating pdf: ${error.message}`);
+    res.status(500).json(`Error generating pdf: ${error?.message}`);
   }
 };
 

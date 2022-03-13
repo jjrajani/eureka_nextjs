@@ -5,9 +5,9 @@ import fs from "node:fs";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const filePath = req.query.filePath;
-    const email = req.query.email;
-    const name = req.query.name;
+    const filePath = req.query.filePath as string;
+    const email = req.query.email as string;
+    const name = req.query.name as string;
 
     if (!filePath && !email && !name) {
       res

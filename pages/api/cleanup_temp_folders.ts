@@ -2,8 +2,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import fs, { readdirSync } from "node:fs";
 import path from "path";
 import moment from "moment";
+import { BASE_FILE_PATH } from "api/routes/generate_pdf/utils/createTempFile";
 
-const getDirectories = (source, todaysDir) =>
+const getDirectories = (source: string, todaysDir: string) =>
   readdirSync(source, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name)
@@ -11,7 +12,7 @@ const getDirectories = (source, todaysDir) =>
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const todaysDir = moment().format("MM_DD_YYYY");
-  const tmpdir = path.join(__dirname, "..", "..", "..", "..", "/tmp");
+  const tmpdir = BASE_FILE_PATH;
   const dirs = getDirectories(tmpdir, todaysDir);
 
   if (dirs.length > 0) {

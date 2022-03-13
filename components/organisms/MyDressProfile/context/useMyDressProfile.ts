@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { MyDressProfileFormState } from "types/types";
 import {
   Activity,
   ExerciseFITT,
@@ -24,7 +23,7 @@ import axios from "axios";
 export interface UseMyDressProfile {
   calculateResults: (vals: MyDressProfileFormState) => void;
   loading: boolean;
-  pdfFilePath: string;
+  pdfFilePath?: string;
   results?: MyDressProfileCalculatorResult;
   userInput?: MyDressProfileFormState;
   // downloadResults: () => void;

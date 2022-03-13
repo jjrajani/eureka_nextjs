@@ -28,6 +28,8 @@ import { MyDressProfileFormState } from "types/types";
 
 interface MyDressProfileFormProps {}
 
+const isDev = process.env.NODE_ENV === "development";
+
 const MyDressProfileForm = ({}: MyDressProfileFormProps) => {
   const { calculateResults, loading } = useContext(MealPlannerContext);
   const { values: userValues, setValues: setUserValues } = useContext(
@@ -35,7 +37,7 @@ const MyDressProfileForm = ({}: MyDressProfileFormProps) => {
   );
 
   const initialValues: Partial<MyDressProfileFormState> = {
-    ...tempInitialData,
+    ...(isDev ? tempInitialData : {}),
     ...userValues,
   };
 

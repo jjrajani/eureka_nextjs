@@ -3,11 +3,20 @@ import fs from "node:fs";
 import path from "path";
 import moment from "moment";
 
-const createTempFile = (fileContent) => {
+export const BASE_FILE_PATH = path.join(
+  __dirname,
+  "..",
+  "..",
+  "..",
+  "..",
+  "/tmp"
+);
+
+const createTempFile = (fileContent: Uint8Array) => {
   return new Promise((resolve, reject) => {
     try {
       const date = moment().format("MM_DD_YYYY");
-      const tmpdir = path.join(__dirname, "..", "..", "..", "..", "/tmp", date);
+      const tmpdir = path.join(BASE_FILE_PATH, date);
       if (!fs.existsSync(tmpdir)) {
         fs.mkdirSync(tmpdir);
       }
@@ -20,7 +29,7 @@ const createTempFile = (fileContent) => {
           if (err) throw err;
           console.log("File: ", path);
           console.log("Filedescriptor: ", fd);
-          fs.appendFile(path, fileContent);
+          fs.appendFile(path, fileContent, () => {});
           resolve(path);
         }
       );

@@ -21,9 +21,8 @@ const PageHeader = ({}: PageHeaderProps) => {
   // const wrapperId = isMealMastery ? "meal-form" : "metabolic-form";
   const wrapperId = "dress-form";
 
-  useEffect(async () => {
-    const res = await axios.get("/api/cleanup_temp_folders");
-    console.log("res", res);
+  useEffect(() => {
+    axios.get("/api/cleanup_temp_folders");
   }, []);
 
   const onClick = () => {

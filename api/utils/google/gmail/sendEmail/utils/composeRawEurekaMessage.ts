@@ -7,7 +7,7 @@ export interface composeRawUserMessageArgs {
   userName: string;
 }
 
-const composeRawUserMessage = async ({
+const composeRawEurekaMessage = async ({
   fileLink,
   folderLink,
   userName,
@@ -29,9 +29,13 @@ const composeRawUserMessage = async ({
   });
 
   const message = await new Promise((resolve, reject) => {
-    return mail.compile().build(async (error, msg) => {
+    return mail.compile().build(async (error: any, msg: any) => {
       if (error) {
-        console.log("error", error.message);
+        if (error?.mesage) {
+          console.log("error", error?.message);
+        } else {
+          console.log("error", error);
+        }
         reject(error);
       } else {
         const encodedMessage = Buffer.from(msg)
@@ -47,4 +51,4 @@ const composeRawUserMessage = async ({
   return message;
 };
 
-export default composeRawUserMessage;
+export default composeRawEurekaMessage;

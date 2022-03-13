@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "node:fs";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const filePath = req.query.filePath;
+  const filePath = req?.query?.filePath as string;
   if (!filePath) {
     res.status(422).json("Error downloading file: filePath param required");
   }

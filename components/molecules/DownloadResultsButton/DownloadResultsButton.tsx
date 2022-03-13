@@ -12,7 +12,7 @@ interface DownloadResultsButtonProps {
   // onClick: () => void;
   // results: MyDressProfileCalculatorResult;
   // userInput: MyDressProfileFormState;
-  filePath: string;
+  filePath?: string;
 }
 
 const DownloadResultsButton = ({
