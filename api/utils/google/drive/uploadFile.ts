@@ -7,7 +7,7 @@ const filePath = "public/pdfs/Conclusion_Slides.pdf";
 const fileSize = fs.statSync(filePath).size;
 
 const uploadFile = async (
-  // folderId: string,
+  folderId: string,
   googleFileName: string,
   stream: Duplex
 ) => {
@@ -17,7 +17,7 @@ const uploadFile = async (
         requestBody: {
           name: googleFileName,
           mimeType: "application/pdf",
-          // parents: [folderId],
+          parents: [folderId],
         },
         media: {
           mimeType: "application/pdf",

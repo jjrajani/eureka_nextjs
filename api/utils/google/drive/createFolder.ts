@@ -5,13 +5,14 @@ import { drive } from "api/utils/google/apis";
 const filePath = "public/pdfs/Conclusion_Slides.pdf";
 const fileSize = fs.statSync(filePath).size;
 
-const createFolder = async (folderName: string) => {
+const createFolder = async (folderName: string, parentId?: string) => {
   try {
     const res = await drive.files.create(
       {
         resource: {
           name: folderName,
           mimeType: "application/vnd.google-apps.folder",
+          ...(parentId ? { parents: [parentId] } : {}),
         },
       },
       {
@@ -25,7 +26,7 @@ const createFolder = async (folderName: string) => {
         },
       }
     );
-    console.log("res", res.data);
+    // console.log("res", res.data);
     return res.data.id;
   } catch (error) {
     console.log("error", error.message);

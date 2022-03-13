@@ -19,15 +19,16 @@ const DownloadResultsButton = ({
 }: DownloadResultsButtonProps) => {
   return (
     <div className={styles.wrapper}>
-      {/*<Button onClick={onClick}>Download</Button>*/}
-      <a
-        href={`/api/sendFile?results=${JSON.stringify(
-          results
-        )}&userInput=${JSON.stringify(userInput)}`}
-        download={DRESS_PDF_FILE_NAME}
-      >
-        Download
-      </a>
+      <Button>
+        <a
+          href={`/api/sendFile?results=${JSON.stringify(
+            results
+          )}&userInput=${JSON.stringify(userInput)}`}
+          download={DRESS_PDF_FILE_NAME}
+        >
+          Download
+        </a>
+      </Button>
     </div>
   );
 };
