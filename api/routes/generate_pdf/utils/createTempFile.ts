@@ -22,11 +22,6 @@ const createTempFile = (fileContent) => {
           console.log("Filedescriptor: ", fd);
           fs.appendFile(path, fileContent);
           resolve(path);
-
-          // If we don't need the file anymore we could manually call the cleanupCallback
-          // But that is not necessary if we didn't pass the keep option because the library
-          // will clean after itself.
-          // cleanupCallback();
         }
       );
     } catch (error) {
