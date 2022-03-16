@@ -4,11 +4,11 @@ import {
   MyDressProfileCalculatorResult,
   MyDressProfileFormState,
 } from "types/types";
-import modifyMyInfo from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyInfo";
-import modifyMyNumbers from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyNumbers";
+// import modifyMyNumbers from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyNumbers";
 import modifyMyPortions from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyPortions";
 import modifyMyDietType from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyDietType";
 import modifyPortionTracker from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker";
+import modifyDressProfile from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyDressProfile";
 import modifyMyRestRx from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyMyRestRx";
 import modifyExerciseFITT from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyExerciseFITT";
 import modifyStressStage from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyStressStage";
@@ -27,8 +27,8 @@ const modifyMyDressProfile = ({
   results,
   userInput,
 }: ModifyMyDressProfileArgs) => {
-  modifyMyInfo(pages[2], userInput, font);
-  modifyMyNumbers(pages[2], results, font);
+  modifyDressProfile({ page: pages[2], results, font, userInput });
+  // modifyMyNumbers(pages[2], results, font);
   modifyMyPortions(pages[2], results, font);
   modifyMyDietType({ page: pages[3], results, font, userInput });
   modifyPortionTracker(pages, results, font);

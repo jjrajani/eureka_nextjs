@@ -25,7 +25,7 @@ const texts = (
   ];
 };
 
-const modifyExerciseFITT = ({
+const modifyRestRx = ({
   page,
   font,
   userInput,
@@ -45,4 +45,4 @@ const modifyExerciseFITT = ({
   });
 };
 
-export default modifyExerciseFITT;
+export default modifyRestRx;

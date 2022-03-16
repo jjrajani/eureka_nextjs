@@ -13,6 +13,7 @@ import getDressSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getD
 import attachSlides from "utils/modifyAndOpenPDF/utils/attachSlides";
 import getPortionTrackerSlides from "utils/modifyAndOpenPDF/utils/getPortionTrackerSlides";
 import getConclusionSlides from "utils/modifyAndOpenPDF/utils/getConclusionSlides";
+import getNutritionTipsSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getNutritionTipsSlides";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -21,7 +22,7 @@ const getMealMasterySlides = async (
   userInput: MyDressProfileFormState
 ) => {
   const introSlides = await fetch(
-    `${BASE_URL}/pdfs/Metabolic_Mastery_Intro_Slides.pdf`
+    `${BASE_URL}/pdfs/DRESS_Intro_Slides.pdf`
   ).then((res) => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(introSlides);
@@ -34,28 +35,36 @@ const getMealMasterySlides = async (
   const portionTrackerSlides = await getPortionTrackerSlides();
   await attachSlides(portionTrackerSlides, pdfDoc, 4);
 
+  // Nutrition Tips
+  const nutritionTipsSlides = await getNutritionTipsSlides();
+  await attachSlides(nutritionTipsSlides, pdfDoc);
+
   // Conclusion Slides
-  const conclusionSlides = await getConclusionSlides();
-  await attachSlides(conclusionSlides, pdfDoc);
+  // const conclusionSlides = await getConclusionSlides();
+  // await attachSlides(conclusionSlides, pdfDoc);
 
+  // Rest Rx Slide
   const restRxSlides = await getRestRxSlides(userInput);
-  await attachSlides(restRxSlides, pdfDoc, 8);
+  await attachSlides(restRxSlides, pdfDoc);
 
+  // Exercies FITT Slide
   const exerciseFittSlides = await getExerciseFittSlides(userInput);
-  await attachSlides(exerciseFittSlides, pdfDoc, 9);
+  await attachSlides(exerciseFittSlides, pdfDoc);
 
+  // FITT Tracker Slide
   const fittTrackerSlides = await getFittTrackerSlides();
-  await attachSlides(fittTrackerSlides, pdfDoc, 10);
+  await attachSlides(fittTrackerSlides, pdfDoc);
 
+  // Stress Slide
   const stressSlides = await getStressSlides(userInput);
-  await attachSlides(stressSlides, pdfDoc, 11);
+  await attachSlides(stressSlides, pdfDoc);
 
   // Suplement Slide
   const supplementSlides = await getSupplementSlides(userInput);
-  await attachSlides(supplementSlides, pdfDoc, 12);
+  await attachSlides(supplementSlides, pdfDoc);
 
   const dressDashboardSlides = await getDressSlides();
-  await attachSlides(dressDashboardSlides, pdfDoc, 13);
+  await attachSlides(dressDashboardSlides, pdfDoc);
 
   return pdfDoc;
 };

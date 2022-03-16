@@ -67,7 +67,7 @@ const texts = (
   ];
 };
 
-const modifyExerciseFITT = ({
+const modifyDressDashboard = ({
   page,
   results,
   font,
@@ -89,4 +89,4 @@ const modifyExerciseFITT = ({
   });
 };
 
-export default modifyExerciseFITT;
+export default modifyDressDashboard;
