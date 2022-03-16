@@ -1,11 +1,12 @@
 import fs from "fs";
 import readline from "readline";
-import { drive } from "api/utils/google/apis";
+import { driveClient } from "api/utils/google/apis";
 
 const filePath = "public/pdfs/Conclusion_Slides.pdf";
 const fileSize = fs.statSync(filePath).size;
 
 const getFolder = async (folderName: string, parentId?: string) => {
+  const drive = driveClient();
   try {
     let q = `mimeType = 'application/vnd.google-apps.folder' and name contains '${folderName}' and trashed = false`;
     if (parentId) {

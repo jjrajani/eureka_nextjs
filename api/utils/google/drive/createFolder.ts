@@ -1,12 +1,14 @@
 // @ts-nocheck
 import fs from "fs";
 import readline from "readline";
-import { drive } from "api/utils/google/apis";
+import { driveClient } from "api/utils/google/apis";
 
 const filePath = "public/pdfs/Conclusion_Slides.pdf";
 const fileSize = fs.statSync(filePath).size;
 
 const createFolder = async (folderName: string, parentId?: string) => {
+  const drive = driveClient();
+
   try {
     const res = await drive.files.create(
       {

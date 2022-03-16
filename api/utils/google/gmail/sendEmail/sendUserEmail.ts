@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { gmail } from "../../apis";
+import { gmailClient } from "../../apis";
 import path from "path";
 import listFiles from "../../drive/listFiles";
 import MailComposer from "nodemailer/lib/mail-composer";
@@ -15,6 +15,7 @@ interface SendUserEmailArgs {
 }
 
 const sendUserEmail = async ({ file, fileName, to }: SendUserEmailArgs) => {
+  const gmail = gmailClient();
   let message;
   try {
     message = await composeRawUserMessage({ file, fileName, to });
@@ -22,23 +23,23 @@ const sendUserEmail = async ({ file, fileName, to }: SendUserEmailArgs) => {
     console.log(`error composing email: ${error?.message}`);
   }
 
-  let res;
   try {
-    res = await gmail?.users?.messages?.send({
+    const res = await gmail?.users?.messages?.send({
       userId: "me",
       requestBody: {
         raw: message,
       },
     });
+    return res?.data
   } catch (error) {
     if (error?.message) {
       console.log(`error sending email: ${error?.message}`);
     } else {
       console.log(`error sending email: ${error}`);
     }
+    return error
   }
 
-  return res?.data;
 };
 
 export default sendUserEmail;

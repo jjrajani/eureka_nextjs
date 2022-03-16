@@ -1,6 +1,7 @@
-import { drive } from "api/utils/google/apis";
+import { driveClient } from "api/utils/google/apis";
 
 const listFiles = async () => {
+  const drive = driveClient();
   try {
     const res = await drive.files.list();
     console.log("files", res.data.files);

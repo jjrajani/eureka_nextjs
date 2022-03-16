@@ -126,6 +126,66 @@ const StrengthCalculator = ({
   };
 };
 
+const FrequencyCalculator = (exercise: ExerciseFITT) => {
+  switch(exercise) {
+    case ExerciseFITT.BEGINNER: {
+      return "2-3x a week"
+    }
+    case ExerciseFITT.INTERMEDIATE: {
+      return "3-4x a week"
+    }
+    default: {
+      // ExerciseFITT.ADVANCED
+      return "4-6x a week"
+    }
+  }
+}
+
+const IntensityCalculator = (exercise: ExerciseFITT) => {
+  switch(exercise) {
+    case ExerciseFITT.BEGINNER: {
+      return "50% of Workout in THR Zone"
+    }
+    case ExerciseFITT.INTERMEDIATE: {
+      return "70% of Workout in THR Zone"
+    }
+    default: {
+      // ExerciseFITT.ADVANCED
+      return "90% of workout in THR Zone"
+    }
+  }
+}
+
+const TimeCalculator = (exercise: ExerciseFITT) => {
+  switch(exercise) {
+    case ExerciseFITT.BEGINNER: {
+      return "20-30 min OR 2-3x 10 min"
+    }
+    case ExerciseFITT.INTERMEDIATE: {
+      return "30-40 min OR 3-4x 10 min"
+    }
+    default: {
+      // ExerciseFITT.ADVANCED
+      return "40-60 min"
+    }
+  }
+}
+
+const TypeCalculator = (exercise: ExerciseFITT) => {
+  switch(exercise) {
+    case ExerciseFITT.BEGINNER: {
+      return "Whole Body FUNCTIONAL"
+    }
+    case ExerciseFITT.INTERMEDIATE: {
+      return "Whole Body WEIGHT BEARING"
+    }
+    default: {
+      // ExerciseFITT.ADVANCED
+      return "Whole Body H.I.C.T."
+    }
+  }
+}
+
 interface ExerciseFITTCalculatorArgs {
   exercise: ExerciseFITT;
   dietPreference: DietPreference;
@@ -149,11 +209,20 @@ const ExerciseFITTCalculator = ({
     completeWorkoutDuration,
     dietPreference,
   });
+  const frequency = FrequencyCalculator(exercise);
+  const intensity = IntensityCalculator(exercise);
+  const time = TimeCalculator(exercise);
+  const type = TypeCalculator(exercise);
 
   return {
     strength,
     endurance,
+    duration: completeWorkoutDuration,
     flexibility,
+    frequency,
+    intensity,
+    time,
+    type
   };
 };
 

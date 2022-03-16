@@ -22,9 +22,6 @@ const texts = (
       font: { size: 12, weight: font.regular },
       userInput,
       page,
-      headerPad: {
-        right: 65,
-      },
     }),
     {
       // Target Heart Rate

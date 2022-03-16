@@ -7,10 +7,10 @@ import getFolder from "api/utils/google/drive/getFolder";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userName = req.query.userName as string;
   const filePath = req.query.filePath as string;
-  const fileSize = req.query.fileSize as string;
 
   if (!userName) {
     res.status(422).json(`Error saving file to drive: userName param required`);
+    return;
   }
 
   try {
@@ -31,6 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     } else {
       res.status(500).json(`Error fetching DRESS Results folder`);
+      return;
     }
 
     if (userFolderId) {
@@ -41,11 +42,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       );
 
       res.status(200).json({ fileId });
+      return;
     } else {
       res.status(500).json(`Error fetching DRESS Results folder`);
+      return;
     }
   } catch (error) {
     res.status(500).json(`Error uploading file to drive: ${error?.message}`);
+    return;
   }
 };
 

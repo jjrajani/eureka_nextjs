@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import fs, { readdirSync } from 'node:fs';
+import fs, { readdirSync } from 'fs';
 import path from 'path';
 import moment from 'moment';
 import { BASE_FILE_PATH } from 'api/routes/generate_pdf/utils/createTempFile';
@@ -27,8 +27,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     });
     res.status(200).json(`Dirs ${dirs.join(',')} deleted`);
+    return;
   } else {
     res.status(200).json(`No dirs to delete`);
+    return;
   }
 };
 

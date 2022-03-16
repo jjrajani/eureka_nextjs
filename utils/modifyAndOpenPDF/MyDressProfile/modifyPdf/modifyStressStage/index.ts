@@ -18,9 +18,6 @@ const texts = (
       font: { size: 12, weight: font.regular },
       userInput,
       page,
-      headerPad: {
-        right: 65,
-      },
     }),
   ];
 };

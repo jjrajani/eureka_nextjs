@@ -95,8 +95,13 @@ export interface PercentDuration {
 
 export interface ExerciseFITTCalcRes {
   strength: PercentDuration; // time to spend on strength exercise
+  duration: number;
   endurance: PercentDuration; // time to spend on endurance exercise
   flexibility: PercentDuration; // time to spend on flexibility exercise
+  frequency: string;
+  intensity: string;
+  time: string;
+  type: string;
 }
 
 export interface MyDressProfileCalculatorResult {

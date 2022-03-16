@@ -1,7 +1,6 @@
 import readline from "readline";
-import { drive } from "api/utils/google/apis";
-import { Duplex } from "stream";
-import fs from "node:fs";
+import { driveClient } from "api/utils/google/apis";
+import fs from "fs";
 
 const uploadFile = async (
   folderId: string,
@@ -9,6 +8,7 @@ const uploadFile = async (
   filePath: string
 ) => {
   try {
+    const drive = driveClient();
     const fileSize = fs.statSync(filePath).size;
     const res = await drive?.files?.create(
       {

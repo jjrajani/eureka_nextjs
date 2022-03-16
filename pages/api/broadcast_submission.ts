@@ -12,6 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res
       .status(422)
       .json(`Error broadcasting submission: filePath param required`);
+    return;
   }
 
   try {
@@ -25,8 +26,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       `${BASE_URL}/api/notify_erueka?fileId=${uploadedFile.data.fileId}&userName=${name}`
     );
     res.status(200).json({ filePath });
+    return;
   } catch (error) {
     res.status(500).json(`Error generating pdf: ${error?.message}`);
+    return;
   }
 };
 

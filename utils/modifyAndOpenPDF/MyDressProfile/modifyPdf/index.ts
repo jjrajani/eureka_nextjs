@@ -5,10 +5,11 @@ import {
   MyDressProfileFormState,
 } from "types/types";
 // import modifyMyNumbers from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyNumbers";
-import modifyMyPortions from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyPortions";
+// import modifyMyPortions from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyPortions";
 import modifyMyDietType from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyDietType";
 import modifyPortionTracker from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker";
 import modifyDressProfile from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyDressProfile";
+import modifyMyDietTypeMacros from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyMyDietTypeMacros";
 import modifyMyRestRx from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyMyRestRx";
 import modifyExerciseFITT from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyExerciseFITT";
 import modifyStressStage from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/modifyStressStage";
@@ -29,7 +30,8 @@ const modifyMyDressProfile = ({
 }: ModifyMyDressProfileArgs) => {
   modifyDressProfile({ page: pages[2], results, font, userInput });
   // modifyMyNumbers(pages[2], results, font);
-  modifyMyPortions(pages[2], results, font);
+  // modifyMyPortions(pages[2], results, font);
+  modifyMyDietTypeMacros({page: pages[3], results, font})
   modifyMyDietType({ page: pages[3], results, font, userInput });
   modifyPortionTracker(pages, results, font);
   modifyMyRestRx({ page: pages[8], font, userInput });

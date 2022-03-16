@@ -1,7 +1,9 @@
 // @ts-nocheck
-import { drive } from "api/utils/google/apis";
+import { driveClient } from "api/utils/google/apis";
 
 const generateUserUrl = async (userEmail: string, fileId: string) => {
+  const drive = driveClient();
+
   await drive.permissions.create({
     fileId,
     requestBody: {

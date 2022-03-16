@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import sendUserEmail from "api/utils/google/gmail/sendEmail/sendUserEmail";
 import { DRESS_PDF_FILE_NAME } from "utils/constants";
-import fs from "node:fs";
+import fs from "fs";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -13,18 +13,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res
         .status(422)
         .json(`User Input Error: filePath, name, and email required`);
+        return;
     } else if (!filePath) {
       res.status(422).json(`User Input Error: filePath required`);
+      return;
     } else if (!email) {
       res.status(422).json(`User Input Error: email required`);
+      return;
     } else if (!name) {
       res.status(422).json(`User Input Error: name required`);
+      return;
     }
 
     try {
       fs.readFile(filePath, async (err, data) => {
         if (err) {
           res.status(500).json({ err });
+          return;
         }
         try {
           await sendUserEmail({

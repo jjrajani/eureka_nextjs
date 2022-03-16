@@ -18,7 +18,7 @@ const userName = ({
   page: PDFPage;
 }) => {
   const height = page.getHeight();
-  const userNameText = `Member Name: ${userInput.first} ${userInput.last}`;
+  const userNameText = `Patient Name: ${userInput.first} ${userInput.last}`;
   const textHeight = font.weight.heightAtSize(font.size);
 
   return {
@@ -45,6 +45,7 @@ const date = ({
   const textHeight = font.weight.heightAtSize(font.size);
   const dateText = `Date: ${moment().format("MM/DD/YYYY")}`;
   const dateTextWidth = font.weight.widthOfTextAtSize(`${dateText}`, font.size);
+  console.log('headerPad', headerPad)
   const pad = headerPad?.right || PAGE_PAD;
 
   return {

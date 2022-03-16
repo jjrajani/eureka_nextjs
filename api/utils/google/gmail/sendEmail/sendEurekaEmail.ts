@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { gmail } from "../../apis";
+import { gmailClient } from "../../apis";
 import path from "path";
 import listFiles from "../../drive/listFiles";
 import MailComposer from "nodemailer/lib/mail-composer";
@@ -16,6 +16,7 @@ const sendEurekaEmail = async ({
   folderLink,
   userName,
 }: SendEurekaEmailArgs) => {
+  const gmail = gmailClient();
   let message;
   try {
     message = await composeRawEurekaMessage({ fileLink, folderLink, userName });
@@ -23,19 +24,19 @@ const sendEurekaEmail = async ({
     console.log(`error composing email: ${error?.message}`);
   }
 
-  let res;
   try {
-    res = await gmail?.users?.messages?.send({
+    const res = await gmail?.users?.messages?.send({
       userId: "me",
       requestBody: {
         raw: message,
       },
     });
+    return res?.data
   } catch (error) {
     console.log(`error sending email: ${error?.message}`);
+    return error
   }
 
-  return res?.data;
 };
 
 export default sendEurekaEmail;

@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { drive } from "api/utils/google/apis";
+import { driveClient } from "api/utils/google/apis";
 import sendEurekaEmail from "api/utils/google/gmail/sendEmail/sendEurekaEmail";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const drive = driveClient();
   const fileId = req.query.fileId as string;
   const userName = req.query.userName as string;
 
@@ -16,17 +17,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     let fileLink = fileRes?.data?.webViewLink;
     if (parent && fileLink) {
       const folderLink = `https://drive.google.com/drive/folders/${parent}`;
-      sendEurekaEmail({
+      await sendEurekaEmail({
         fileLink,
         folderLink,
         userName,
       });
       res.status(200).json("eureka notified");
+      return;
     } else {
       res.status(500).json("error notifying eureka");
+      return;
     }
   } else {
     res.status(500).json("error notifying eureka");
+    return;
   }
 };
 

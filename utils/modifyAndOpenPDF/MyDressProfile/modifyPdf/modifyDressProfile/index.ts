@@ -4,7 +4,6 @@ import {
   Goal,
   MyDressProfileCalculatorResult,
   MyDressProfileFormState,
-  ExerciseFITT,
   DietPreference,
   RestRx,
   StressStage,
@@ -17,7 +16,6 @@ import { red } from 'utils/modifyAndOpenPDF/colors';
 import {
   activityLevelText,
   dietPrefText,
-  fittText,
   genderText,
   goalText,
   restRxText,
@@ -28,31 +26,6 @@ import moment from 'moment';
 
 const color = red,
   y = 277;
-
-interface StressArgs {
-  text: string;
-  font: PDFFont;
-  fontSize: number;
-}
-const getStressPlacement = ({ text, font, fontSize }: StressArgs) => {
-  const rowHeight = 16;
-  const colWidth = 117;
-  const textHeight = font.heightAtSize(fontSize);
-  const textBuffer = rowHeight - textHeight;
-  const y = 107 + textBuffer;
-  const textWidth = font.widthOfTextAtSize(text, fontSize);
-  const buffer = (colWidth - textWidth) / 2;
-  console.log(139 + buffer, y);
-  return {
-    x: 139 + buffer,
-    y,
-  };
-  // x: 139,
-  // y: 107,
-  // height: 16,
-  // width: 117,
-  // color: red,
-};
 
 interface YellowArgs {
   text: string;
@@ -88,16 +61,14 @@ const texts = (
   results: MyDressProfileCalculatorResult,
   userInput: MyDressProfileFormState,
   font: FontType,
-  page: PDFPage
 ): Partial<Text>[] => {
-  // const protein = results.handSizes.proteinServing.palms;
-  // const carbs = results.handSizes.carbsServing.palms.median;
-  // const fat = results.handSizes.fatServing.palms;
-  // const water = results.handSizes.waterServing;
-
-  // const portionText = `${protein}         ${carbs}         ${fat}         ${water}`;
-  console.log('results', results);
   return [
+    // Name
+    {
+      x: 78,
+      y: 326.5,
+      text: `${userInput.first} ${userInput.last}`,
+    },
     // Age
     {
       ...getYellowBoxPlacement({
@@ -111,12 +82,12 @@ const texts = (
     // Gender
     {
       ...getYellowBoxPlacement({
-        text: genderText[userInput.gender],
+        text: genderText[userInput.gender as Gender],
         row: 1,
         font: font.bold,
         fontSize: 14,
       }),
-      text: `${genderText[userInput.gender]}`,
+      text: `${genderText[userInput.gender  as Gender]}`,
     },
     // Height
     {
@@ -168,7 +139,7 @@ const texts = (
     // Date
     {
       x: 312,
-      y: 323,
+      y: 326.5,
       text: `${moment().format('MMM DD, YYYY')}`,
       size: 14,
     },
@@ -179,88 +150,105 @@ const texts = (
       text: `${restRxText[userInput.restRx as RestRx]}`,
       size: 14,
     },
-    // FITT
+    // FITT - Frequency
     {
-      x:
-        userInput.exerciseFitt === ExerciseFITT.ADVANCED
-          ? 8
-          : userInput.exerciseFitt === ExerciseFITT.BEGINNER
-          ? 8
-          : 8, // userInput.exerciseFitt === ExerciseFITT.INTERMEDIATE
-      y: 330,
-      text: `${fittText[userInput.exerciseFitt as ExerciseFITT]}`,
+      x: 290,
+      y: 184.5,
+      text: results.exerciseFitt.frequency,
+      size: 12
+    },
+    // FITT - Intensity
+    {
+      x: 290,
+      y: 168,
+      text: results.exerciseFitt.intensity,
+      size: 12
+    },
+    // FITT - Time
+    {
+      x: 290,
+      y: 151,
+      text: results.exerciseFitt.time,
+      size: 12
+    },
+    // FITT - Type
+    {
+      x: 290,
+      y: 134.3,
+      text: results.exerciseFitt.type,
+      size: 12
     },
     // Supplement Type
     {
-      x: 8,
-      y: 330,
-      text: `${userInput.supplementType}`,
+      x: 420,
+      y: 95.25,
+      text: `${supplementText[userInput.supplementType as Supplement]}`,
     },
     // Diet Type
     {
-      x: 8,
-      y: 330,
-      text: `${userInput.dietPreference}`,
+      x: 605,
+      y: 324.3,
+      text: `${dietPrefText[userInput.dietPreference as DietPreference]}`,
     },
     // Proteins Servings
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.proteinServing.palms}`,
+      x: `${results.handSizes.proteinServing.palms}`.length === 1 ? 526 : 521,
+      y: 273,
+      text: `${results.handSizes.proteinServing.palms} servings`,
     },
     // Proteins Grams
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.proteinServing.grams}`,
+      x: `${results.handSizes.proteinServing.grams}`.length === 2 ? 632 : 636,
+      y: 273,
+      text: `${results.handSizes.proteinServing.grams}g`,
     },
     // Proteins Percent Intake
     {
-      x: 8,
-      y: 330,
-      text: `${results.macro.protein}%`,
+      x: 553,
+      y: 249,
+      text: `${results.macro.protein * 100}% daily intake`,
     },
     // Carbs Servings
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.carbsServing.palms}`,
+      x: `${results.handSizes.carbsServing.palms.median}`.length === 1 ? 526 : 521,
+      y: 202,
+      text: `${results.handSizes.carbsServing.palms.median} servings`,
     },
     // Carbs Grams
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.carbsServing.grams}`,
+      x: `${results.handSizes.carbsServing.grams}`.length === 2 ? 632 : 636,
+      y: 202,
+      text: `${results.handSizes.carbsServing.grams.median}g`,
     },
     // Carbs Percent Intake
     {
-      x: 8,
-      y: 330,
-      text: `${results.macro.carbs}%`,
+      x: 553,
+      y: 176,
+      text: `${results.macro.carbs * 100}% daily intake`,
     },
     // Fats Servings
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.fatServing.palms}`,
+      x: `${results.handSizes.fatServing.palms}`.length === 1 ? 526 : 521,
+      y: 129,
+      text: `${results.handSizes.fatServing.palms} servings`,
     },
     // Fats Grams
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.fatServing.grams}`,
+      x: `${results.handSizes.fatServing.grams}`.length === 2 ? 641 : 638,
+      y: 129,
+      text: `${results.handSizes.fatServing.grams}g`,
     },
     // Fats Percent Intake
     {
-      x: 8,
-      y: 330,
-      text: `${results.macro.fats}%`,
+      x: 553,
+      y: 105,
+      text: `${results.macro.fats * 100}% daily intake`,
     },
     // Water Servings
     {
-      x: 8,
-      y: 330,
-      text: `${results.handSizes.waterServing}`,
+      x: `${results.handSizes.waterServing}`.length !== 1 ? 576 : 571,
+      y: 58,
+      text: `1${results.handSizes.waterServing} servings`,
     },
   ];
 };
@@ -276,14 +264,8 @@ const modifyDressProfile = ({
   font: FontType;
   userInput: MyDressProfileFormState;
 }) => {
-  texts(results, userInput, font, page).forEach((text: Partial<Text>) => {
-    // page.drawRectangle({
-    //   x: 139,
-    //   y: 107,
-    //   height: 16,
-    //   width: 117,
-    //   color: red,
-    // });
+  texts(results, userInput, font).forEach((text: Partial<Text>) => {
+    
     page.drawText(`${text.text}`, {
       x: text.x as number,
       y: text?.y || y,

@@ -6,8 +6,6 @@ import {
 } from "api/routes/sendFile/utils";
 import { createTempFile } from "api/routes/generate_pdf/utils";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   handleInputError(req, res);
   let results, userInput;
@@ -16,21 +14,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     userInput = JSON.parse(req.query.userInput as string);
   } catch (error) {
     res.status(422).json(`Error parsing query params: ${error?.message}`);
+    return;
   }
 
   handleMissingFieldsError(userInput, res);
-  const name = `${userInput.first} ${userInput.last}`.trim();
 
   let file: Uint8Array;
-  let filePath;
   try {
     file = await modifyAndOpenMyDressProfilePDF(results, userInput);
 
     const filePath = await createTempFile(file);
     if (filePath) {
       res.status(200).json({ filePath });
+      return;
     } else {
       res.status(500).json(`Error generating file`);
+      return;
     }
 
     // If we don't need the file anymore we could manually call the cleanupCallback
@@ -39,6 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // cleanupCallback();
   } catch (error) {
     res.status(500).json(`Error generating pdf: ${error?.message}`);
+    return;
   }
 };
 

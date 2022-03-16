@@ -1,33 +1,46 @@
 import { google } from "googleapis";
-import path from "path";
-import auth from "./auth";
+import path from 'path'
 
-// const auth = new google.auth.GoogleAuth({
-//   // Scopes can be specified either as an array or as a single, space-delimited string.
-//   keyFilename: path.join(__dirname, "../../../../google_docs_key.json"),
-//   scopes: [
-//     "https://mail.google.com/",
-//     "https://www.googleapis.com/auth/gmail.compose",
-//     "https://www.googleapis.com/auth/gmail.metadata",
-//     "https://www.googleapis.com/auth/gmail.modify",
-//     "https://www.googleapis.com/auth/gmail.readonly",
-//   ],
-// });
-//
-// const initGoogleAuth = async () => {
-//   // Acquire an auth client, and bind it to all future calls
-//   const authClient = await auth.getClient();
-//   google.options({ auth: authClient });
-// };
+const scopes = [
+  "https://www.googleapis.com/auth/drive",
+  "https://mail.google.com/",
+  "https://www.googleapis.com/auth/gmail.compose",
+  "https://www.googleapis.com/auth/gmail.metadata",
+  "https://www.googleapis.com/auth/gmail.modify",
+  "https://www.googleapis.com/auth/gmail.readonly",
+  "https://www.googleapis.com/auth/gmail.send",
+]
 
-const drive = google.drive({
-  version: "v3",
-  auth,
+const jwtClient = new google.auth.JWT({
+  email: process.env.GOOGLE_CLIENT_EMAIL as string,
+  key: process.env.GOOGLE_PRIVATE_KEY as string,
+  scopes,
+  subject: "jjrajani@www.twinbridgeslake.fish",
+  keyId: process.env.GOOGLE_PRIVATE_KEY_ID as string
 });
 
-const gmail = google.gmail({
-  version: "v1",
-  auth,
+jwtClient.authorize(function (err, tokens) {
+ if (err) {
+   console.log(err);
+   return;
+ } else {
+   console.log("Successfully connected!");
+ }
 });
 
-export { drive, gmail };
+
+const driveClient = () => {
+  return google.drive({
+    version: "v3",
+    auth: jwtClient,
+  })
+};
+
+const gmailClient = () =>  {
+  return google.gmail({
+    version: "v1",
+    auth: jwtClient,
+  })
+};
+
+export { driveClient, gmailClient };
