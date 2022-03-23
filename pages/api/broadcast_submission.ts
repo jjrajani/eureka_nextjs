@@ -36,7 +36,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({ filePath });
       return;
     } else {
-      console.log("No Upladed File")
+      console.log("No Uploaded File")
       res.status(500).json(`Error Uplading File`);
       return;
     }
