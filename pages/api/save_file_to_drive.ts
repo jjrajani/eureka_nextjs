@@ -6,6 +6,7 @@ import getFolder from "api/utils/google/drive/getFolder";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userName = req.query.userName as string;
+  const email = req.query.email as string;
   const filePath = req.query.filePath as string;
 
   if (!userName) {
@@ -19,12 +20,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const dressFolder = await getFolder("DRESS Results");
     let userFolderId: string | false = false;
     if (dressFolder) {
-      const userFolder = await getFolder(userName, dressFolder?.id as string);
+      const userFolderName = `${userName} ${email}`
+      const userFolder = await getFolder(userFolderName, dressFolder?.id as string);
       if (userFolder) {
         userFolderId = userFolder?.id as string;
       } else {
         const newUserFolder = await createFolder(
-          userName,
+          userFolderName,
           dressFolder?.id as string
         );
         userFolderId = newUserFolder;
