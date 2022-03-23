@@ -15,7 +15,7 @@ const jwtClient = new google.auth.JWT({
   email: process.env.GOOGLE_CLIENT_EMAIL as string,
   key: process.env.GOOGLE_PRIVATE_KEY as string,
   scopes,
-  subject: "jjrajani@eurekaholisticnutrition.com",
+  subject: "karen@eurekaholisticnutrition.com",
   keyId: process.env.GOOGLE_PRIVATE_KEY_ID as string
 });
 

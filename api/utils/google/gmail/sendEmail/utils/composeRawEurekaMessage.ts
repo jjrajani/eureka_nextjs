@@ -13,8 +13,8 @@ const composeRawEurekaMessage = async ({
   userName,
 }: composeRawUserMessageArgs) => {
   const mail = new MailComposer({
-    from: "D.R.E.S.S. Planner <eurekanutrition@gmail.com>",
-    to: `New Submission <jjrajani@eurekaholisticnutrition.com>`,
+    from: "D.R.E.S.S. Planner <karen@eurekaholisticnutrition.com>",
+    to: `New Submission <karen@eurekaholisticnutrition.com>`,
     text: `
       New D.R.E.S.S. Submission
 

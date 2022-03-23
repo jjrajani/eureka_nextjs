@@ -50,7 +50,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
   } catch (error) {
-    res.status(500).json(`Error uploading file to drive: ${error?.message}`);
+    res.status(500).json(`Bananas Error uploading file to drive: ${error?.message}`);
     return;
   }
 };

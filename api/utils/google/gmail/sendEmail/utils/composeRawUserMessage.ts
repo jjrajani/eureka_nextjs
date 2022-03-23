@@ -16,7 +16,7 @@ const composeRawUserMessage = async ({
   to,
 }: composeRawUserMessageArgs) => {
   const mail = new MailComposer({
-    from: "Eureka! Holistic Nutrition <eurekanutrition@gmail.com>",
+    from: "Eureka! Holistic Nutrition <karen@eurekaholisticnutrition.com>",
     to: `${to.name} <${to.email}>`,
     text: "Lorem ipsum...",
     subject: `🤘 ${DRESS_PDF_FILE_NAME} 🤘`,
