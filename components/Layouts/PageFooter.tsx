@@ -38,33 +38,14 @@ const PageFooter = ({}: PageFooterProps) => {
           >
             Disclaimer
           </a>
-          <a
-            href="https://www.facebook.com/Eureka-Holistic-Nutrition-113571287044136"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.icon}
-          >
-            <FacebookIcon />
-          </a>
-          <a
-            href="https://www.instagram.com/eurekaholisticnutrition/"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.icon}
-          >
-            <InstagramIcon />
-          </a>
         </div>
       </Container>
       <Container className={styles.disclaimer}>
         <p>
-          The purpose of Eureka! Membership and any nutrition and health
-          coaching is to improve the overall health, vitality and well-being of
-          the body through education, the use of natural foods, non-medicinal
-          nutritional supplements and lifestyle habits. The EHN Coaching Team
-          does not treat or diagnose specific diseases, disorders or conditions.
-          It is always advised to check with your physician before starting any
-          new diet, exercise or health building regime.
+           My D.R.E.S.S. Profile is for educational purposes only to help improve overall health,
+           vitality and well-being.  This tool is not meant to be used to diagnose or treat specific
+           diseases, disorders or conditions of any kind. It is always advised to check with your
+           physician before starting any new eating, exercise, or health improvement routine.
         </p>
       </Container>
     </footer>

@@ -9,18 +9,16 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   > div {
     display: flex;
     align-items: center;
   }
-  // position: fixed;
-  // z-index: 100;
 
   p {
     color: white;
-    margin-left: 15px;
+    margin-left: 12px;
     margin-right: 30px;
     line-height: 1.7em;
   }
@@ -41,7 +39,8 @@
     }
 
     img + p {
-      margin-left: 6px;
+      margin-right: 18px;
+
     }
   }
 }
@@ -133,19 +132,4 @@
      font-size: 20px;
      margin: 0 auto;
    }
-}
-
-.bigLogo {
-  position: absolute;
-  padding: 10px 15px;
-  // background: rgb(255,255,255);
-
-  // background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%),linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 70%);
-  z-index: 200;
-  width: 100%;
-
-  img {
-    height: 75px;
-  }
 }

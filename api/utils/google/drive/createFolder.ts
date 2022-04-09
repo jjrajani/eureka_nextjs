@@ -2,11 +2,12 @@
 import fs from "fs";
 import readline from "readline";
 import { driveClient } from "api/utils/google/apis";
+import {DRESSResultsFolderId} from 'utils/constants';
 
 const filePath = "public/pdfs/Conclusion_Slides.pdf";
 const fileSize = fs.statSync(filePath).size;
 
-const createFolder = async (folderName: string, parentId?: string) => {
+const createFolder = async (folderName: string) => {
   const drive = driveClient();
 
   try {
@@ -15,7 +16,7 @@ const createFolder = async (folderName: string, parentId?: string) => {
         resource: {
           name: folderName,
           mimeType: "application/vnd.google-apps.folder",
-          ...(parentId ? { parents: [parentId] } : {}),
+          parents: [DRESSResultsFolderId],
         },
       },
       {

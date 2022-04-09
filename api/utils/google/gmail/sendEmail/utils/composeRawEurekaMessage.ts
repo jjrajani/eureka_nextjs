@@ -1,5 +1,4 @@
 import MailComposer from "nodemailer/lib/mail-composer";
-import { DRESS_PDF_FILE_NAME } from "utils/constants";
 
 export interface composeRawUserMessageArgs {
   fileLink: string;
@@ -13,8 +12,8 @@ const composeRawEurekaMessage = async ({
   userName,
 }: composeRawUserMessageArgs) => {
   const mail = new MailComposer({
-    from: "D.R.E.S.S. Planner <karen@eurekaholisticnutrition.com>",
-    to: `New Submission <karen@eurekaholisticnutrition.com>`,
+    from: "D.R.E.S.S. Planner <connect@eurekaholisticnutrition.com>",
+    to: `New Submission <connect@eurekaholisticnutrition.com>`,
     text: `
       New D.R.E.S.S. Submission
 

@@ -20,7 +20,8 @@ const MyDressProfileResults = ({
 }: MyDressProfileResultsProps) => {
   // const { downloadResults, results } = useContext(MyDressProfileContext);
   const { results, userInput, pdfFilePath } = useContext(MyDressProfileContext);
-
+  console.log('Frequency, Intensity, Time, Type')
+  console.log('results', results)
   return results ? (
     <ResultsWrapper scrollToResults={scrollToResults} wrapperId={wrapperId}>
       <div className={styles.resultsWrapper}>

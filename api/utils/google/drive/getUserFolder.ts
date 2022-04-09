@@ -1,18 +1,13 @@
-import fs from "fs";
-import readline from "readline";
 import { driveClient } from "api/utils/google/apis";
+import { DRESSResultsFolderId } from 'utils/constants';
 
-const filePath = "public/pdfs/Conclusion_Slides.pdf";
-const fileSize = fs.statSync(filePath).size;
-
-const getFolder = async (folderName: string, parentId?: string) => {
+const getUserFolder = async (folderName: string) => {
   const drive = driveClient();
   try {
-    let q = `mimeType = 'application/vnd.google-apps.folder' and name contains '${folderName}' and trashed = false`;
-    if (parentId) {
-      q = `${q} and '${parentId}' in parents`;
-    }
+    let q = `mimeType = 'application/vnd.google-apps.folder' and name contains '${folderName}' and trashed = false and '${DRESSResultsFolderId}' in parents`;
+
     const res = await drive.files.list({ q });
+
     if (res?.data?.files?.length === 0) {
       return false;
     } else if (res?.data?.files?.length === 1) {
@@ -30,4 +25,4 @@ const getFolder = async (folderName: string, parentId?: string) => {
   }
 };
 
-export default getFolder;
+export default getUserFolder;

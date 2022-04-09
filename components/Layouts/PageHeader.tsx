@@ -38,19 +38,6 @@ const PageHeader = ({}: PageHeaderProps) => {
     <header className={styles.header}>
       <div className={styles.banner}>
         <div>
-          <div className={styles.item}>
-            <PhoneIcon />
-            <p>404.692.3516</p>
-          </div>
-          <a
-            href="mailto:connect@eurekaholisticnutrition.com"
-            className={styles.item}
-          >
-            <MailIcon />
-            <p>connect@eurekaholisticnutrition.com</p>
-          </a>
-        </div>
-        <div>
           <a
             href="https://eurekaholisticnutrition.com/"
             target="_blank"
@@ -63,9 +50,6 @@ const PageHeader = ({}: PageHeaderProps) => {
         </div>
       </div>
       <div>
-        <div className={styles.bigLogo}>
-          <img src="/images/eureka_logo.png" />
-        </div>
         <div className={styles.headerContent}>
           <div>
             <h2>Holistic Nutrition & Health Coaching</h2>
@@ -77,12 +61,7 @@ const PageHeader = ({}: PageHeaderProps) => {
       <div className={styles.subHeader}>
         <Container>
           <p>
-            Your wellness lifestyle begins here. Ready to make healthy living a
-            priority? Where do you start? What do you focus on? Discover this
-            and MORE with your D.R.E.S.S. Profile Wellness Plan! Enter your
-            information, goal and scores from each of the D.R.E.S.S.
-            assessments. Then download your personalized My D.R.E.S.S. Profile.
-            Get started today living your life well.
+          My D.R.E.S.S. Profile is an assessment tool that helps personalize your wellness routine. Discover your Diet Type, Rest Rx, Exercise F.I.T.T., Stress Stage and Supplement Type based on your assessment scores. Enter your information, goal, and scores from each of the D.R.E.S.S. assessments, and download your personalized D.R.E.S.S. Profile results to review with your Coach to get started!
           </p>
         </Container>
         <div className={styles.subHeaderHeader} />

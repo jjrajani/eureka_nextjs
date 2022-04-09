@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import uploadFile from "api/utils/google/drive/uploadFile";
 import createFolder from "api/utils/google/drive/createFolder";
 import moment from "moment";
-import getFolder from "api/utils/google/drive/getFolder";
+import getDressFolder from "api/utils/google/drive/getDressFolder";
+import getUserFolder from "api/utils/google/drive/getUserFolder";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userName = req.query.userName as string;
@@ -17,17 +18,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const date = moment().format("MM/DD/YYYY - HH:mm");
     const googleFileName = `${date} - ${userName} - DRESS Profile`;
-    const dressFolder = await getFolder("DRESS Results");
+    const dressFolder = await getDressFolder();
     let userFolderId: string | false = false;
     if (dressFolder) {
       const userFolderName = `${userName} ${email}`
-      const userFolder = await getFolder(userFolderName, dressFolder?.id as string);
+      const userFolder = await getUserFolder(userFolderName);
       if (userFolder) {
         userFolderId = userFolder?.id as string;
       } else {
         const newUserFolder = await createFolder(
           userFolderName,
-          dressFolder?.id as string
         );
         userFolderId = newUserFolder;
       }

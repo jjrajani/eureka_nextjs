@@ -1,5 +1,5 @@
 import MailComposer from "nodemailer/lib/mail-composer";
-import { DRESS_PDF_FILE_NAME } from "utils/constants";
+import userEmailTemplate from '../templates/userEmailTemplate';
 
 export interface composeRawUserMessageArgs {
   fileName: string;
@@ -16,10 +16,10 @@ const composeRawUserMessage = async ({
   to,
 }: composeRawUserMessageArgs) => {
   const mail = new MailComposer({
-    from: "Eureka! Holistic Nutrition <karen@eurekaholisticnutrition.com>",
+    from: "Eureka! Holistic Nutrition <connect@eurekaholisticnutrition.com>",
     to: `${to.name} <${to.email}>`,
-    text: "Lorem ipsum...",
-    subject: `🤘 ${DRESS_PDF_FILE_NAME} 🤘`,
+    html: userEmailTemplate,
+    subject: `My D.R.E.S.S. Profile Results`,
     textEncoding: "base64",
     attachments: [
       {
