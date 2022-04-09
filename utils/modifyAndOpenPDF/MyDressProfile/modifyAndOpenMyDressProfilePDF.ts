@@ -1,5 +1,3 @@
-import isMobile from "utils/isMobile";
-import downloadPDF from "utils/modifyAndOpenPDF/downloadPDF";
 import {
   MyDressProfileCalculatorResult,
   MyDressProfileFormState,

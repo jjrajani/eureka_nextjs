@@ -15,7 +15,7 @@ const SupplementTypeField = ({}: SupplementTypeFieldProps) => {
           <>
             <InputLabel>Supplement Type</InputLabel>
             <Select variant="filled" name={field.input.name} displayEmpty>
-              <MenuItem value="">Supplement Type</MenuItem>
+              <MenuItem value="" disabled>Supplement Type</MenuItem>
               <MenuItem value={Supplement.ENERGY}>
                 {supplementText[Supplement.ENERGY]}
               </MenuItem>
