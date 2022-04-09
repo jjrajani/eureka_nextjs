@@ -1,5 +1,5 @@
 import { Gender } from "types/types";
-import TargetHeartRateCalculator from "../target_heart_rate_calculator";
+import TargetHeartRateCalculator from "utils/calculators/target_heart_rate_calculator";
 
 describe("TargetHeartRateCalculator({age: number, fittRating: ExerciseFITT, gender: Gender, rhr: number})", () => {
   it("returns the correct result for females", () => {

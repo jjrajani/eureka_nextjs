@@ -1,8 +1,6 @@
 import moment from "moment";
 import Container from "@mui/material/Container";
-import styles from "./styles/PageFooter.module.scss";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import styles from "components/Layouts/styles/PageFooter.module.scss";
 
 interface PageFooterProps {}
 

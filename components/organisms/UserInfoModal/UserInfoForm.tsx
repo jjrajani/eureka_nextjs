@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import UserInfoContext from "./context";
+import UserInfoContext from "components/organisms/UserInfoModal/context";
 import { Form } from "react-final-form";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
-import validateForm from "./utils/validateForm";
+import validateForm from "components/organisms/UserInfoModal/utils/validateForm";
 import { UserFormState } from "types/types";
-import styles from "./styles/UserInfoForm.module.scss";
+import styles from "components/organisms/UserInfoModal/styles/UserInfoForm.module.scss";
 
 interface UserInfoFormProps {}
 

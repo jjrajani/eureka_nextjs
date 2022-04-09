@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from "react";
-import useUserInfo, { UseUserInfo } from "./useUserInfo";
+import useUserInfo, { UseUserInfo } from "components/organisms/UserInfoModal/context/useUserInfo";
 
 const defaultValue: UseUserInfo = {
   didSubmit: false,

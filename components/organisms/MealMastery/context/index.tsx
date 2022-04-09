@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from "react";
-import useMealMastery, { UseMealMastery } from "./useMealMastery";
+import useMealMastery, { UseMealMastery } from "components/organisms/MealMastery/context/useMealMastery";
 
 const defaultValue: UseMealMastery = {
   calculateResults: () => {},

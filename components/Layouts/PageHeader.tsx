@@ -1,38 +1,16 @@
 import { useEffect } from "react";
-import { useRouter } from "next/router";
-import styles from "./styles/PageHeader.module.scss";
-import MailIcon from "@mui/icons-material/Mail";
-import PhoneIcon from "@mui/icons-material/Phone";
+import styles from "components/Layouts/styles/PageHeader.module.scss";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Scroll from "react-scroll";
-const scroller = Scroll.scroller;
 import axios from "axios";
 
 interface PageHeaderProps {}
 
 const PageHeader = ({}: PageHeaderProps) => {
-  const router = useRouter();
-  // const isMealMastery = router.asPath.indexOf("meal") > -1;
-
-  // const title = isMealMastery ? "Meal Mastery" : "Metabolic Mastery";
   const title = "My D.R.E.S.S. Profile";
-
-  // const wrapperId = isMealMastery ? "meal-form" : "metabolic-form";
-  const wrapperId = "dress-form";
 
   useEffect(() => {
     axios.get("/api/cleanup_temp_folders");
   }, []);
-
-  const onClick = () => {
-    scroller.scrollTo(wrapperId, {
-      duration: 500,
-      delay: 100,
-      smooth: true,
-      offset: -90, // Scrolls to element - 50 pixels down the page
-    });
-  };
 
   return (
     <header className={styles.header}>

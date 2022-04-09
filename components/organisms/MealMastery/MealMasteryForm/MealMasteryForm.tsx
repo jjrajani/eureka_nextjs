@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import MealPlannerContext from "../context";
+import MealPlannerContext from "components/organisms/MealMastery/context";
 import { Form } from "react-final-form";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Hidden from "@mui/material/Hidden";
 import Grid from "@mui/material/Grid";
-import validate from "./validate";
+import validate from "components/organisms/MealMastery/MealMasteryForm/validate";
 import AgeField from "components/molecules/fields/Age";
 import GenderField from "components/molecules/fields/Gender";
 import WeightField from "components/molecules/fields/Weight";

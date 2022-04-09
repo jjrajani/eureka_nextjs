@@ -1,5 +1,5 @@
 import { PieChart } from "react-minimal-pie-chart";
-import MealPlannerContext from "../context";
+import MealPlannerContext from "components/organisms/MealMastery/context";
 import { useContext } from "react";
 
 interface MacroPieChartProps {}

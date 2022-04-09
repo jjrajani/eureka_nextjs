@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import MealPlannerContext from "../context";
+import MealPlannerContext from "components/organisms/MyDressProfile/context";
 import { Form } from "react-final-form";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Hidden from "@mui/material/Hidden";
 import Grid from "@mui/material/Grid";
-import validate from "./validate";
+import validate from "components/organisms/MyDressProfile/MyDressProfileForm/validate";
 import AgeField from "components/molecules/fields/Age";
 import GenderField from "components/molecules/fields/Gender";
 import WeightField from "components/molecules/fields/Weight";
@@ -22,7 +22,7 @@ import StressStageField from "components/molecules/fields/StressStage";
 import SupplementTypeField from "components/molecules/fields/SupplementType";
 import UserInfoContext from "components/organisms/UserInfoModal/context";
 import UserInfoFields from "components/organisms/UserInfoModal/UserInfoFields";
-import tempInitialData from "./temp";
+import tempInitialData from "components/organisms/MyDressProfile/MyDressProfileForm/temp";
 
 import { MyDressProfileFormState } from "types/types";
 

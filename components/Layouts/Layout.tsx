@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import PageHeader from "./PageHeader";
-import PageFooter from "./PageFooter";
+import PageHeader from "components/Layouts/PageHeader";
+import PageFooter from "components/Layouts/PageFooter";
 import Container from "@mui/material/Container";
 
 interface LayoutProps {

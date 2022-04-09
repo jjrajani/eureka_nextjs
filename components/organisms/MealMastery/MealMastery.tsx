@@ -1,6 +1,6 @@
-import MealMasteryForm from "./MealMasteryForm/MealMasteryForm";
-import MealMasteryResults from "./MealMasteryResults/MealMasteryResults";
-import { MealMasteryContextProvider } from "./context";
+import MealMasteryForm from "components/organisms/MealMastery/MealMasteryForm/MealMasteryForm";
+import MealMasteryResults from "components/organisms/MealMastery/MealMasteryResults/MealMasteryResults";
+import { MealMasteryContextProvider } from "components/organisms/MealMastery/context";
 import Box from "@mui/material/Box";
 import Scroll from "react-scroll";
 const scroller = Scroll.scroller;

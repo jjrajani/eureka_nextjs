@@ -1,5 +1,5 @@
 import { ExerciseFITT, DietPreference, ExerciseFITTCalcRes } from "types/types";
-import ExerciseFITTCalculator from "../fitt_calculator";
+import ExerciseFITTCalculator from "utils/calculators/fitt_calculator";
 
 describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: DietPreference)", () => {
   it("returns the correct result for BEGINNER PROTIEN", () => {

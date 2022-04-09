@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from "react";
-import useMealMastery, { UseMyDressProfile } from "./useMyDressProfile";
+import useMealMastery, { UseMyDressProfile } from "components/organisms/MyDressProfile/context/useMyDressProfile";
 
 const defaultValue: UseMyDressProfile = {
   calculateResults: () => {},

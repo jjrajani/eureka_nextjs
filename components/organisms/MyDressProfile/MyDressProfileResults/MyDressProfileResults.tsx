@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import MyDressProfileContext from "../context";
-import MacroPieChart from "./MacroPieChart";
+import MyDressProfileContext from "components/organisms/MyDressProfile/context";
+import MacroPieChart from "components/organisms/MyDressProfile/MyDressProfileResults/MacroPieChart";
 import Grid from "@mui/material/Grid";
-import ResultCard from "./ResultCard";
+import ResultCard from "components/organisms/MyDressProfile/MyDressProfileResults/ResultCard";
 import Typography from "@mui/material/Typography";
-import styles from "./styles/MyDressProfileResults.module.scss";
+import styles from "components/organisms/MyDressProfile/MyDressProfileResults/styles/MyDressProfileResults.module.scss";
 import CaloriesPerDayRange from "components/atoms/CaloriesPerDayRange";
 import DownloadResultsButton from "components/molecules/DownloadResultsButton/DownloadResultsButton";
 import ResultsWrapper from "components/molecules/ResultsWrapper/ResultsWrapper";

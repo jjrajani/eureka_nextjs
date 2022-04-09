@@ -1,4 +1,4 @@
-import getPercentage from "../getPercentage";
+import getPercentage from "utils/getPercentage";
 
 describe("getPercentage(partialValue: number, totalValue: number)", () => {
   it("returns the correct percent", () => {

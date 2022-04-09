@@ -1,6 +1,6 @@
-import MyDressProfileForm from "./MyDressProfileForm/MyDressProfileForm";
-import MyDressProfileResults from "./MyDressProfileResults/MyDressProfileResults";
-import { MyDressProfileContextProvider } from "./context";
+import MyDressProfileForm from "components/organisms/MyDressProfile/MyDressProfileForm/MyDressProfileForm";
+import MyDressProfileResults from "components/organisms/MyDressProfile/MyDressProfileResults/MyDressProfileResults";
+import { MyDressProfileContextProvider } from "components/organisms/MyDressProfile/context";
 import Box from "@mui/material/Box";
 import Scroll from "react-scroll";
 const scroller = Scroll.scroller;

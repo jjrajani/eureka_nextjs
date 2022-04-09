@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Grid from "@mui/material/Grid";
-import styles from "./styles/ResultCard.module.scss";
+import styles from "components/organisms/MyDressProfile/MyDressProfileResults/styles/ResultCard.module.scss";
 
 interface ResultCardProps {
   alt: string;
