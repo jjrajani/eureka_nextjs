@@ -1,7 +1,7 @@
 import { RestRx } from "types/types";
 import { MyDressProfileFormState } from "types/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
 
 const getMealMasteryProfileSlides = async (
   userInput: MyDressProfileFormState

@@ -15,7 +15,7 @@ import getPortionTrackerSlides from "utils/modifyAndOpenPDF/utils/getPortionTrac
 import getConclusionSlides from "utils/modifyAndOpenPDF/utils/getConclusionSlides";
 import getNutritionTipsSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getNutritionTipsSlides";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
 
 const getMealMasterySlides = async (
   results: MyDressProfileCalculatorResult,

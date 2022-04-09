@@ -2,7 +2,7 @@ import { PDFDocument } from "pdf-lib";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import fontkit from "@pdf-lib/fontkit";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
 
 const loadFontsToPDF = async (pdfDoc: PDFDocument): Promise<FontType> => {
   pdfDoc.registerFontkit(fontkit);

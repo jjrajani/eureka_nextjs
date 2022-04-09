@@ -2,7 +2,7 @@ import { DietPreference } from "types/types";
 import { MyDressProfileFormState } from "types/types";
 import { PDFDocument } from "pdf-lib";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
 
 const getDietTypeSlides = async (
   userInput: MyDressProfileFormState
