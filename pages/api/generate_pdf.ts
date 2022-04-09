@@ -8,6 +8,8 @@ import { createTempFile } from "api/routes/generate_pdf/utils";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   handleInputError(req, res);
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
+  console.log('BASE_URL', BASE_URL)
   let results, userInput;
   try {
     results = JSON.parse(req.query.results as string);
