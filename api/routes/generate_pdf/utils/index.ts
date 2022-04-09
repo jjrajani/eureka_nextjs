@@ -1,1 +1,1 @@
-export { default as createTempFile } from "./createTempFile";
+export { default as createTempFile } from "api/routes/generate_pdf/utils/createTempFile";

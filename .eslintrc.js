@@ -13,7 +13,6 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "airbnb",
     "prettier",
-    "prettier/react",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
