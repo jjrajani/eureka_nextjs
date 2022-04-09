@@ -1,5 +1,5 @@
 import MailComposer from "nodemailer/lib/mail-composer";
-import userEmailTemplate from '../templates/userEmailTemplate';
+import userEmailTemplate from 'api/utils/google/gmail/sendEmail/templates/userEmailTemplate';
 
 export interface composeRawUserMessageArgs {
   fileName: string;
