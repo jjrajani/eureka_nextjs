@@ -1,9 +1,6 @@
 // @ts-nocheck
-import { gmailClient } from "../../apis";
-import path from "path";
-import listFiles from "../../drive/listFiles";
-import MailComposer from "nodemailer/lib/mail-composer";
-import composeRawEurekaMessage from "./utils/composeRawEurekaMessage";
+import { gmailClient } from "api/utils/google/apis";
+import composeRawEurekaMessage from "api/utils/google/gmail/sendEmail/utils/composeRawEurekaMessage";
 
 interface SendEurekaEmailArgs {
   fileLink: string;

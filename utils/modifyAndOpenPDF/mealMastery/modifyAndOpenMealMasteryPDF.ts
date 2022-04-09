@@ -1,10 +1,10 @@
 import isMobile from "utils/isMobile";
 import modifyCover from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover";
-import modifyMealMastery from "./modifyPdf";
-import downloadPDF from "../downloadPDF";
+import modifyMealMastery from "utils/modifyAndOpenPDF/mealMastery/modifyPdf";
+import downloadPDF from "utils/modifyAndOpenPDF/downloadPDF";
 import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
-import loadFontsToPDF from "../utils/loadFontsToPDF";
-import getMealMasterySlides from "./getSlides";
+import loadFontsToPDF from "utils/modifyAndOpenPDF/utils/loadFontsToPDF";
+import getMealMasterySlides from "utils/modifyAndOpenPDF/mealMastery/getSlides";
 import setPDFMetadata from "utils/modifyAndOpenPDF/utils/setPDFMetadata";
 import { CoverPage } from "utils/modifyAndOpenPDF/types";
 

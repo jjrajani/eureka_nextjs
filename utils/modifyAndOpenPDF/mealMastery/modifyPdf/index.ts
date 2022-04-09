@@ -6,7 +6,7 @@ import modifyMyNumbers from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyNumb
 import modifyMyPortions from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyPortions";
 import modifyMyDietType from "utils/modifyAndOpenPDF/sharedModifiers/modifyMyDietType";
 import modifyPortionTracker from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker";
-import modifyMasteryProfile from "./modifyMasteryProfile";
+import modifyMasteryProfile from "utils/modifyAndOpenPDF/mealMastery/modifyPdf/modifyMasteryProfile";
 
 interface ModifyMealMasteryArgs {
   font: FontType;

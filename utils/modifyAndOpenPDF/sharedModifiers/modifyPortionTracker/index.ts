@@ -1,10 +1,10 @@
 import { MealMasteryCalculatorResult } from "types/types";
 import { FontType } from "utils/modifyAndOpenPDF/types";
 import { PDFPage } from "pdf-lib";
-import modifyCarbs from "./modifyCarbs";
-import modifyProtein from "./modifyProtein";
-import modifyFat from "./modifyFat";
-import modifyWater from "./modifyWater";
+import modifyCarbs from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker/modifyCarbs";
+import modifyProtein from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker/modifyProtein";
+import modifyFat from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker/modifyFat";
+import modifyWater from "utils/modifyAndOpenPDF/sharedModifiers/modifyPortionTracker/modifyWater";
 
 const modifyPortionTracker = (
   pages: PDFPage[],

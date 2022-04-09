@@ -1,11 +1,11 @@
 import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
 import { PDFDocument } from "pdf-lib";
-import getDietTypeSlides from "./getDietTypeSlides";
-import getSupplementSlides from "./getSupplementSlides";
-import getMealMasteryProfileSlides from "./getMealMasteryProfileSlides";
-import attachSlides from "../../utils/attachSlides";
-import getPortionTrackerSlides from "../../utils/getPortionTrackerSlides";
-import getConclusionSlides from "../../utils/getConclusionSlides";
+import getDietTypeSlides from "utils/modifyAndOpenPDF/mealMastery/getSlides/getDietTypeSlides";
+import getSupplementSlides from "utils/modifyAndOpenPDF/mealMastery/getSlides/getSupplementSlides";
+import getMealMasteryProfileSlides from "utils/modifyAndOpenPDF/mealMastery/getSlides/getMealMasteryProfileSlides";
+import attachSlides from "utils/modifyAndOpenPDF/utils/attachSlides";
+import getPortionTrackerSlides from "utils/modifyAndOpenPDF/utils/getPortionTrackerSlides";
+import getConclusionSlides from "utils/modifyAndOpenPDF/utils/getConclusionSlides";
 
 const getMealMasterySlides = async (
   results: MealMasteryCalculatorResult,

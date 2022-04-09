@@ -1,4 +1,4 @@
-import { BMRCalculator } from "./";
+import { BMRCalculator } from "utils/calculators/index";
 import { Activity, Gender, Goal, CalorieIntake } from "types/types";
 
 interface CalorieIntakeCalculatorArgs {

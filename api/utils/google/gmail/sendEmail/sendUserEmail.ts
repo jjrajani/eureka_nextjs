@@ -1,9 +1,6 @@
 // @ts-nocheck
-import { gmailClient } from "../../apis";
-import path from "path";
-import listFiles from "../../drive/listFiles";
-import MailComposer from "nodemailer/lib/mail-composer";
-import composeRawUserMessage from "./utils/composeRawUserMessage";
+import { gmailClient } from "api/utils/google/apis.ts";
+import composeRawUserMessage from "api/utils/google/gmail/sendEmail/utils/composeRawUserMessage";
 
 interface SendUserEmailArgs {
   file: Uint8Array;
