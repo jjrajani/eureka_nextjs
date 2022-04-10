@@ -1,7 +1,4 @@
-import {
-  MyDressProfileCalculatorResult,
-  MyDressProfileFormState,
-} from "types/types";
+import { MyDressProfileFormState } from "types/types";
 import { PDFDocument } from "pdf-lib";
 import getDietTypeSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getDietTypeSlides";
 import getSupplementSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getSupplementSlides";
@@ -12,31 +9,33 @@ import getStressSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/get
 import getDressSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getDressSlides";
 import attachSlides from "utils/modifyAndOpenPDF/utils/attachSlides";
 import getPortionTrackerSlides from "utils/modifyAndOpenPDF/utils/getPortionTrackerSlides";
-import getConclusionSlides from "utils/modifyAndOpenPDF/utils/getConclusionSlides";
 import getNutritionTipsSlides from "utils/modifyAndOpenPDF/MyDressProfile/getSlides/getNutritionTipsSlides";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
+interface GetMealMasterySlidesArgs {
+  baseUrl: string;
+  userInput: MyDressProfileFormState;
+}
 
-const getMealMasterySlides = async (
-  results: MyDressProfileCalculatorResult,
-  userInput: MyDressProfileFormState
-) => {
+const getMealMasterySlides = async ({
+  baseUrl,
+  userInput,
+}: GetMealMasterySlidesArgs) => {
   const introSlides = await fetch(
-    `${BASE_URL}/pdfs/DRESS_Intro_Slides.pdf`
+    `${baseUrl}/pdfs/DRESS_Intro_Slides.pdf`
   ).then((res) => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(introSlides);
 
   // Diet Type Slide
-  const dietTypeSlides = await getDietTypeSlides(userInput);
+  const dietTypeSlides = await getDietTypeSlides({ baseUrl, userInput });
   await attachSlides(dietTypeSlides, pdfDoc);
 
   // Daily Portion Tracker
-  const portionTrackerSlides = await getPortionTrackerSlides();
+  const portionTrackerSlides = await getPortionTrackerSlides({ baseUrl });
   await attachSlides(portionTrackerSlides, pdfDoc, 4);
 
   // Nutrition Tips
-  const nutritionTipsSlides = await getNutritionTipsSlides();
+  const nutritionTipsSlides = await getNutritionTipsSlides({ baseUrl });
   await attachSlides(nutritionTipsSlides, pdfDoc);
 
   // Conclusion Slides
@@ -44,26 +43,26 @@ const getMealMasterySlides = async (
   // await attachSlides(conclusionSlides, pdfDoc);
 
   // Rest Rx Slide
-  const restRxSlides = await getRestRxSlides(userInput);
+  const restRxSlides = await getRestRxSlides({ baseUrl, userInput });
   await attachSlides(restRxSlides, pdfDoc);
 
   // Exercies FITT Slide
-  const exerciseFittSlides = await getExerciseFittSlides(userInput);
+  const exerciseFittSlides = await getExerciseFittSlides({ baseUrl, userInput });
   await attachSlides(exerciseFittSlides, pdfDoc);
 
   // FITT Tracker Slide
-  const fittTrackerSlides = await getFittTrackerSlides();
+  const fittTrackerSlides = await getFittTrackerSlides({ baseUrl });
   await attachSlides(fittTrackerSlides, pdfDoc);
 
   // Stress Slide
-  const stressSlides = await getStressSlides(userInput);
+  const stressSlides = await getStressSlides({ baseUrl, userInput });
   await attachSlides(stressSlides, pdfDoc);
 
   // Suplement Slide
-  const supplementSlides = await getSupplementSlides(userInput);
+  const supplementSlides = await getSupplementSlides({ baseUrl, userInput });
   await attachSlides(supplementSlides, pdfDoc);
 
-  const dressDashboardSlides = await getDressSlides();
+  const dressDashboardSlides = await getDressSlides({ baseUrl });
   await attachSlides(dressDashboardSlides, pdfDoc);
 
   return pdfDoc;

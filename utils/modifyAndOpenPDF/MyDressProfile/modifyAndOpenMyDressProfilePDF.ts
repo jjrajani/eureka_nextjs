@@ -9,11 +9,18 @@ import modifyCover from "utils/modifyAndOpenPDF/sharedModifiers/modifyCover";
 import modifyMyDressProfile from "utils/modifyAndOpenPDF/MyDressProfile/modifyPdf/index";
 import { CoverPage } from "utils/modifyAndOpenPDF/types";
 
-const modifyAndOpenMyDressProfilePDF = async (
+interface ModifyAndOpenMyDressProfilePDFArgs {
+  baseUrl: string,
   results: MyDressProfileCalculatorResult,
   userInput: MyDressProfileFormState
-) => {
-  const pdfDoc = await getMyDressProfileSlides(results, userInput);
+}
+
+const modifyAndOpenMyDressProfilePDF = async ({
+  baseUrl,
+  results,
+  userInput,
+}: ModifyAndOpenMyDressProfilePDFArgs) => {
+  const pdfDoc = await getMyDressProfileSlides({baseUrl, userInput});
 
   // Doc Metadata
   const title = "Metabolic Mastery Plan";

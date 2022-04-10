@@ -1,27 +1,31 @@
 import { ExerciseFITT } from "types/types";
 import { MyDressProfileFormState } from "types/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
-
-const getExerciesFittSlides = async (
+interface GetExerciesFittSlidesArgs {
+  baseUrl: string,
   userInput: MyDressProfileFormState
-): Promise<ArrayBuffer | undefined> => {
+}
+
+const getExerciesFittSlides = async ({
+  baseUrl,
+  userInput
+}: GetExerciesFittSlidesArgs): Promise<ArrayBuffer | undefined> => {
   let slides;
   switch (userInput.exerciseFitt) {
     case ExerciseFITT.BEGINNER: {
-      slides = await fetch(`${BASE_URL}/pdfs/FITT_Beginner.pdf`).then((res) =>
+      slides = await fetch(`${baseUrl}/pdfs/FITT_Beginner.pdf`).then((res) =>
         res.arrayBuffer()
       );
       break;
     }
     case ExerciseFITT.INTERMEDIATE: {
       slides = await fetch(
-        `${BASE_URL}/pdfs/FITT_Intermediate.pdf`
+        `${baseUrl}/pdfs/FITT_Intermediate.pdf`
       ).then((res) => res.arrayBuffer());
       break;
     }
     case ExerciseFITT.ADVANCED: {
-      slides = await fetch(`${BASE_URL}/pdfs/FITT_Advanced.pdf`).then((res) =>
+      slides = await fetch(`${baseUrl}/pdfs/FITT_Advanced.pdf`).then((res) =>
         res.arrayBuffer()
       );
       break;

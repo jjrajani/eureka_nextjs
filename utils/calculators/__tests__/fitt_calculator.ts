@@ -1,7 +1,7 @@
 import { ExerciseFITT, DietPreference, ExerciseFITTCalcRes } from "types/types";
 import ExerciseFITTCalculator from "utils/calculators/fitt_calculator";
 
-describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: DietPreference)", () => {
+describe("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: DietPreference)", () => {
   it("returns the correct result for BEGINNER PROTIEN", () => {
     const exercise = ExerciseFITT.BEGINNER;
     const dietPreference = DietPreference.PROTIEN;
@@ -11,6 +11,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 50,
         duration: 15,
       },
+      duration: 30,
       endurance: {
         percent: 30,
         duration: 9,
@@ -19,6 +20,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 6,
       },
+      frequency: "2-3x a week",
+      intensity: "50% of Workout in THR Zone",
+      time: "20-30 min OR 2-3x 10 min",
+      type: "Whole Body FUNCTIONAL",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -33,6 +38,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 30,
         duration: 9,
       },
+      duration: 30,
       endurance: {
         percent: 50,
         duration: 15,
@@ -41,6 +47,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 6,
       },
+      frequency: "2-3x a week",
+      intensity: "50% of Workout in THR Zone",
+      time: "20-30 min OR 2-3x 10 min",
+      type: "Whole Body FUNCTIONAL",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -55,6 +65,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 40,
         duration: 12,
       },
+      duration: 30,
       endurance: {
         percent: 40,
         duration: 12,
@@ -63,6 +74,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 6,
       },
+      frequency: "2-3x a week",
+      intensity: "50% of Workout in THR Zone",
+      time: "20-30 min OR 2-3x 10 min",
+      type: "Whole Body FUNCTIONAL",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -78,6 +93,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 50,
         duration: 20,
       },
+      duration: 40,
       endurance: {
         percent: 30,
         duration: 12,
@@ -86,6 +102,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 8,
       },
+      frequency: "3-4x a week",
+      intensity: "70% of Workout in THR Zone",
+      time: "30-40 min OR 3-4x 10 min",
+      type: "Whole Body WEIGHT BEARING",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -100,6 +120,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 30,
         duration: 12,
       },
+      duration: 40,
       endurance: {
         percent: 50,
         duration: 20,
@@ -108,6 +129,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 8,
       },
+      frequency: "3-4x a week",
+      intensity: "70% of Workout in THR Zone",
+      time: "30-40 min OR 3-4x 10 min",
+      type: "Whole Body WEIGHT BEARING",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -122,6 +147,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 40,
         duration: 16,
       },
+      duration: 40,
       endurance: {
         percent: 40,
         duration: 16,
@@ -130,6 +156,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 8,
       },
+      frequency: "3-4x a week",
+      intensity: "70% of Workout in THR Zone",
+      time: "30-40 min OR 3-4x 10 min",
+      type: "Whole Body WEIGHT BEARING",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -145,6 +175,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 50,
         duration: 30,
       },
+      duration: 60,
       endurance: {
         percent: 30,
         duration: 18,
@@ -153,6 +184,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 12,
       },
+      frequency: "4-6x a week",
+      intensity: "90% of workout in THR Zone",
+      time: "40-60 min",
+      type: "Whole Body H.I.C.T.",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -167,6 +202,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 30,
         duration: 18,
       },
+      duration: 60,
       endurance: {
         percent: 50,
         duration: 30,
@@ -175,6 +211,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 12,
       },
+      frequency: "4-6x a week",
+      intensity: "90% of workout in THR Zone",
+      time: "40-60 min",
+      type: "Whole Body H.I.C.T.",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });
@@ -189,6 +229,7 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 40,
         duration: 24,
       },
+      duration: 60,
       endurance: {
         percent: 40,
         duration: 24,
@@ -197,6 +238,10 @@ describe.only("ExerciseFITTCalculator(exercise: ExerciseFITT, dietPreference: Di
         percent: 20,
         duration: 12,
       },
+      frequency: "4-6x a week",
+      intensity: "90% of workout in THR Zone",
+      time: "40-60 min",
+      type: "Whole Body H.I.C.T.",
     };
 
     const actual = ExerciseFITTCalculator({ exercise, dietPreference });

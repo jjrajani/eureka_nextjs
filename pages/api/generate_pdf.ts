@@ -7,9 +7,9 @@ import {
 import { createTempFile } from "api/routes/generate_pdf/utils";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const baseUrl = req.headers.referer || "http://localhost:3000";
+  console.log('baseUrl', baseUrl);
   handleInputError(req, res);
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
-  console.log('BASE_URL', BASE_URL)
   let results, userInput;
   try {
     results = JSON.parse(req.query.results as string);
@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   let file: Uint8Array;
   try {
-    file = await modifyAndOpenMyDressProfilePDF(results, userInput);
+    file = await modifyAndOpenMyDressProfilePDF({baseUrl, results, userInput});
 
     const filePath = await createTempFile(file);
     if (filePath) {

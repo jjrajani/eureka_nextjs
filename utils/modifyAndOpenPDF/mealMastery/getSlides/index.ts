@@ -22,7 +22,7 @@ const getMealMasterySlides = async (
   await attachSlides(dietTypeSlides, pdfDoc);
 
   // Daily Portion Tracker
-  const portionTrackerSlides = await getPortionTrackerSlides();
+  const portionTrackerSlides = await getPortionTrackerSlides({baseUrl: 'FIX ME'});
   await attachSlides(portionTrackerSlides, pdfDoc, 4);
 
   // Suplement Slide

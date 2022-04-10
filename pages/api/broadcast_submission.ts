@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const BASE_URL = req.headers.referer;
+  console.log('BASE_URL', BASE_URL);
   const filePath = req?.query?.filePath as string;
   const userInput = JSON.parse(req.query.userInput as string);
   const name = `${userInput.first} ${userInput.last}`.trim();
