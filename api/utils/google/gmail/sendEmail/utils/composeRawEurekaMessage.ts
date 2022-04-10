@@ -1,28 +1,25 @@
 import MailComposer from "nodemailer/lib/mail-composer";
+import content from 'api/utils/google/gmail/sendEmail/templates/eurekaEmailTemplate'
 
 export interface composeRawUserMessageArgs {
   fileLink: string;
   folderLink: string;
+  userEmail: string;
   userName: string;
 }
 
 const composeRawEurekaMessage = async ({
   fileLink,
   folderLink,
+  userEmail,
   userName,
 }: composeRawUserMessageArgs) => {
+  console.log('userEmail', userEmail)
   const mail = new MailComposer({
     from: "D.R.E.S.S. Planner <connect@eurekaholisticnutrition.com>",
-    to: `New Submission <connect@eurekaholisticnutrition.com>`,
-    text: `
-      New D.R.E.S.S. Submission
-
-      ${userName} has completed the D.R.E.S.S. form.
-
-      Follow this link to view the user's google drive folder: ${folderLink}
-
-      Follow this link to view the user's summary PDF: ${fileLink}
-    `,
+    // to: `New Submission <connect@eurekaholisticnutrition.com>`,
+    to: `New Submission <jjrajani@eurekaholisticnutrition.com>`,
+    html: content({ fileLink, folderLink, userEmail, userName }),
     subject: `New D.R.E.S.S. Submission - ${userName}`,
     textEncoding: "base64",
   });

@@ -39,6 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // will clean after itself.
     // cleanupCallback();
   } catch (error) {
+    console.log('error', error)
     res.status(500).json(`Error generating pdf: ${error?.message}`);
     return;
   }

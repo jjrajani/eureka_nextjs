@@ -6,6 +6,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const drive = driveClient();
   const fileId = req.query.fileId as string;
   const userName = req.query.userName as string;
+  const userEmail = req.query.userEmail as string;
 
   const fileRes = await drive.files.get({
     fileId,
@@ -20,6 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await sendEurekaEmail({
         fileLink,
         folderLink,
+        userEmail,
         userName,
       });
       res.status(200).json("eureka notified");

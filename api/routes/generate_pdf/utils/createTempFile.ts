@@ -3,7 +3,9 @@ import fs from "fs";
 import path from "path";
 import moment from "moment";
 
-export const BASE_FILE_PATH = path.join(
+const isDev = process.env.NODE_ENV === 'development';
+
+const devTempDir = path.join(
   __dirname,
   "..",
   "..",
@@ -11,6 +13,16 @@ export const BASE_FILE_PATH = path.join(
   "..",
   "/tmp"
 );
+
+const prodTempDir = path.join(
+  __dirname,
+  "..",
+  "..",
+  "..",
+  "/tmp"
+);
+
+export const BASE_FILE_PATH = isDev ? devTempDir : prodTempDir;
 
 const createTempFile = (fileContent: Uint8Array) => {
   return new Promise((resolve, reject) => {
@@ -25,7 +37,7 @@ const createTempFile = (fileContent: Uint8Array) => {
           postfix: ".pdf",
           tmpdir,
         },
-        function _tempFileCreated(err, path, fd, cleanupCallback) {
+        function _tempFileCreated(err, path, fd, /*cleanupCallback*/) {
           if (err) throw err;
           console.log("File: ", path);
           console.log("Filedescriptor: ", fd);

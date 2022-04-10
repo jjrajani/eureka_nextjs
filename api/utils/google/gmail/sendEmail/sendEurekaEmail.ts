@@ -5,18 +5,20 @@ import composeRawEurekaMessage from "api/utils/google/gmail/sendEmail/utils/comp
 interface SendEurekaEmailArgs {
   fileLink: string;
   folderLink: string;
+  userEmail: string;
   userName: string;
 }
 
 const sendEurekaEmail = async ({
   fileLink,
   folderLink,
+  userEmail,
   userName,
 }: SendEurekaEmailArgs) => {
   const gmail = gmailClient();
   let message;
   try {
-    message = await composeRawEurekaMessage({ fileLink, folderLink, userName });
+    message = await composeRawEurekaMessage({ fileLink, folderLink, userEmail, userName });
   } catch (error) {
     console.log(`error composing email: ${error?.message}`);
   }

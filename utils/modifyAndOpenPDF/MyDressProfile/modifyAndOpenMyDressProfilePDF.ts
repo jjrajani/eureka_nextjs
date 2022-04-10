@@ -28,7 +28,7 @@ const modifyAndOpenMyDressProfilePDF = async ({
     "A Metabolic Mastery Plan to help you keep your health on track.";
   setPDFMetadata({ pdfDoc, subject, title, userInput });
 
-  const font = await loadFontsToPDF(pdfDoc);
+  const font = await loadFontsToPDF({ baseUrl, pdfDoc });
   const pages = pdfDoc.getPages();
 
   // Cover Page

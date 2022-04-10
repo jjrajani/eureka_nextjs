@@ -30,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (uploadedFile) {
       await axios.get(
-        `${BASE_URL}/api/notify_eureka?fileId=${uploadedFile.data.fileId}&userName=${name}`
+        `${BASE_URL}/api/notify_eureka?fileId=${uploadedFile.data.fileId}&userName=${name}&userEmail=${userInput.email}`
       ).catch(e => {
         console.log('Error notifying Eureka', e.message)
       });
