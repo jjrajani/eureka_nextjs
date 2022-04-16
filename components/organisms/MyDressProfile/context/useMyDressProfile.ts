@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 import {
   Activity,
   ExerciseFITT,
@@ -7,7 +7,7 @@ import {
   Goal,
   MyDressProfileCalculatorResult,
   MyDressProfileFormState,
-} from "types/types";
+} from 'types/types';
 import {
   BMICalculator,
   BMRCalculator,
@@ -16,9 +16,9 @@ import {
   HandServingSizeCalculator,
   MacroRatioCalculator,
   TargetHeartRateCalculator,
-} from "utils/calculators";
-import modifyAndOpenPDF from "utils/modifyAndOpenPDF/MyDressProfile/modifyAndOpenMyDressProfilePDF";
-import axios from "axios";
+} from 'utils/calculators';
+import modifyAndOpenPDF from 'utils/modifyAndOpenPDF/MyDressProfile/modifyAndOpenMyDressProfilePDF';
+import axios from 'axios';
 
 export interface UseMyDressProfile {
   calculateResults: (vals: MyDressProfileFormState) => void;
@@ -39,20 +39,20 @@ const useMyDressProfile = (): UseMyDressProfile => {
     try {
       axios.get(`/api/cleanup_temp_file?filePath=${pdfFilePath}`);
     } catch (e) {
-      console.log("e", e.message);
+      console.log('e', e.message);
     }
     setPDFFilePath(undefined);
   }, [pdfFilePath, setPDFFilePath]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const beforeUnload = () => {
-        console.log("beforeUnload");
+        console.log('beforeUnload');
       };
-      window.addEventListener("onbeforeunload", cleanUpOldPDF);
+      window.addEventListener('onbeforeunload', cleanUpOldPDF);
 
       return () => {
-        window.removeEventListener("onbeforeunload", cleanUpOldPDF);
+        window.removeEventListener('onbeforeunload', cleanUpOldPDF);
       };
     }
   }, [cleanUpOldPDF]);
@@ -89,7 +89,7 @@ const useMyDressProfile = (): UseMyDressProfile => {
         weight: parseInt(vals.weight, 10),
       });
 
-      let macro = MacroRatioCalculator(vals.goal as Goal);
+      let macro = MacroRatioCalculator(vals.dietPreference as DietPreference);
 
       let handSizes = HandServingSizeCalculator({
         calorieIntake: calorieIntake,

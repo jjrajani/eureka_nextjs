@@ -1,31 +1,26 @@
-import { Goal, Macro } from "types/types";
+import { DietPreference, Macro } from 'types/types';
 
-const MacroRatioCalculator = (goal: Goal): Macro => {
+const MacroRatioCalculator = (dietType: DietPreference): Macro => {
   let protein = 0,
     carbs = 0,
     fats = 0;
 
-  if (goal === Goal.WEIGHT_LOSS) {
+  if (dietType === DietPreference.CARB) {
+    // Carb Type: P- 25   C - 60   F - 15
+    protein = 0.25;
+    carbs = 0.6;
+    fats = 0.15;
+  }
+  if (dietType === DietPreference.MIXED) {
+    // Mixed Type: P - 30  C - 50  F - 20
     protein = 0.3;
-    carbs = 0.25;
-    fats = 0.45;
-  } else if (goal === Goal.WEIGHT_SUSTAIN) {
-    // TODO: Make sure these numbers are right
-    protein = 0.45;
-    carbs = 0.25;
-    fats = 0.3;
-  } else if (goal === Goal.WEIGHT_GAIN) {
-    // TODO: Make sure these numbers are right
-    protein = 0.45;
-    carbs = 0.25;
-    fats = 0.3;
-  } else if (goal === Goal.IMPROVE_HEALTH) {
+    carbs = 0.5;
+    fats = 0.2;
+  }
+  if (dietType === DietPreference.PROTIEN) {
+    // Protein Type: P - 30  C - 40  F - 30
     protein = 0.3;
     carbs = 0.4;
-    fats = 0.3;
-  } else if (goal === Goal.BODY_RECOMP) {
-    protein = 0.45;
-    carbs = 0.25;
     fats = 0.3;
   }
 

@@ -1,19 +1,20 @@
-import { useCallback, useState } from "react";
-import { MealMasteryFormState } from "types/types";
+import { useCallback, useState } from 'react';
+import { MealMasteryFormState } from 'types/types';
 import {
   Activity,
+  DietPreference,
   Gender,
   Goal,
   MealMasteryCalculatorResult,
-} from "types/types";
+} from 'types/types';
 import {
   BMICalculator,
   BMRCalculator,
   CalorieIntakeCalculator,
   HandServingSizeCalculator,
   MacroRatioCalculator,
-} from "utils/calculators";
-import modifyAndOpenMealMasteryPDF from "utils/modifyAndOpenPDF/mealMastery/modifyAndOpenMealMasteryPDF";
+} from 'utils/calculators';
+import modifyAndOpenMealMasteryPDF from 'utils/modifyAndOpenPDF/mealMastery/modifyAndOpenMealMasteryPDF';
 
 export interface UseMealMastery {
   calculateResults: (vals: MealMasteryFormState) => void;
@@ -56,7 +57,7 @@ const useMealMastery = (): UseMealMastery => {
         weight: parseInt(vals.weight, 10),
       });
 
-      let macro = MacroRatioCalculator(vals.goal as Goal);
+      let macro = MacroRatioCalculator(vals.dietPreference as DietPreference);
 
       let handSizes = HandServingSizeCalculator({
         calorieIntake: calorieIntake,
