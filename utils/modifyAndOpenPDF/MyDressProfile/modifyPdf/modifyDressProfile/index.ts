@@ -1,5 +1,6 @@
 import {
   Activity,
+  ExerciseFITT,
   Gender,
   Goal,
   MyDressProfileCalculatorResult,
@@ -16,6 +17,7 @@ import { red } from 'utils/modifyAndOpenPDF/colors';
 import {
   activityLevelText,
   dietPrefText,
+  fittText,
   genderText,
   goalText,
   restRxText,
@@ -60,7 +62,7 @@ const getYellowBoxPlacement = ({
 const texts = (
   results: MyDressProfileCalculatorResult,
   userInput: MyDressProfileFormState,
-  font: FontType,
+  font: FontType
 ): Partial<Text>[] => {
   return [
     // Name
@@ -87,7 +89,7 @@ const texts = (
         font: font.bold,
         fontSize: 14,
       }),
-      text: `${genderText[userInput.gender  as Gender]}`,
+      text: `${genderText[userInput.gender as Gender]}`,
     },
     // Height
     {
@@ -150,33 +152,40 @@ const texts = (
       text: `${restRxText[userInput.restRx as RestRx]}`,
       size: 14,
     },
+    // FITT - User Input
+    {
+      x: 393,
+      y: 225.5,
+      text: fittText[userInput.exerciseFitt as ExerciseFITT],
+      size: 14,
+    },
     // FITT - Frequency
     {
       x: 290,
       y: 184.5,
       text: results.exerciseFitt.frequency,
-      size: 12
+      size: 12,
     },
     // FITT - Intensity
     {
       x: 290,
       y: 168,
       text: results.exerciseFitt.intensity,
-      size: 12
+      size: 12,
     },
     // FITT - Time
     {
       x: 290,
       y: 151,
       text: results.exerciseFitt.time,
-      size: 12
+      size: 12,
     },
     // FITT - Type
     {
       x: 290,
       y: 134.3,
       text: results.exerciseFitt.type,
-      size: 12
+      size: 12,
     },
     // Supplement Type
     {
@@ -210,7 +219,10 @@ const texts = (
     },
     // Carbs Servings
     {
-      x: `${results.handSizes.carbsServing.palms.median}`.length === 1 ? 526 : 521,
+      x:
+        `${results.handSizes.carbsServing.palms.median}`.length === 1
+          ? 526
+          : 521,
       y: 202,
       text: `${results.handSizes.carbsServing.palms.median} servings`,
     },
@@ -265,7 +277,6 @@ const modifyDressProfile = ({
   userInput: MyDressProfileFormState;
 }) => {
   texts(results, userInput, font).forEach((text: Partial<Text>) => {
-    
     page.drawText(`${text.text}`, {
       x: text.x as number,
       y: text?.y || y,
