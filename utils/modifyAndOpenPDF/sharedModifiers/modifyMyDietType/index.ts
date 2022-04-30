@@ -1,9 +1,9 @@
-import { MealMasteryCalculatorResult, MealMasteryFormState } from "types/types";
-import { FontType } from "utils/modifyAndOpenPDF/types";
-import { PDFPage } from "pdf-lib";
-import { Text } from "utils/modifyAndOpenPDF/types";
-import { red } from "utils/modifyAndOpenPDF/colors";
-import getHeaderTexts from "utils/modifyAndOpenPDF/sharedModifiers/utils/getHeaderTexts";
+import { MealMasteryCalculatorResult, MealMasteryFormState } from 'types/types';
+import { FontType } from 'utils/modifyAndOpenPDF/types';
+import { PDFPage } from 'pdf-lib';
+import { Text } from 'utils/modifyAndOpenPDF/types';
+import { red } from 'utils/modifyAndOpenPDF/colors';
+import getHeaderTexts from 'utils/modifyAndOpenPDF/sharedModifiers/utils/getHeaderTexts';
 
 const color = red,
   y = 277;
